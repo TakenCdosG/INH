@@ -1,0 +1,2437 @@
+<?php
+
+function newhavenmod_formadvancedsearch_culture() {
+
+    $field_info = field_info_field('field_culture_offer');
+
+    $options = $field_info["settings"]["allowed_values"];
+
+    $form['field_culture_offer_value_2'] = array(
+        '#title' => t(''),
+        '#type' => 'checkboxes',
+        '#description' => (t('')),
+        '#options' => $options,
+        '#weight' => 25,
+    );
+
+
+    return $form;
+}
+
+function newhavenmod_formadvancedsearch_dinning() {
+
+    $field_info = field_info_field('field_dining_offer');
+
+    $options = $field_info["settings"]["allowed_values"];
+
+    $form['field_culture_offer_value_2'] = array(
+        '#title' => t(''),
+        '#type' => 'checkboxes',
+        '#description' => (t('')),
+        '#options' => $options,
+        '#weight' => 25,
+    );
+
+
+    return $form;
+}
+
+function newhavenmod_form_alter(&$form, &$form_state, $form_id) {
+    global $user;
+    if ($form_id == 'views_exposed_form') { //&& arg(0) == 'culture-listing'
+        if ($form["#id"] == 'views-exposed-form-culture-listing-page' || $form["#id"] == 'views-exposed-form-dining-listing-page') {
+            $advanced_search_exponsed = '<div  id="advanced_search_exponsed"><a href="#" id="advanced_search_exponsed_a">Advanced Search</a>';
+            $advanced_search_exponsed_close = '</div>';
+        }
+
+        if ($form["#id"] == 'views-exposed-form-culture-listing-page' || $form["#id"] == 'views-exposed-form-dining-listing-page' || $form["#id"] == 'views-exposed-form-shopping-listing-page') {
+
+            if ($form["#id"] == 'views-exposed-form-culture-listing-page') {
+                $link_type = "culture";
+            }
+            if ($form["#id"] == 'views-exposed-form-dining-listing-page') {
+                $link_type = "dining";
+            }
+            if ($form["#id"] == 'views-exposed-form-shopping-listing-page') {
+                $link_type = "shopping";
+            }
+
+
+
+            $form['target_advanced_search'] = array(
+                '#type' => 'markup',
+                '#prefix' => '
+					<div id="alpha_links" ><a href="/' . $link_type . '-listing/a"  >A |</a> <a href="/' . $link_type . '-listing/b" >B |</a> <a href="/' . $link_type . '-listing/c" >C |</a> 
+					<a href="/' . $link_type . '-listing/d" >D |</a> 
+					<a href="/' . $link_type . '-listing/e" >E |</a> <a href="/' . $link_type . '-listing/f" >F |</a> <a href="/' . $link_type . '-listing/g" id="g">G |</a> 
+					<a href="/' . $link_type . '-listing/h" id="h">H |</a> <a href="/' . $link_type . '-listing/i" id="i">I |</a> <a href="/' . $link_type . '-listing/j" id="j">J |</a> 
+					<a href="/' . $link_type . '-listing/k" id="k">K |</a> <a href="/' . $link_type . '-listing/l" id="l">L |</a><a href="/' . $link_type . '-listing/m" id="m">M |</a> 
+					<a href="/' . $link_type . '-listing/n" id="n">N |</a> <a href="/' . $link_type . '-listing/o" >O |</A> <a href="/' . $link_type . '-listing/p" id="p">P |</a> 
+					<a href="/' . $link_type . '-listing/q" id="q">Q |</a> <a href="/' . $link_type . '-listing/r" id="r">R |</a> <a href="/' . $link_type . '-listing/s" id="s">S |</a> <a href="/' . $link_type . '-listing/t" id="t">T |</a>
+					<a href="/' . $link_type . '-listing/u" id="u">U |</a> <a href="/' . $link_type . '-listing/v" id="v">V |</a> <a href="/' . $link_type . '-listing/w" id="w">W |</a> 
+					<a href="/' . $link_type . '-listing/x" id="x">X |</a> <a href="/' . $link_type . '-listing/y" id="y">Y |</a> <a href="/' . $link_type . '-listing/z" id="z">Z</a></div>
+					' . $advanced_search_exponsed . '',
+                '#value' => t(""),
+                '#weight' => -900,
+                '#suffix' => $advanced_search_exponsed_close,
+            );
+
+            $form['div_advanced_search'] = array(
+                '#type' => 'markup',
+                '#prefix' => '<div  id="div_advanced_search">',
+                '#value' => t(""),
+                '#weight' => -900,
+                '#suffix' => "</div>",
+            );
+        }
+    }
+
+
+    if (($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_id == 'culture_node_form' || $form_id == 'nightlife_node_form' || $form_id == 'services_node_form' || $form_id == 'hotels_node_form' ) && $user->uid == 0) {
+        if ($form["#action"] == '/node/add/dining' || $form["#action"] == '/node/add/culture' || $form["#action"] == '/node/add/shopping' || $form["#action"] == '/node/add/nightlife' || $form["#action"] == '/node/add/services' || $form["#action"] == '/node/add/hotels') {
+            //custom_form_function(&$form, &$form_state, $form_id);
+            $global_node = node_load("286");
+
+            if ($form_id == 'dining_node_form') {
+                drupal_set_title(t("Dining"));
+                $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_dining['und'];
+            }
+            if ($form_id == 'shopping_node_form') {
+                drupal_set_title(t("Shopping"));
+                $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_shoppin['und'];
+            }
+
+            if ($form_id == 'culture_node_form') {
+                drupal_set_title(t("Culture"));
+                $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_culture['und'];
+            }
+            if ($form_id == 'nightlife_node_form') {
+                drupal_set_title(t("Nightlife"));
+                $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_nightli['und'];
+            }
+            if ($form_id == 'services_node_form') {
+                drupal_set_title(t("Services"));
+                $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_service['und'];
+            }
+
+
+            if ($form_id == 'hotels_node_form') {
+                drupal_set_title(t("Hotels"));
+                $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_hotels["und"];
+            }
+
+            $form['div_header'] = array(
+                '#type' => 'markup',
+                '#prefix' => '<div id="markup_div"><div id="header">   
+									 <h1 class="site-name title"><a href="/">InfoNewHaven.com - Get Listed</a></h1>
+									</div>
+									<div class="navlinks"><ul class="links" id="navlist"><li class="menu-262 active-trail first active"><a href="/node/add/dining" title="" class="active">Dining</a></li>
+									<li ><a href="/node/add/shopping" title="">Shopping</a></li>
+									<li "><a href="/node/add/services" title="">Services</a></li>
+									<li ><a href="/node/add/culture" title="">Culture</a></li>
+									<li ><a href="/node/add/nightlife" title="">Nightlife</a></li>
+									<li class="last"><a href="/node/add/hotels" title="">Hotels</a></li>
+									</ul> </div></div>',
+                '#value' => t(""),
+                '#weight' => -500,
+                '#suffix' => "</div>",
+            );
+
+            $img1 = base_path() . path_to_theme() . "/img/parking_icon.png";
+
+            $form['markup_footer'] = array(
+                '#type' => 'markup',
+                '#prefix' => '
+					
+					<div class="markup_footer"> 
+					<img src="http://www.infonewhaven.com/sites/all/themes/newhaven/img/img1.png" id="img1"  alt="Parking" title="Parking" />
+					<img src="http://www.infonewhaven.com/sites/all/themes/newhaven/img/img2.png" id="img2"  alt="Parking" title="Parking" />
+					<img src="http://www.infonewhaven.com/sites/all/themes/newhaven/img/img3.png" id="img3" alt="Parking" title="Parking" />
+					
+					',
+                '#value' => t(""),
+                '#weight' => -500,
+                '#suffix' => "</div>",
+            );
+
+            if ($form_id != 'nightlife_node_form' && $form_id != 'services_node_form' && $form_id != 'hotels_node_form') {
+                $form['markup_day_hour'] = array(
+                    '#type' => 'markup',
+                    '#prefix' => '<div id="markup_day_hour">
+										  <label>Days of Operation: </label>
+										  
+										  <table>
+										  
+										  <tr>
+											  <td>Sunday</td>
+											  <td><input type="checkbox" name="" id="marker_sunday" value="sunday" class="form-checkbox"></td>
+											  <td>  <div class="form-item-markup" id="">
+													<input type="text" maxlength="50" name="marker_sunday_text" id="marker_sunday_text" size="1" value="" class="form-text" disabled="">
+													</div>
+											  </td>
+											  
+											</tr>
+										  
+										   <tr>
+											  <td>Monday</td>
+											  <td><input type="checkbox" name="" id="marker_monday" value="monday" class="form-checkbox"></td>
+											  <td>  <div class="form-item-markup" id="">
+													<input type="text" maxlength="50" name="marker_monday_text" id="marker_monday_text" size="1" value="" class="form-text" disabled="">
+													</div>
+											  </td>
+											  
+											</tr>
+										  
+											<tr>
+											  <td>Tuesday</td>
+											  <td><input type="checkbox" name="" id="marker_tuesday" value="tuesday" class="form-checkbox"></td>
+											  <td>  <div class="form-item-markup" id="">
+													<input type="text" maxlength="50" name="marker_tuesday_text" id="marker_tuesday_text" size="1" value="" class="form-text" disabled="">
+													</div>
+											  </td>
+											   
+											</tr>
+											<tr>
+											  <td>Wednesday</td>
+											  <td><input type="checkbox" name="" id="marker_wednesday" value="wednesday" class="form-checkbox"></td>
+											  <td>  <div class="form-item-markup" id="">
+													<input type="text" maxlength="50" name="marker_wednesday_text" id="marker_wednesday_text" size="1" value="" class="form-text" disabled="">
+													</div>
+											  </td>
+											  
+											</tr>
+											<tr>
+											  <td>Thursday</td>
+											  <td><input type="checkbox" name="" id="marker_thursday" value="thursday" class="form-checkbox"></td>
+											  <td>  <div class="form-item-markup" id="">
+													<input type="text" maxlength="50" name="marker_thursday_text" id="marker_thursday_text" size="1" value="" class="form-text" disabled="">
+													</div>
+											  </td>
+											  
+											</tr>
+											<tr>
+											  <td>Friday</td>
+											  <td><input type="checkbox" name="" id="marker_friday" value="friday" class="form-checkbox"></td>
+											  <td>  <div class="form-item-markup" id="">
+													<input type="text" maxlength="50" name="marker_friday_text" id="marker_friday_text" size="1" value="" class="form-text" disabled="">
+													</div>
+											  </td>
+											   
+											</tr>
+											<tr>
+											  <td>Saturday</td>
+											  <td><input type="checkbox" name="" id="marker_saturday" value="saturday" class="form-checkbox"></td>
+											  <td>  <div class="form-itemform-item-markup" id="">
+													<input type="text" maxlength="50" name="marker_saturday_text" id="marker_saturday_text" size="1" value="" class="form-text" disabled="">
+													</div>
+											  </td>
+											  
+											</tr>
+										  </table>',
+                    '#value' => t(""),
+                    '#weight' => -500,
+                    '#suffix' => "</div>",
+                );
+            }
+
+            if ($form_id == 'dining_node_form') {
+                $form['markup_day_hschedules'] = array(
+                    '#type' => 'markup',
+                    '#prefix' => '<div id="markup_day_hschedules">
+									  <label>Days and meals schedules: </label>
+									  
+									  <table>
+									  
+									   <tr>
+											  <td></td>
+											  <td></td>
+											  <td> 
+												   <div class="form-item-markup" id=""><b>Lunch</b> </div>
+											  </td>
+											   <td>  
+												<div class="form-item-markup" id=""><b>Dinner</b></div>
+											  </td>
+										</tr>
+							
+										<tr>
+										  <td>Sunday</td>
+										  <td><input type="checkbox" name="" id="marker_hschedules_sunday" value="sunday" class="form-checkbox"></td>
+										  <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_sunday_lunch" id="marker_hschedules_sunday_lunch" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										   <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_sunday_dinner" id="marker_hschedules_sunday_dinner" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										</tr>
+										
+										 <tr>
+										  <td>Monday</td>
+										  <td><input type="checkbox" name="" id="marker_hschedules_monday" value="monday" class="form-checkbox"></td>
+										  <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_monday_lunch" id="marker_hschedules_monday_lunch" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										   <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_monday_dinner" id="marker_hschedules_monday_dinner" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										</tr>
+										
+										<tr>
+										  <td>Tuesday</td>
+										  <td><input type="checkbox" name="" id="marker_hschedules_tuesday" value="tuesday" class="form-checkbox"></td>
+										  <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_tuesday_lunch" id="marker_hschedules_tuesday_lunch" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										   <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_tuesday_dinner" id="marker_hschedules_tuesday_dinner" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										</tr>
+										<tr>
+										  <td>Wednesday</td>
+										  <td><input type="checkbox" name="" id="marker_hschedules_wednesday" value="wednesday" class="form-checkbox"></td>
+										  <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_wednesday_lunch" id="marker_hschedules_wednesday_lunch" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										   <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_wednesday_dinner" id="marker_hschedules_wednesday_dinner" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										</tr>
+										<tr>
+										  <td>Thursday</td>
+										  <td><input type="checkbox" name="" id="marker_hschedules_thursday" value="thursday" class="form-checkbox"></td>
+										  <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_thursday_lunch" id="marker_hschedules_thursday_lunch" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										   <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_thursday_dinner" id="marker_hschedules_thursday_dinner" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										</tr>
+										<tr>
+										  <td>Friday</td>
+										  <td><input type="checkbox" name="" id="marker_hschedules_friday" value="friday" class="form-checkbox"></td>
+										  <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_friday_lunch" id="marker_hschedules_friday_lunch" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										   <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_friday_dinner" id="marker_hschedules_friday_dinner" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										</tr>
+										<tr>
+										  <td>Saturday</td>
+										  <td><input type="checkbox" name="" id="marker_hschedules_saturday" value="saturday" class="form-checkbox"></td>
+										  <td>  <div class="form-itemform-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_saturday_lunch" id="marker_hschedules_saturday_lunch" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										   <td>  <div class="form-item-markup" id="">
+												<input type="text" maxlength="50" name="marker_hschedules_saturday_dinner" id="marker_hschedules_saturday_dinner" size="1" value="" class="form-text" disabled="">
+												</div>
+										  </td>
+										</tr>
+									  </table>',
+                    '#value' => t(""),
+                    '#weight' => -500,
+                    '#suffix' => "</div>",
+                );
+            }
+
+            $form['actions']['submit']['#submit'][] = 'newhavenmod_submit';
+        }
+    }
+}
+
+function newhavenmod_submit($form, &$form_state) {
+    custom_drupal_mail($_SESSION['field_email_notification_form'], $form['type']['#value']);
+    $form_state['redirect'] = 'node/20285'; //Thanks Page
+}
+
+function custom_drupal_mail($field_email_notification_form, $type_form) {
+    $nid = get_node($type_form);
+    $my_module = 'custom';
+
+    foreach ($field_email_notification_form as $v) {
+        $my_mail_token = microtime();
+
+        $from = 'NEW HAVEN SITE <newhaven@admin.com>';
+
+        $message = 'An anonymous user has sent information on ' . ucwords($type_form) . " Form click  " .
+                '<a href="http://' . $_SERVER["SERVER_NAME"] . '/node/' . $nid . '">HERE </a>';
+
+        $message = array(
+            'id' => $my_module . '_' . $my_mail_token,
+            'to' => $v["value"],
+            'subject' => 'New information forms - NewHaven ',
+            'body' => array($message),
+            'headers' => array(
+                'From' => $from,
+                'Sender' => $from,
+                'Return-Path' => $from,
+            ),
+        );
+        $system = drupal_mail_system($my_module, $my_mail_token);
+        $message = $system->format($message);
+        $message['result'] = $system->mail($message);
+    }
+}
+
+/* * **************************************************************** */
+
+function get_node($type_form) {
+    $result = db_query('SELECT  MAX(n.nid) AS nid  FROM {node} n WHERE n.type = :type', array(':type' => $type_form));
+    $arra = $result->fetchAll();
+    return $arra[0]->nid;
+}
+
+/* * ********************************************************************************VALIDATE**************************************************** */
+
+function newhavenmod_node_validate($node, $form, &$form_state) {
+    if ($node->type == "dining" || $node->type == "culture" || $node->type == "shopping" || $node->type == "nightlife" || $node->type == "services" || $node->type == "hotels") {
+        $url = explode('/', $_GET['q']);
+
+        if ($node->type == "services") {
+            validate_phone($node->field_phone_services["und"][0]["value"], "field_phone_services");
+        } else
+        if ($node->type == "nightlife") {
+            validate_phone($node->field_phone_nightlife["und"][0]["value"], "field_phone_nightlife");
+        } else
+        if ($node->type == "hotels") {
+            validate_phone($node->field_phone_nightlife["und"][0]["value"], "field_phone_nightlife");
+        } else {
+            validate_phone($node->field_phone["und"][0]["value"], "field_phone");
+        }
+
+        validate_capcha($node->field_please_type_new_haven["und"][0]["value"]);
+
+        validate_www($node);
+    }
+}
+
+function validate_capcha($field) {
+    if ($field == "" || $field != "New Haven") {
+        form_set_error('field_please_type_new_haven', t("Please type 'New Haven': Invalid Captcha."));
+    }
+}
+
+function validate_phone($field, $field_name) {
+    if ($field != "") {
+        $count = strlen($field);
+
+        if ($count == 12) {
+            $field_explode = explode('-', $field);
+            if (is_numeric($field_explode[0]) && is_numeric($field_explode[1]) && is_numeric($field_explode[2])) {
+                if (strlen($field) > 12 || strlen($field) < 12) {
+                    form_set_error($field_name, t("Please enter in Phone XXX-XXX-XXXX format."));
+                }
+            } else {
+                form_set_error($field_name, t("Please enter in Phone XXX-XXX-XXXX format."));
+            }
+        } else {
+            form_set_error($field_name, t("Please enter in Phone XXX-XXX-XXXX format."));
+        }
+    }
+}
+
+function validate_www($node) {
+    if ($node->type == "culture" || $node->type == "dining" || $node->type == "shopping") {
+        $field_website = $node->field_website["und"][0]["value"];
+        validate_www_field($field_website, 'field_website');
+    }
+    if ($node->type == "hotels" || $node->type == "nightlife") {
+        $field_website = $node->field_website_nightlife["und"][0]["value"];
+        validate_www_field($field_website, 'field_website_nightlife');
+    }
+    if ($node->type == "services") {
+        $field_website = $node->field_website_services["und"][0]["value"];
+        validate_www_field($field_website, 'field_website_services');
+    }
+}
+
+function validate_www_field($field, $name_field) {
+    if (strlen($field) > 0) {
+        $curt_string = substr($field, 0, 4);
+        if (!($curt_string == "www." || $curt_string == "WWW.")) {
+            form_set_error($name_field, t("Please insert the complete URL: ex: www.site.com."));
+        }
+    }
+}
+
+/* * *********************************************************************************************************************************************** */
+
+function get_clear_link_social($link, $link_type) {
+
+    $url_absolute = url($link, array('absolute' => false));
+
+    $pos3 = strpos($url_absolute, 'https://' . $link_type . '.com/');
+    $pos4 = strpos($url_absolute, 'http://' . $link_type . '.com/');
+    $pos5 = strpos($url_absolute, $link_type);
+    $pos6 = strpos($url_absolute, 'http');
+
+    if ($pos3 !== false || $pos4 !== false || $pos5 !== false) {
+        $url_cleared = $url_absolute;
+    } else {
+        $url_cleared = 'https://' . $link_type . '.com/' . $url_absolute;
+    }
+
+    if ($pos6 !== false) {
+        
+    } else {
+        $url_cleared = "http://" . $url_cleared;
+    }
+
+    return $url_cleared;
+}
+
+function newhavenmod_feeds_importer_default() {
+    $export = array();
+    $feeds_importer = new stdClass();
+    $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+    $feeds_importer->api_version = 1;
+    $feeds_importer->id = 'love_new_haven';
+    $feeds_importer->config = array(
+        'name' => 'Love New Haven',
+        'description' => '',
+        'fetcher' => array(
+            'plugin_key' => 'FeedsHTTPFetcher',
+            'config' => array(
+                'auto_detect_feeds' => FALSE,
+                'use_pubsubhubbub' => FALSE,
+                'designated_hub' => '',
+            ),
+        ),
+        'parser' => array(
+            'plugin_key' => 'FeedsSyndicationParser',
+            'config' => array(),
+        ),
+        'processor' => array(
+            'plugin_key' => 'FeedsNodeProcessor',
+            'config' => array(
+                'content_type' => 'feed_item',
+                'expire' => '-1',
+                'author' => 0,
+                'authorize' => 1,
+                'mappings' => array(
+                    0 => array(
+                        'source' => 'title',
+                        'target' => 'title',
+                        'unique' => FALSE,
+                    ),
+                    1 => array(
+                        'source' => 'description',
+                        'target' => 'body',
+                        'unique' => FALSE,
+                    ),
+                    2 => array(
+                        'source' => 'url',
+                        'target' => 'field_link',
+                        'unique' => FALSE,
+                    ),
+                    3 => array(
+                        'source' => 'Blank source 1',
+                        'target' => 'field_feed_type',
+                        'unique' => FALSE,
+                    ),
+                    4 => array(
+                        'source' => 'Blank source 2',
+                        'target' => 'status',
+                        'unique' => FALSE,
+                    ),
+                ),
+                'update_existing' => '0',
+                'input_format' => 'plain_text',
+                'skip_hash_check' => 0,
+            ),
+        ),
+        'content_type' => '',
+        'update' => 0,
+        'import_period' => '1800',
+        'expire_period' => 3600,
+        'import_on_create' => 1,
+        'process_in_background' => 0,
+    );
+
+
+    $export['love_new_haven'] = $feeds_importer;
+
+
+    $feeds_importer = new stdClass();
+    $feeds_importer->disabled = FALSE; /* Edit this to true to make a default feeds_importer disabled initially */
+    $feeds_importer->api_version = 1;
+    $feeds_importer->id = 'http_www_towngreendistrict_com_feed';
+    $feeds_importer->config = array(
+        'name' => 'Tea Leaves',
+        'description' => '',
+        'fetcher' => array(
+            'plugin_key' => 'FeedsHTTPFetcher',
+            'config' => array(
+                'auto_detect_feeds' => FALSE,
+                'use_pubsubhubbub' => FALSE,
+                'designated_hub' => '',
+            ),
+        ),
+        'parser' => array(
+            'plugin_key' => 'FeedsSyndicationParser',
+            'config' => array(),
+        ),
+        'processor' => array(
+            'plugin_key' => 'FeedsNodeProcessor',
+            'config' => array(
+                'content_type' => 'feed_item',
+                'expire' => '-1',
+                'author' => 0,
+                'authorize' => 1,
+                'mappings' => array(
+                    0 => array(
+                        'source' => 'title',
+                        'target' => 'title',
+                        'unique' => FALSE,
+                    ),
+                    1 => array(
+                        'source' => 'description',
+                        'target' => 'body',
+                        'unique' => FALSE,
+                    ),
+                    2 => array(
+                        'source' => 'url',
+                        'target' => 'field_link',
+                        'unique' => FALSE,
+                    ),
+                    3 => array(
+                        'source' => 'Blank source 1',
+                        'target' => 'field_feed_type',
+                        'unique' => FALSE,
+                    ),
+                    4 => array(
+                        'source' => 'Blank source 2',
+                        'target' => 'status',
+                        'unique' => FALSE,
+                    ),
+                ),
+                'update_existing' => '0',
+                'input_format' => 'plain_text',
+                'skip_hash_check' => 0,
+            ),
+        ),
+        'content_type' => '',
+        'update' => 0,
+        'import_period' => '1800',
+        'expire_period' => 3600,
+        'import_on_create' => 1,
+        'process_in_background' => 0,
+    );
+
+
+    $export['http_www_towngreendistrict_com_feed'] = $feeds_importer;
+
+    return $export;
+}
+
+function newhavenmod_ctools_plugin_api($module = '', $api = '') {
+    if ($module == "feeds" && $api == "feeds_importer_default") {
+        // The current API version is 1.
+        return array("version" => 1);
+    }
+}
+
+function group_schedules_by_hours($schedules) {
+
+    $groups = array();
+    $schedules = $schedules['und'];
+    //dsm($schedules);
+    //$field = field_get_items('node', $node, 'field_days_and_meals_schedules');
+
+    foreach ($schedules as $sched) {
+
+        //field_get_items('node', $node, 'field_days_and_meals_schedules');
+        //dsm($sched);
+        $item = field_collection_field_get_entity($sched);
+        //dsm($item);
+        $key = $item->field_lunch_hours['und'][0]['value'] . ", " . $item->field_dinner_hours['und'][0]['value'];
+        $groups[$key][] = $item->field_day_of_operation['und'][0]['value'];
+    }
+    //dsm(normalize_grouped_days($groups));
+    //dsm('hello');
+
+    return normalize_grouped_days($groups);
+}
+
+function normalize_grouped_days($groups) {
+
+    $days = array('sunday' => 'Sun', 'monday' => 'Mon', 'tuesday' => 'Tues', 'wednesday' => 'Wed', 'thursday' => 'Thu', 'friday' => 'Fri', 'saturday' => 'Sat');
+
+    $normal_groups = array();
+
+    foreach ($groups as $group_common_hours => $group_days_array) {
+
+        if (sizeof($group_days_array) == 1) {
+
+            $key = $days[$group_days_array[0]];
+        } else if (true) {//is_group_continuous($group_days_array) ){
+            $key = $days[$group_days_array[0]] . "-" . $days[$group_days_array[sizeof($group_days_array) - 1]]; //assuming group is ordered from sunday to saturday TODO:ORDER FROM SUNDAY TO SATURDAY
+        } else {
+
+            $key = $days[$group_days_array[0]] . "-" . $days[$group_days_array[sizeof($group_days_array) - 1]];
+            //$key = $days[$group_days_array[0]]."-".$days[$group_days_array[sizeof($group_days_array)-1]]; //assuming group is ordered from sunday to saturday TODO:ORDER FROM SUNDAY TO SATURDAY
+            //discontinuous groups. Ex: Monday, Thursday, Saturday
+        }
+
+        $normal_groups[$key] = $group_common_hours;
+    }
+
+    return $normal_groups;
+}
+
+define("_GLOBAL_CONFIGURATIONS_NODE", 286);
+
+/** Load the current node * */
+function current_node() {
+    if (arg(0) == 'node' && is_numeric(arg(1))) {
+        return node_load(arg(1));
+    }
+}
+
+function node_tasks($nid) {
+
+    if (user_is_logged_in()) {
+        return "<div class='node-tasks'>[" .
+                "<a href='/node/$nid/edit?destination=" . $_GET['q'] . "'>Edit</a>]</div>";
+    }
+    return "";
+}
+
+function newhavenmod_page_alter(&$page) {
+    $node = current_node();
+    if (!drupal_is_front_page() && $node && property_exists($node, "field_widget")) {
+        if (!array_key_exists("sidebar_right", $page)) {
+            $page["sidebar_right"] = array();
+        }
+        $page["sidebar_right"] += render_widgets($node);
+    }
+}
+
+function render_widgets($node) {
+    static $rendered = false;
+    $widgets = array();
+    if ($rendered) {
+        return array();
+    }
+
+    if (array_key_exists("und", $node->field_widget))
+        foreach ($node->field_widget["und"] as $widget) {
+            $node = node_load($widget["nid"]);
+
+            $widgets["widget-" . $node->nid] = array('#markup' => render(node_view($node)));
+        }
+    $rendered = true;
+    return $widgets;
+}
+
+function newhavenmod_menu() {
+
+    $items['import/calendar-event'] = array(
+        'page callback' => 'import_calendar_event',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+
+    $items['culture/csv'] = array(
+        'page callback' => 'culture_csv',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+    $items['dining/csv'] = array(
+        'page callback' => 'dining_csv',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+    $items['shopping/csv'] = array(
+        'page callback' => 'shopping_csv',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+    $items['import/cuisine'] = array(
+        'page callback' => 'import_cuisine',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+
+    $items['dining-listing/%'] = array(
+        'page callback' => 'renderize_view_dining',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+    $items['culture-listing/%'] = array(
+        'page callback' => 'renderize_view_culture',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+    $items['shopping-listing/%'] = array(
+        'page callback' => 'renderize_view_shopping',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+    $items['category-services/add'] = array(
+        'page callback' => 'category_services_add',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
+
+
+    return $items;
+}
+
+function category_services_add() {
+    $node_services = node_load($_GET["nid"]);
+    $new_tid = custom_create_taxonomy_term($node_services->field_new_category['und'][0]['value'], 8);
+    $node_services->field_category_services['und'][0]['tid'] = $new_tid;
+    node_save($node_services);
+    header("Location: /business-services");
+    exit();
+}
+
+function custom_create_taxonomy_term($name, $vid) {
+    $term = new stdClass();
+    $term->name = $name;
+    $term->vid = $vid;
+    taxonomy_term_save($term);
+    return $term->tid;
+}
+
+function renderize_view_dining() {
+    $nid = 2;
+    return drupal_render(node_view(node_load($nid)));
+}
+
+function renderize_view_culture() {
+    $nid = 1;
+    return drupal_render(node_view(node_load($nid)));
+}
+
+function renderize_view_shopping() {
+    $nid = 13;
+    return drupal_render(node_view(node_load($nid)));
+}
+
+function import_cuisine() {
+    $info = field_info_field("field_cuisine");
+    $query = "SELECT nid,type,field_cuisine_value FROM {node} JOIN {field_data_field_cuisine} ON nid = entity_id WHERE type = :type1 OR type = :type2 AND status = :status";
+    $vals = array(':type1' => 'restaurant', ':type2' => 'dining', ':status' => 1);
+    $res = db_query($query, $vals);
+    $aux = array();
+    foreach ($res as $row) {
+        $aux[$row->nid][]['cuisine'] = $row->field_cuisine_value;
+        $aux[$row->nid]['type'] = $row->type;
+    }
+    $c = 0;
+    foreach ($aux as $key => $node) {
+        $update = new stdClass();
+        $update->nid = $key;
+        $update->type = $node['type'];
+        $update->language = 'und';
+        $update->field_cuisine_term = array(
+            $update->language => array()
+        );
+        unset($node['type']);
+        foreach ($node as $val) {
+            $term = taxonomy_get_term_by_name($info['settings']['allowed_values'][$val['cuisine']]);
+            $term = array_pop($term);
+            $update->field_cuisine_term[$update->language][]['tid'] = $term->tid;
+        }
+        node_save($update);
+        $c++;
+    }
+    print $c . " nodes updated.";
+}
+
+/*
+  function around_town() {
+  $output = "";
+  $global_config = node_load(_GLOBAL_CONFIGURATIONS_NODE);
+  if (property_exists($global_config, "field_daily_nutmeg") && count($global_config->field_daily_nutmeg)) {
+  $output .= $global_config->field_daily_nutmeg['und'][0]['value'];
+  }
+  $output .= "<h4>Tea Leaves is the Town Green's blog featuring news and information about the Elm City's history, current events, and the Town Green District's programs.</h4>";
+  $query = "SELECT nid FROM node JOIN field_data_field_feed_type ON nid = entity_id WHERE type = :type AND status = :status AND field_feed_type_value = :feed ORDER BY created DESC LIMIT 0,1";
+  $tealeaves_values = array(":type" => "feed_item", ":status" => 1, ":feed" => "tealeaves");
+  $result = db_query($query, $tealeaves_values);
+  foreach ($result as $row) {
+  $node = node_load($row->nid);
+  $output .= "<div class='date' style='margin-bottom:12px;'><a href='" .$node->field_link['und'][0]['value'] . "' target='_blank'>" . $node->title . "</a></div>";
+  }
+  $output .= "<h4>This site is a showcase of independent photography dedicated to the people, places and things of New Haven. Jeffrey Kerekes and Chris Randall are the main photographers for the site, with a number of local artists contributing regularly.</h4>";
+  $lovenh_values = array(":type" => "feed_item", ":status" => 1, ":feed" => "lovenh");
+  $result2 = db_query($query, $lovenh_values);
+  foreach ($result2 as $row) {
+  $node = node_load($row->nid);
+  $output .= "<div class='date' style='margin-bottom:12px;'><a href='" .$node->field_link['und'][0]['value'] . "' target='_blank'>" . $node->title . "</a></div>";
+  }
+  return $output;
+  } */
+
+function around_town() {
+
+    $output = "";
+    $global_config = node_load(_GLOBAL_CONFIGURATIONS_NODE);
+
+    if (property_exists($global_config, "field_daily_nutmeg") && count($global_config->field_daily_nutmeg)) {
+        $output .= $global_config->field_daily_nutmeg['und'][0]['value'];
+    }
+
+
+
+    $query = "SELECT nid FROM node JOIN field_data_field_feed_type ON nid = entity_id WHERE type = :type AND status = :status AND field_feed_type_value = :feed ORDER BY created DESC LIMIT 0,1";
+    $tealeaves_values = array(":type" => "feed_item", ":status" => 1, ":feed" => "tealeaves");
+    $result = db_query($query, $tealeaves_values);
+
+    $count = 0;
+
+    foreach ($result as $row) {
+        $node = node_load($row->nid);
+
+        if ($node && $count < 1) {
+            $output .= "<h4>Tea Leaves: What's up in Downtown New Haven.</h4>";
+            $count++;
+        }
+
+        $output .= "<div class='date' style='margin-bottom:12px;margin-top: 6px;'><a href='" . $node->field_link['und'][0]['value'] . "' target='_blank'>" . $node->title . "</a></div>";
+    }
+
+    $count = 0;
+
+    $lovenh_values = array(":type" => "feed_item", ":status" => 1, ":feed" => "lovenh");
+    $result2 = db_query($query, $lovenh_values);
+
+    foreach ($result2 as $row) {
+        $node = node_load($row->nid);
+        $string_body_view = $node->body["und"][0]['value'];
+        $tokens = explode("<img", $string_body_view);
+        $src_token = explode('src=', $tokens[1]);
+        $src_token_simbol = explode('/>', $src_token[1]);
+        $path = str_replace("\"", "", $src_token_simbol[0]);
+
+        $style_image = theme('imagecache_external', array('path' => $path, 'style_name' => 'town_tab'));
+
+        if ($node && $count < 1) {
+            $title = "<h4>I <3 New Haven: Photos of the New Haven people, places, and things.</h4>";
+            $count++;
+        }
+
+        $output .= "
+	  <div style='position: relative;height: auto;overflow: hidden; width:100%;margin-top: 20px;' id='container_public_feed'>
+	           <div style='width:auto;height: auto;float:left;position:relative;'>
+			      " . $style_image . "
+			   </div>
+			   <div style='width:538px;height: auto;float:left;position:relative;padding-left: 14px;'>
+			       <div>" . $title . "</div>
+				   <div class='date' style='margin-bottom:12px;margin-top: 6px;'>
+				             <a href='" . $node->field_link['und'][0]['value'] . "' target='_blank' >" . $node->title . "</a>
+                    </div>							 
+	
+			   </div>
+	  </div>	  
+	";
+    }
+    return $output;
+}
+
+function culture_csv() {
+
+    $fila = 1;
+    $sid = 0;
+    if (($gestor = fopen("/nfs/c01/h15/mnt/35482/domains/www.infonewhaven.com/html/sites/default/files/feeds/final.csv", "r")) !== FALSE) {
+        while (($datos = fgetcsv($gestor, 3000, ";")) !== FALSE) {
+            $numero = count($datos);
+            $fila++;
+            if ($fila == 2) {
+                $array_header = $datos;
+            }
+            $sid = "SID_" . $datos[1];
+            $arra_asoc[$sid] = array();
+            for ($c = 0; $c < $numero; $c++) {
+                $field_csv = $array_header[$c];
+                if ($fila > 2) {
+                    $arra_asoc[$sid][$c] = array(
+                        $field_csv => $datos[$c]
+                    );
+                }
+            }
+        }
+        fclose($gestor);
+    }
+
+    if (count($arra_asoc) > 0 && is_array($arra_asoc)) {
+        //echo "ccc";
+        $type = "culture";
+        $result = db_query('SELECT n.nid, n.title, n.created
+			FROM {node} n WHERE n.type = :type', array(':type' => $type));
+        $count = 0;
+
+
+        foreach ($result as $node) {
+            $count++;
+            print "count:$count</br>";
+
+            $node_object = node_load($node->nid);
+            print "NID" . $node_object->nid . "<br />\n";
+
+            if ($node_object->field_sid["und"][0]["value"] != "") {
+                unset($array_item);
+                $array_item = $arra_asoc['SID_' . $node_object->field_sid["und"][0]["value"] . ''];
+                //dsm($arra_asoc);
+                if (is_array($array_item) && count($array_item) > 0) {
+                    print "NID" . $node_object->nid . " SID " . $node_object->field_sid["und"][0]["value"] . " Count_aray:" . count($array_item) . "<br />\n";
+                    /// $node_object->field_days_and_hours["und"]="";
+                    //node_save($node_object);
+                    dsm($array_item);
+                    $cont_pos = 0;
+                    $node_object->field_days_and_hours["und"] = array();
+
+                    if (in_array("X", $array_item[18])) {  // Sunday
+                        $item_id = create_collection_item($node_object->nid, 'sunday', $array_item[25]['Hours of Operation Sunday']);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        $cont_pos = 0;
+                    }
+
+                    if (in_array("X", $array_item[19])) {  // Monday
+                        $item_id = create_collection_item($node_object->nid, 'monday', $array_item[26]["Hours of Operation Monday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[20])) {  // Tuesday
+                        $item_id = create_collection_item($node_object->nid, 'tuesday', $array_item[27]["Hours of Operation Tuesday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[21])) {  // Wednesday
+                        $item_id = create_collection_item($node_object->nid, 'wednesday', $array_item[28]["Hours of Operation Wednesday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[22])) {  // Thursday
+                        $item_id = create_collection_item($node_object->nid, 'thursday', $array_item[29]["Hours of Operation Thursday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[23])) {  // Friday
+                        $item_id = create_collection_item($node_object->nid, 'friday', $array_item[30]["Hours of Operation Friday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[24])) {  // Saturday
+                        $item_id = create_collection_item($node_object->nid, 'saturday', $array_item[31]["Hours of Operation Saturday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+
+                    /*                     * *************TYPE PAYMENT*********************** */
+                    $cont_pos_payment = 0;
+                    if (in_array("X", $array_item[32])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "cash";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[33])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "check";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[34])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "visa";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[35])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "mastercard";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[36])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "amex";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+
+                    if (in_array("X", $array_item[37])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "discover";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+
+                    //print_r($array_item[43]);
+                    //print_r($array_item[44]);
+                    /*                     * **************************CATEGORY************************************************* */
+                    $cont_category = 0;
+                    if (in_array("X", $array_item[40])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 1;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[41])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 6;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[42])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 2;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[43])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 7;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[44])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 3;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[45])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 8;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[46])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 4;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[47])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 9;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[48])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 5;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[49])) {  // Saturday
+                        $node_object->field_category["und"][$cont_category]["tid"] = 10;
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+
+
+                    /*                     * **************************field_culture_offer************************************************* */
+                    $cont_field_culture_offer = 0;
+                    if (in_array("X", $array_item[50])) {  // Saturday
+                        $node_object->field_culture_offer["und"][$cont_field_culture_offer]["value"] = "group-classes";
+                        $cont_field_culture_offer = $cont_field_culture_offer + 1;
+                    } else {
+                        //$cont_field_culture_offer = $cont_field_culture_offer -1;
+                    }
+                    if (in_array("X", $array_item[51])) {  // Saturday
+                        $node_object->field_culture_offer["und"][$cont_field_culture_offer]["value"] = "private-event-space";
+                        $cont_field_culture_offer = $cont_field_culture_offer + 1;
+                    } else {
+                        //$cont_field_culture_offer = $cont_field_culture_offer -1;
+                    }
+                    if (in_array("X", $array_item[52])) {  // Saturday
+                        $node_object->field_culture_offer["und"][$cont_field_culture_offer]["value"] = "gift-shop";
+                        $cont_field_culture_offer = $cont_field_culture_offer + 1;
+                    } else {
+                        //$cont_field_culture_offer = $cont_field_culture_offer -1;
+                    }
+                    if (in_array("X", $array_item[53])) {  // Saturday
+                        $node_object->field_culture_offer["und"][$cont_field_culture_offer]["value"] = "membership";
+                        $cont_field_culture_offer = $cont_field_culture_offer + 1;
+                    } else {
+                        //$cont_field_culture_offer = $cont_field_culture_offer -1;
+                    }
+                    if (in_array("X", $array_item[54])) {  // Saturday
+                        $node_object->field_culture_offer["und"][$cont_field_culture_offer]["value"] = "tours";
+                        $cont_field_culture_offer = $cont_field_culture_offer + 1;
+                    } else {
+                        //$cont_field_culture_offer = $cont_field_culture_offer -1;
+                    }
+
+
+
+
+
+                    node_save($node_object);
+
+                    /// dsm($node_object->field_days_and_hours["und"]);
+
+                    echo "........................*************<br>";
+                }
+            }
+        }
+    }
+
+    ///consultar_colletion();
+}
+
+function dining_csv() {
+
+    $fila = 1;
+    $sid = 0;
+    if (($gestor = fopen("/nfs/c01/h15/mnt/35482/domains/www.infonewhaven.com/html/sites/default/files/feeds/dining_0.csv", "r")) !== FALSE) {
+        while (($datos = fgetcsv($gestor, 3000, ";")) !== FALSE) {
+            $numero = count($datos);
+            $fila++;
+            if ($fila == 2) {
+                $array_header = $datos;
+            }
+            $sid = "SID_" . $datos[1];
+            $arra_asoc[$sid] = array();
+            for ($c = 0; $c < $numero; $c++) {
+                $field_csv = $array_header[$c];
+                if ($fila > 2) {
+                    $arra_asoc[$sid][$c] = array(
+                        $field_csv => $datos[$c]
+                    );
+                }
+            }
+        }
+        fclose($gestor);
+    }
+    print "x<br />\n";
+    dsm($arra_asoc);
+
+    if (count($arra_asoc) > 0 && is_array($arra_asoc)) {
+        //echo "ccc";
+        $type = "dining";
+        $result = db_query('SELECT n.nid, n.title, n.created
+			FROM {node} n WHERE n.type = :type', array(':type' => $type));
+        $count = 0;
+
+
+        foreach ($result as $node) {
+            $count++;
+            print "count:$count</br>";
+
+            $node_object = node_load($node->nid);
+            print "NID" . $node_object->nid . "<br />\n";
+
+            if ($node_object->field_sid["und"][0]["value"] != "") {
+                unset($array_item);
+                $array_item = $arra_asoc['SID_' . $node_object->field_sid["und"][0]["value"] . ''];
+
+                if (is_array($array_item) && count($array_item) > 0) {
+                    print "NID" . $node_object->nid . " SID " . $node_object->field_sid["und"][0]["value"] . " Count_aray:" . count($array_item) . "<br />\n";
+                    /// $node_object->field_days_and_hours["und"]="";
+                    //node_save($node_object);
+                    dsm($array_item);
+                    $cont_pos = 0;
+                    $node_object->field_days_and_meals_schedules["und"] = array();
+                    if (in_array("X", $array_item[18])) {  // Sunday
+                        $item_id = create_collection_item($node_object->nid, 'sunday', $array_item[25]['Sunday Lunch Hours'], $array_item[32]['Sunday Dinner Hours'], 'field_days_and_meals_schedules');
+                        $node_object->field_days_and_meals_schedules["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        $cont_pos = 0;
+                    }
+
+                    if (in_array("X", $array_item[19])) {  // Monday
+                        $item_id = create_collection_item($node_object->nid, 'monday', $array_item[26]["Monday Lunch Hours"], $array_item[33]['Monday Dinner Hours'], 'field_days_and_meals_schedules');
+                        $node_object->field_days_and_meals_schedules["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[20])) {  // Tuesday
+                        $item_id = create_collection_item($node_object->nid, 'tuesday', $array_item[27]["Tuesday Lunch Hours"], $array_item[34]['Tuesday Dinner Hours'], 'field_days_and_meals_schedules');
+                        $node_object->field_days_and_meals_schedules["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[21])) {  // Wednesday
+                        $item_id = create_collection_item($node_object->nid, 'wednesday', $array_item[28]["Wednesday Lunch Hours"], $array_item[35]['Wednesday Dinner Hours'], 'field_days_and_meals_schedules');
+                        $node_object->field_days_and_meals_schedules["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[22])) {  // Thursday
+                        $item_id = create_collection_item($node_object->nid, 'thursday', $array_item[29]["Thursday Lunch Hours"], $array_item[36]['Thursday Dinner Hours'], 'field_days_and_meals_schedules');
+                        $node_object->field_days_and_meals_schedules["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[23])) {  // Friday
+                        $item_id = create_collection_item($node_object->nid, 'friday', $array_item[30]["Friday Lunch Hours"], $array_item[37]['Friday Dinner Hours'], 'field_days_and_meals_schedules');
+                        $node_object->field_days_and_meals_schedules["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[24])) {  // Saturday
+                        $item_id = create_collection_item($node_object->nid, 'saturday', $array_item[31]["Saturday Lunch Hours"], $array_item[38]["Saturday Dinner Hours"], 'field_days_and_meals_schedules');
+                        $node_object->field_days_and_meals_schedules["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+
+
+                    //**************TYPE PAYMENT***********************
+
+                    $cont_pos_payment = 0;
+                    if (in_array("X", $array_item[39])) {  // Cash
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "cash";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[40])) {  // Check
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "check";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[41])) {  // Visa
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "visa";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[42])) {  // Mastercard
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "mastercard";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[43])) {  // Amex
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "amex";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+
+                    if (in_array("X", $array_item[44])) {  // Discover
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "discover";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+
+                    //print_r($array_item[43]);
+                    //print_r($array_item[44]);
+                    // ****************************CATEGORY************************************************** 
+                    $cont_category = 0;
+                    if (in_array("X", $array_item[47])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "american";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[48])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "american-steakhouse";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[49])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "asian";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[50])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "bakery";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[51])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "brazilian";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[52])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "buffet";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[53])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "chinese";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[54])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "coffee-shop";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[55])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "cuban";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[56])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "deli";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[57])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "ethiopian";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[58])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "french";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[59])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "frozen-yogurt";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[60])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "ice-cream";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[61])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "indian";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[62])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "irish";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[63])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "italian";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[64])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "italian-ice";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[65])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "japanese";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[66])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "korean";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[67])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "kosher";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[68])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "malaysian";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+
+                    if (in_array("X", $array_item[69])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "mediterranean";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[70])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "mexican";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[71])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "middle-eastern";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[72])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "moroccan";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[73])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "nuevo-latino";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[74])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "pizza";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[75])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "pub-fare";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[76])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "seafood";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[77])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "southwestern";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[78])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "spanish";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[79])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "sushi";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[80])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "thai";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[81])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "turkish";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[82])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "vegetarian";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[83])) {  // Saturday
+                        $node_object->field_cuisine["und"][$cont_category]["value"] = "vietnamese";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+
+
+                    //****************************field_culture_offer**************************************************
+                    $cont_field_dining_offer = 0;
+                    if (in_array("X", $array_item[84])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "brunch";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[85])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "catering";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+
+                    if (in_array("X", $array_item[86])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "happy-hour-specials";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+
+                    if (in_array("X", $array_item[87])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "kid-friendly-menu";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[88])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "late-night-eats";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[89])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "private-event-space";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+
+                    if (in_array("X", $array_item[90])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "prix-fixe-menu";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[91])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "atm";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[92])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "cooking-classes";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[93])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "delivery";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[94])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "take-out";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+
+                    if (in_array("X", $array_item[95])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "gluten-free";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[96])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "organic-sustainable";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[97])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "valet-parking";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[98])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "waterview";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+
+                    if (in_array("X", $array_item[99])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "outdoor-seating";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[100])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "byob";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+                    if (in_array("X", $array_item[101])) {  // Saturday
+                        $node_object->field_dining_offer["und"][$cont_field_dining_offer]["value"] = "food-truck";
+                        $cont_field_dining_offer = $cont_field_dining_offer + 1;
+                    } else {
+                        //$cont_field_dining_offer = $cont_field_dining_offer -1;
+                    }
+
+
+
+
+
+                    node_save($node_object);
+
+                    /// dsm($node_object->field_days_and_meals_schedules["und"]);
+
+                    echo "........................*************<br>";
+                }
+            }
+        } //end foreach nodes
+    }
+
+    //consultar_colletion();
+}
+
+function shopping_csv() {
+
+    $fila = 1;
+    $sid = 0;
+    if (($gestor = fopen("/nfs/c01/h15/mnt/35482/domains/www.infonewhaven.com/html/sites/default/files/feeds/shopping_0.csv", "r")) !== FALSE) {
+        while (($datos = fgetcsv($gestor, 3000, ";")) !== FALSE) {
+            $numero = count($datos);
+            $fila++;
+            if ($fila == 2) {
+                $array_header = $datos;
+            }
+            $sid = "SID_" . $datos[1];
+            $arra_asoc[$sid] = array();
+            for ($c = 0; $c < $numero; $c++) {
+                $field_csv = $array_header[$c];
+                if ($fila > 2) {
+                    $arra_asoc[$sid][$c] = array(
+                        $field_csv => $datos[$c]
+                    );
+                }
+            }
+        }
+        fclose($gestor);
+    }
+
+    print "x<br />\n";
+    dsm($arra_asoc);
+
+    if (count($arra_asoc) > 0 && is_array($arra_asoc)) {
+        //echo "ccc";
+        $type = "shopping";
+        $result = db_query('SELECT n.nid, n.title, n.created
+			FROM {node} n WHERE n.type = :type', array(':type' => $type));
+
+        $count = 0;
+
+        foreach ($result as $node) {
+            $count++;
+            print "count:$count</br>";
+
+            $node_object = node_load($node->nid);
+            print "NID" . $node_object->nid . "<br />\n";
+
+            if ($node_object->field_sid["und"][0]["value"] != "") {
+                unset($array_item);
+                $array_item = $arra_asoc['SID_' . $node_object->field_sid["und"][0]["value"] . ''];
+                //dsm($arra_asoc);
+                if (is_array($array_item) && count($array_item) > 0) {
+                    print "NID" . $node_object->nid . " SID " . $node_object->field_sid["und"][0]["value"] . " Count_aray:" . count($array_item) . "<br />\n";
+                    /// $node_object->field_days_and_hours["und"]="";
+                    //node_save($node_object);
+                    //dsm($array_item);
+                    $cont_pos = 0;
+                    $node_object->field_days_and_hours["und"] = array();
+
+                    if (in_array("X", $array_item[18])) {  // Sunday
+                        $item_id = create_collection_item($node_object->nid, 'sunday', $array_item[25]['Hours of Operation Sunday']);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        $cont_pos = 0;
+                    }
+
+                    if (in_array("X", $array_item[19])) {  // Monday
+                        $item_id = create_collection_item($node_object->nid, 'monday', $array_item[26]["Hours of Operation Monday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[20])) {  // Tuesday
+                        $item_id = create_collection_item($node_object->nid, 'tuesday', $array_item[27]["Hours of Operation Tuesday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[21])) {  // Wednesday
+                        $item_id = create_collection_item($node_object->nid, 'wednesday', $array_item[28]["Hours of Operation Wednesday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[22])) {  // Thursday
+                        $item_id = create_collection_item($node_object->nid, 'thursday', $array_item[29]["Hours of Operation Thursday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[23])) {  // Friday
+                        $item_id = create_collection_item($node_object->nid, 'friday', $array_item[30]["Hours of Operation Friday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+                    if (in_array("X", $array_item[24])) {  // Saturday
+                        $item_id = create_collection_item($node_object->nid, 'saturday', $array_item[31]["Hours of Operation Saturday"]);
+                        $node_object->field_days_and_hours["und"][$cont_pos]["value"] = $item_id;
+                        $cont_pos = $cont_pos + 1;
+                    } else {
+                        //$cont_pos = $cont_pos -1;
+                    }
+
+
+                    /*                     * *************TYPE PAYMENT*********************** */
+                    $cont_pos_payment = 0;
+                    if (in_array("X", $array_item[32])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "cash";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[33])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "check";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[34])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "visa";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[35])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "mastercard";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+                    if (in_array("X", $array_item[36])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "amex";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+
+                    if (in_array("X", $array_item[37])) {  // Saturday
+                        $node_object->field_payment_options["und"][$cont_pos_payment]["value"] = "discover";
+                        $cont_pos_payment = $cont_pos_payment + 1;
+                    } else {
+                        //$cont_pos_payment = $cont_pos_payment -1;
+                    }
+
+                    //print_r($array_item[43]);
+                    //print_r($array_item[44]);
+                    /*                     * **************************CATEGORY************************************************* */
+
+                    $cont_category = 0;
+                    if (in_array("X", $array_item[40])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "art-&-crafts";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[41])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "bicycles";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[42])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "books";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[43])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "bridal";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[44])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "clothing:-children's";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[45])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "clothing:-men's";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[46])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "clothing:-men's-&-women's";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[47])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "clothing:-women's";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[48])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "comic-books";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+                    if (in_array("X", $array_item[49])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "electronics";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[50])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "eyewear";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[51])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "hats";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[52])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "health-&-beauty";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[53])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "home-furnishings";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[54])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "home-improvement";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[55])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "jewelry";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[56])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "museum-gift-shops";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[57])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "music";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[58])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "newstand";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[59])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "shoes";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[60])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "signs-stamps-&-trophies";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[61])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "specialty-foods";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[62])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "specialty-gifts";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[63])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "sporting-outdoor-goods";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[64])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "stationery";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[66])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "thrift-store";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[66])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "tobacconists";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[67])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "toys";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+                    if (in_array("X", $array_item[68])) {  // Saturday
+                        $node_object->field_shopping_category["und"][$cont_category]["value"] = "vintage";
+                        $cont_category = $cont_category + 1;
+                    } else {
+                        //$cont_category = $cont_category -1;
+                    }
+
+
+
+                    /*                     * **************************field_culture_offer************************************************* */
+                    $cont_field_culture_offer = 0;
+                    if (in_array("X", $array_item[50])) {  // Saturday
+                        $node_object->field_shopping_offer["und"][$cont_field_culture_offer]["value"] = "atm";
+                        $cont_field_culture_offer = $cont_field_culture_offer + 1;
+                    } else {
+                        //$cont_field_culture_offer = $cont_field_culture_offer -1;
+                    }
+
+
+
+                    node_save($node_object);
+
+                    /// dsm($node_object->field_days_and_hours["und"]);
+
+                    echo "........................*************<br>";
+                }
+            }
+        }
+    }
+
+    ///consultar_colletion();
+}
+
+function consultar_colletion() {
+    $node = node_load(158);
+    $field = field_get_items('node', $node, 'field_days_and_hours');
+
+    foreach ($field as $itemid) {
+        $item = field_collection_field_get_entity($itemid);
+        dsm($item);
+        //  print $item->field_reference_title['und'][0]['safe_value'];
+        // print $item->field_reference_location['und'][0]['safe_value'];
+    }
+}
+
+function create_collection_item($nid_content_type, $days, $hours, $hours2 = null, $field = 'field_days_and_hours') {
+    // $node->nid must be valid at this point
+// $node->field_my_field_collection is the field collection field
+
+    $node = node_load($nid_content_type);
+    $field_collection_item = entity_create('field_collection_item', array('field_name' => $field));
+    $field_collection_item->setHostEntity('node', $node);
+    $field_collection_item->field_day_of_operation[LANGUAGE_NONE][]['value'] = $days;
+    if ($field == 'field_days_and_hours') {
+        $field_collection_item->field_hours_of_operation[LANGUAGE_NONE][]['value'] = $hours;
+    } else {
+        $field_collection_item->field_lunch_hours[LANGUAGE_NONE][]['value'] = $hours;
+        $field_collection_item->field_dinner_hours[LANGUAGE_NONE][]['value'] = $hours2;
+    }
+
+    $field_collection_item->save();
+
+    if ($field == 'field_days_and_hours') {
+        $node->field_days_and_hours[LANGUAGE_NONE][]['value'] = $field_collection_item->item_id;
+    } else {
+        $node->field_days_and_meals_schedules[LANGUAGE_NONE][]['value'] = $field_collection_item->item_id;
+    }
+
+    return $field_collection_item->item_id;
+}
+
+function ll() {
+    $read = fopen("/nfs/c01/h15/mnt/35482/domains/www.infonewhaven.com/html/sites/default/files/feeds/customer_copy.csv", "r");
+    $write = fopen("/nfs/c01/h15/mnt/35482/domains/www.infonewhaven.com/html/sites/default/files/feeds/customer.csv", "w");
+    if ($write && $read) {
+        while (($data = fgetcsv($read, 3000)) !== FALSE) {
+            unset($data[39]);
+            fputcsv($write, $data);
+        }
+    }
+    fclose($write);
+    fclose($read);
+}
+
+function loadObjectList($result) {
+    $array = array();
+    while ($row = @mysql_fetch_object($result)) {
+        $array[] = $row;
+    }
+    return $array;
+}
+
+function get_bar_right($right, $get_bar_right) {
+
+    if (is_array($get_bar_right) && count($get_bar_right)) {
+
+        $render_menu_terms = "<div id='content-shopping-right'  style='width: 265px;margin-top:20px;'>" . render($right) . "</div>";
+
+        $links = render_links_basic_page($get_bar_right);
+
+        $html = "
+	<div id='content-menu-right-internal'  style='float:left;'>
+	   <div class='img-top'></div>
+		<div id='div_nav_report_service_container'>
+			  <div class='div_nav_report_service'>   
+				<input type='hidden' name='report-services-nav' id='report-services-nav' value='' />
+				<ul>
+				" . $links . "
+			   </ul>	
+			  </div>
+		  <div class='img-bottom'></div>
+		</div>
+
+	  " . $render_menu_terms . "
+		
+
+	</div>
+
+	";
+        return $html;
+    }
+}
+
+function render_links_basic_page($get_bar_right) {
+    $cont = 0;
+    foreach ($get_bar_right as $key => $value) {
+        $output .= "<li><p><a href='" . $get_bar_right[$key]["url"] . "?s=$cont'  id='" . $cont . "' >" . $get_bar_right[$key]["title"] . "</a></p></li>";
+        $cont = $cont + 1;
+    }
+    return $output;
+}
+
+function import_calendar_event() {
+
+    for ($x = 1; $x <= 9; $x++) {
+        import_first_calendar(Date("Y"), "0" . $x);
+    }
+    for ($y = 10; $y <= 12; $y++) {
+        import_first_calendar(Date("Y"), $y);
+    }
+}
+
+function import_first_calendar($year, $m) {
+    $file = 'http://portal.infonewhaven.com/infonewhavencalendar/calendar/?d=' . $year . '-' . $m . '-01&i=31&output=xml';
+    print $file . "<br>";
+
+    if (!$xml = simplexml_load_file($file))
+        exit('Failed to open ' . $file);
+
+    $json = json_encode($xml);
+    $array = json_decode($json, TRUE);
+
+    $cont = 0;
+    $count = 0;
+    print "<table border='2'><tr><td>Title</td><td>Date</td><td>description</td></tr>";
+    foreach ($array["vcalendar"]["vevent"] as $v) {
+
+        $title = $v['@attributes']['summary'];
+        $url = $v['@attributes']['url'];
+        $description = $v["descriptionText"];
+        if (empty($v['@attributes']['dtend'])) {
+            $v['@attributes']['dtend'] = $v['@attributes']['dtstart'];
+        }
+        $date = $v['@attributes']['dtstart'] . "*" . $v['@attributes']['dtend'];
+        $date_str_event = $v['@attributes']['dtstart'];
+        $date_event = date('Y-m-d H:i', strtotime($date_str_event));
+
+        $stream = $v['xml']['flyer']['@attributes']['stream'];
+        $id = $v['@attributes']['uid'];
+
+        $arr_items[$cont]["url"] = $url;
+        $arr_items[$cont]["title"] = $title;
+        $arr_items[$cont]["description"] = $description;
+        $arr_items[$cont]["date"] = $date;
+        $arr_items[$cont]["date_event"] = $date_event;
+        $arr_items[$cont]["stream"] = $stream;
+        $arr_items[$cont]["id"] = $id;
+        print "<tr><td>" . $title . "</td><td>" . $date . "</td><td>" . $description . "</td></tr>";
+
+        $count = items_calendar_duplicates_items($id, $date);
+        if ($count == 0) {
+            create_item_calendar($title . "-" . $cont, $title, $url, $description, $date, $stream, $id, $date_event);
+        }
+
+        $cont = $cont + 1;
+    }
+    print "</table>";
+    //print_r($arr_items);
+}
+
+function create_item_calendar($title_id, $title, $url, $description, $date, $stream, $id, $date_event) {
+    $node = new stdClass(); // We create a new nod,e object
+    $node->type = "event_calendar"; // Or any other content type you want
+    $node->title = $title_id;
+    $node->language = LANGUAGE_NONE; // Or any language code if Locale module is enabled. More on this below *
+    $node->path = array('alias' => $title_id); // Setting a node path
+    $node->status = 1; //(1 or 0): published or not
+
+    $node->field_url_event[$node->language][0]['value'] = $url;
+    $node->field_url_event[$node->language][0]['format'] = $url;
+
+    $node->field_title_event[$node->language][0]['value'] = $title;
+    $node->field_title_event[$node->language][0]['format'] = $title;
+
+    $node->field_stream_event[$node->language][0]['value'] = $stream;
+    $node->field_stream_event[$node->language][0]['format'] = $stream;
+
+    $node->field_id_event[$node->language][0]['value'] = $id;
+    $node->field_id_event[$node->language][0]['format'] = $id;
+
+    $node->field_date_view[$node->language][0]['value'] = $date_event;
+    $node->field_date_view[$node->language][0]['format'] = $date_event;
+
+    $node->field_date_event[$node->language][0]['value'] = $date;
+    $node->field_date_event[$node->language][0]['format'] = $date;
+
+    node_object_prepare($node);
+    $node->uid = 1;
+    $node = node_submit($node);
+    node_save($node);
+}
+
+function items_calendar_duplicates_items($id, $date) {
+    $result = db_query('SELECT event.field_id_event_value AS field_id_event_value, date.field_date_event_value as field_date_event_value FROM {field_revision_field_id_event} event, {field_revision_field_date_event} date WHERE event.field_id_event_value = :field_id_event_value AND date.field_date_event_value = :field_date_event_value', array(':field_id_event_value' => $id, ':field_date_event_value' => $date));
+    $arra = $result->fetchAll();
+    return count($arra);
+}
+
+function get_format_date_calendar($field_date_event) {
+
+    $array_field_date_event = explode("*", $field_date_event);
+
+    $initial_date = $array_field_date_event[0];
+    $final_date = $array_field_date_event[1];
+
+    $initial_date = substr($initial_date, 0, 10);
+    $final_date = substr($final_date, 0, 10);
+
+    if ($initial_date == $final_date) {
+        $array_initial_date = explode("-", $initial_date);
+        $years = $array_initial_date[0];
+        $month = $array_initial_date[1];
+        $day = $array_initial_date[2];
+        $format = date("F", mktime(0, 0, 0, $month, $day, $years)) . " " . (string) (int) $day;
+    } else {
+        $array_initial_date = explode("-", $initial_date);
+        $array_final_date = explode("-", $final_date);
+        $years = $array_initial_date[0];
+        $month = $array_initial_date[1];
+        $day = $array_initial_date[2];
+
+        if ($month == $array_final_date[1]) {
+            $format = date("F", mktime(0, 0, 0, $month, $day, $years)) . " " . (string) (int) $day . "-" . (string) (int) $array_final_date[2];
+        } else {
+            $format = date("F", mktime(0, 0, 0, $month, $day, $years)) . " " . (string) (int) $day . " - " . date("F", mktime(0, 0, 0, $array_final_date[1], $array_final_date[2], $array_final_date[0])) . " " . (string) (int) $array_final_date[2];
+        }
+    }
+
+
+
+    return $format;
+}
+
+function render_vocabulary_services() {
+    $result = db_query('SELECT name,tid FROM {taxonomy_term_data} t WHERE t.vid = :vid order by name ASC', array(':vid' => 8));
+    $array_terms = $result->fetchAll();
+    foreach ($array_terms as $key => $value) {
+        $output .= "<li><p><a href='/business-services?s=" . $array_terms[$key]->tid . "' id='" . $array_terms[$key]->tid . "'>" . $array_terms[$key]->name . "</a></p></li>";
+    }
+    return $output;
+}
+
+function cron_list_duplicates_items($title) {
+    $result = db_query('SELECT n.title AS title  FROM {node} n WHERE n.title = :title', array(':title' => $title));
+    $arra = $result->fetchAll();
+    return count($arra);
+}
+
+function get_news_home($field_new_haven_in_the_news) {
+
+    $titles_new_0 = $field_new_haven_in_the_news[0]['entity']['field_collection_item'][15857]['field_title_news']['#items'][0]['value'];
+    $date_news_0 = return_format_date_news($field_new_haven_in_the_news[0]['entity']['field_collection_item'][15857]['field_date_news']['#items'][0]['value']);
+    $description_0 = $field_new_haven_in_the_news[0]['entity']['field_collection_item'][15857]['field_short_description']['#items'][0]['value'];
+    $url_news_0 = $field_new_haven_in_the_news[0]['entity']['field_collection_item'][15857]['field_link_news']['#items'][0]['value'];
+
+    $titles_new_1 = $field_new_haven_in_the_news[1]['entity']['field_collection_item'][15858]['field_title_news']['#items'][0]['value'];
+    $date_news_1 = return_format_date_news($field_new_haven_in_the_news[1]['entity']['field_collection_item'][15858]['field_date_news']['#items'][0]['value']);
+    $description_1 = $field_new_haven_in_the_news[1]['entity']['field_collection_item'][15858]['field_short_description']['#items'][0]['value'];
+    $url_news_1 = $field_new_haven_in_the_news[1]['entity']['field_collection_item'][15858]['field_link_news']['#items'][0]['value'];
+
+    $titles_new_2 = $field_new_haven_in_the_news[2]['entity']['field_collection_item'][15859]['field_title_news']['#items'][0]['value'];
+    $date_news_2 = return_format_date_news($field_new_haven_in_the_news[2]['entity']['field_collection_item'][15859]['field_date_news']['#items'][0]['value']);
+    $description_2 = $field_new_haven_in_the_news[2]['entity']['field_collection_item'][15859]['field_short_description']['#items'][0]['value'];
+    $url_news_2 = $field_new_haven_in_the_news[2]['entity']['field_collection_item'][15859]['field_link_news']['#items'][0]['value'];
+
+    $titles_new_3 = $field_new_haven_in_the_news[3]['entity']['field_collection_item'][15860]['field_title_news']['#items'][0]['value'];
+    $date_news_3 = return_format_date_news($field_new_haven_in_the_news[3]['entity']['field_collection_item'][15860]['field_date_news']['#items'][0]['value']);
+    $description_3 = $field_new_haven_in_the_news[3]['entity']['field_collection_item'][15860]['field_short_description']['#items'][0]['value'];
+    $url_news_3 = url($field_new_haven_in_the_news[3]['entity']['field_collection_item'][15860]['field_link_news']['#items'][0]['value']);
+
+
+    return "<p>&nbsp;</p>
+<table id='news-wrapper' style='height: 212px; width: 657px;'>
+<tbody>
+    
+	<tr>
+		   <td>
+			 <h4><span><a title='$titles_new_0' href='$url_news_0' target='_blank'>$titles_new_0</a></span></h4>
+				 <p><a class='news_font_link' href='$url_news_0' target='_blank'>$date_news_0</a></p><p>
+					<a href='$url_news_0' target='_blank'>
+					<span>$description_0<br /><br /></span></a>
+				 </p>
+			</td>
+
+		   <td>
+			  <h4><a title='$titles_new_1' href='$url_news_1' target='_blank'>$titles_new_1</a></h4>
+					<p><a class='news_font_link' href='$url_news_1' target='_blank'>$date_news_1</a></p>
+					<p><a href='$url_news_1' target='_blank'>$description_1<br /><br /></a></p>
+		   </td>
+    </tr>
+	
+           <tr>
+				  <td>
+					<h4><a title='$titles_new_2' href='$url_news_2' target='_blank'>$titles_new_2</a></h4>
+					 <p><a class='news_font_link' href='$url_news_2' target='_blank'>$date_news_2</a></p>
+					 <p><a href='$url_news_2' target='_blank'>$description_2</a></p></td>
+					 
+				 <td><h4><a title='$titles_new_3' href='$url_news_3' target='_blank'>$titles_new_3</a></h4>
+					<p><a class='news_font_link' href='$url_news_3' target='_blank'>$date_news_3</a></p>
+					<p><a href='$url_news_3' target='_blank'>$description_3</a></p></td>
+				 
+		  </tr>
+</tbody>
+
+</table>
+                <div id='news-tab-link'><a href='content/new-haven-news'>More News&gt;</a></div>";
+}
+
+function return_format_date_news($date) {
+    $array_date_date = explode(" ", $date);
+    $date_array = $array_date_date[0];
+    $array_date = explode("-", $date_array);
+    $mont = date("F", strtotime($date));
+    $date = $mont . " " . $array_date[2] . ", " . $array_date[0];
+    return $date;
+}

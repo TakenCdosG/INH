@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Calendar INH feature.
+ */
+
+include_once 'calendar_inh.features.inc';

@@ -1,0 +1,28 @@
+/* 
+    Document   : responsive.css
+    Created on : 4/08/2014, 03:57:07 PM
+    Author     : USUARIO
+    Description:
+        Purpose of the stylesheet follows.
+*/
+/**** Responsive Design ****/
+
+/* =Media queries
+-------------------------------------------------------------- */
+
+/* Maximum width of 1024 pixels. */
+@media (max-width: 1024px) { 
+
+}
+
+
+/* Maximum width of 768 pixels. */
+@media (max-width: 768px) { 
+
+}
+
+
+/* Maximum width of 768 pixels. */
+@media (max-width: 320px) { 
+
+}

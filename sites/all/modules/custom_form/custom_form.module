@@ -1,0 +1,19 @@
+<?php
+   
+function custom_form_init(){
+global $user;
+ if($user->uid==0){
+     $node = current_node();
+	 if($node->nid==""){
+	   drupal_add_js(drupal_get_path('module', 'custom_form') . '/js/custom_form.js', 'file');
+	   drupal_add_css(drupal_get_path('module', 'custom_form') . '/css/custom_form.css', array('group' => CSS_DEFAULT, 'type' => 'file'));
+     }
+ }
+
+}
+
+   
+   
+?>
+
+

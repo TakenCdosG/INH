@@ -1,0 +1,542 @@
+body  #dining-node-form, body #culture-node-form, body #shopping-node-form, body #services-node-form, body #hotels-node-form, body #nightlife-node-form{
+line-height: 1.3em;
+font: none !important;
+font-family: Arial;
+font-size: .9em !important;
+
+/*font: normal 81.3%/1.538em "Lucida Grande", "Lucida Sans Unicode", sans-serif;*/
+}
+#block-user-login{ 
+display:none;
+}
+
+tr td:last-child {
+    border-right: 0px solid #BEBFB9 !important;
+}
+
+#dining-node-form a, #dining-node-form a:link, #dining-node-form a:active,#culture-node-form a, #culture-node-form a:link, #culture-node-form a:active,
+#services-node-form a, #services-node-form a:link, #services-node-form a:active,#nightlife-node-form a, #nightlife-node-form a:link, #nightlife-node-form a:active,
+#hotels-node-form a, #hotels-node-form a:link, #hotels-node-form a:active ,#shopping-node-form a, #shopping-node-form a:link, #shopping-node-form a:active  {
+font-weight: bold;
+text-decoration: none;
+color: #656;
+}
+#dining-node-form a:visited,#culture-node-form a:visited,#shopping-node-form a:visited,#hotels-node-form a:visited,#services-node-form a:visited,#nightlife-node-form a:visited {
+color: #656;
+}
+
+#dining-node-form h1,#culture-node-form h1,#shopping-node-form h1,#hotels-node-form h1,#services-node-form h1,#nightlife-node-form h1 {
+font-size: 1.3em !important;
+}
+
+
+#markup_div{
+float: left;
+position: absolute;
+margin-top: -150px;
+padding-left: 5px;
+}
+
+#markup_div #header{
+font-family: Arial;
+}
+
+#page {
+padding: 0 !important;
+}
+
+#markup_div #header h1  a{
+font-size: 18px;
+}
+
+#markup_div .navlinks ul li  a{
+font-size: 14px;
+}
+
+
+#dining-node-form  div.description, #shopping-node-form div.description, #culture-node-form  div.description ,
+#nightlife-node-form div.description,#services-node-form div.description,#hotels-node-form div.description
+{
+float:left;
+padding-left: 202px;
+margin-top: -12px;
+position:absolute;
+font-size: 10px;
+}
+
+#dining-node-form  .form-actions {
+    margin-bottom: 1em;
+    margin-top: 5em;
+}
+#edit-field-logo-und-0-ajax-wrapper div.description{
+float: none;
+position: relative;
+margin: 0;
+}
+
+#help p {
+margin: 0 0 -19px !important;
+font-size: 10px;
+float:left;
+position:absolute;
+}
+#help{
+margin-left: 238px;
+}
+ 
+#branding {
+overflow: hidden;
+padding: 0 !important;
+position: relative;
+background-color: #EAEAEA !IMPORTANT;
+width: 1094px;
+height: 37px;
+border: solid 1px #777;
+left: 56px;
+margin-top: 162px;
+margin-left: 5px;
+font-family: Arial;
+}
+
+	#branding h1.page-title {
+	padding-left: 10px;
+	padding-top: 9px;
+	font-weight: bold !important;
+	font-size: 1.2em !important;
+}
+
+    /***********REMOVE NAVIGATION BREADCRUMB*****************/
+	#branding .breadcrumb{
+	display:none;
+	}
+
+	#branding span.icon{
+	display:none;
+	}
+	/*********************************************************/
+	
+	
+    /*******************MENU STYLE************************/
+		.navlinks {
+		padding: 0em 0.5em 1.5em 0em;
+		clear: both;
+		}
+
+		.navlinks  ul.links {
+		margin: 0;
+		padding: 0;
+		margin-top: 21px;
+		}
+		.navlinks  ul.links li.first {
+		border: none;
+		}
+		.navlinks  ul.links li {
+		border-left: 1px solid #888;
+		display:inline;
+		}
+		
+		.navlinks  ul.links li a{
+		 color: #656;
+		 font-family: sans-serif;
+		}
+		
+		 .navlinks   ul.links li {
+		  display: inline;
+		  list-style-type: none;
+		  padding: 0 0.5em;
+	     }
+
+
+		
+		
+
+#dining-node-form .form-item, #shopping-node-form .form-item , #culture-node-form .form-item{
+margin-left: 36px;
+padding-top: 18px;
+}
+
+
+#dining-node-form .form-item label , #shopping-node-form .form-item label , #culture-node-form .form-item label {
+width: 200px;
+}
+
+/*
+#dining-node-form .form-item .form-type-textfield {
+margin-top: 15px;
+width: 603px;
+}	
+*/
+
+.form-item-title label, .form-item-field-street-address-und-0-value label, .form-item-field-zip-code-und-0-value label,
+.form-item-field-facebook-und-0-value label, .form-item-field-twitter-und-0-value label, .form-item-field-pinterest-und-0-value label,
+.form-item-field-youtube-und-0-value label, .form-item-field-contact-name-und-0-value label, .form-item-field-phone-und-0-value label,
+.form-item-field-email-und-0-value label, .form-item-field-website-und-0-value label
+{
+float: left;
+color: black;
+font-size: 1em;
+font-family: Arial;
+}
+
+
+ 
+#dining-node-form .text-full, #dining-node-form #edit-title, #shopping-node-form .text-full, #shopping-node-form #edit-title
+, #culture-node-form .text-full, #culture-node-form #edit-title
+{
+float: left;
+}
+
+
+
+#edit-body-und-0-value{
+height: 81px;
+width: 576px;
+}
+.form-item-body-und-0-value{
+width: 576px;
+}
+
+
+
+
+.vertical-tabs,#edit-field-sid,#edit-body-und-0-format{
+display:none;
+}
+
+
+	#edit-field-payment-options {
+	 width: 200px;
+	}
+
+	#dining-node-form #edit-field-payment-options {
+	margin-top: 519px;
+	}
+	#culture-node-form #edit-field-payment-options , #shopping-node-form #edit-field-payment-options{
+	margin-top: 280px;
+	}
+
+	
+
+
+	#edit-field-payment-options .form-checkboxes {
+	overflow: hidden;
+	height: auto !important;
+	width: 316px !important;
+	}
+	
+	#edit-field-payment-options .form-item label.option {
+		display: block;
+		font-weight: normal;
+		line-height: 11px;
+		font-size: Arial !important;
+		font-size: 13px;
+	}
+
+	#edit-field-payment-options .form-checkboxes div {
+	margin-left: 20px;
+	float: left;
+	width: 95px;
+	}
+	
+	
+	/**********************************************************/
+	#edit-field-cuisine-term,#edit-field-shopping-category,#edit-field-category {
+	width: 200px;
+	}
+
+	#edit-field-cuisine-term .form-checkboxes, #edit-field-shopping-category .form-checkboxes  , #edit-field-category .form-checkboxes{
+	overflow: hidden;
+	height: auto !important;
+	width: 400px !important;
+	}
+	
+	#edit-field-cuisine-term .form-item label.option,  #edit-field-shopping-category .form-item label.option ,  #edit-field-category .form-item label.option {
+		display: block;
+		font-weight: normal;
+		line-height: 16px;
+		font-size: Arial !important;
+		font-size: 13px;
+	}
+
+	
+	#edit-field-cuisine-term .form-checkboxes div , #edit-field-shopping-category .form-checkboxes div , #edit-field-category .form-checkboxes div {
+	margin-left: 29px;
+	float: left;
+	width: 142px;
+	margin-top: 1px;
+	}
+	/******************************************************/
+	
+	/**********************************************************/
+		#edit-field-dining-offer, #edit-field-shopping-offer , #edit-field-culture-offer  {
+		width: 200px;
+		}
+
+		#edit-field-dining-offer .form-checkboxes , #edit-field-shopping-offer .form-checkboxes , #edit-field-culture-offer .form-checkboxes{
+		overflow: hidden;
+		height: auto !important;
+		width: 400px !important;
+		}
+		
+		#edit-field-dining-offer .form-item label.option , #edit-field-shopping-offer .form-item label.option , #edit-field-culture-offer .form-item label.option {
+			display: block;
+			font-weight: normal;
+			line-height: 17px;
+			font-size: Arial !important;
+			font-size: 13px;
+		}
+
+		
+		#edit-field-dining-offer .form-checkboxes div , #edit-field-shopping-offer .form-checkboxes div , #edit-field-culture-offer .form-checkboxes div{
+		margin-left: 29px;
+		float: left;
+		width: 142px;
+		margin-top: 10px;
+		font-size: 13px;
+		}
+	/******************************************************/
+
+	
+#edit-field-cuisine-term input,#edit-field-payment-options input, #edit-field-dining-offer  input, #edit-field-shopping-offer  input, #edit-field-shopping-category input,
+#edit-field-category  input,#edit-field-culture-offer input{
+float: right;
+}
+
+
+#edit-field-neighborhood label, #edit-field-price-point label{
+float:left;
+width: 150px !important;
+}
+
+#edit-field-neighborhood #edit-field-neighborhood-und,   #edit-field-price-point #edit-field-price-point-und{
+float:left;
+}
+
+#edit-field-logo-und-0-ajax-wrapper{
+margin-top: 40px;
+}
+#edit-field-logo-und-0-upload{
+border: none;
+}
+
+.vertical-tabs,#edit-field-sid,#edit-body-und-0-format{
+display:none;
+}
+
+.image-widget, #edit-field-logo-und-0-ajax-wrapper label {
+float:left;
+}
+#edit-field-logo-und-0-ajax-wrapper label {
+width: 148px !important;
+}
+
+#markup_day_hour,#markup_day_hschedules{
+float: left;
+position: absolute;
+margin-top: 430px;
+padding-left: 37px;
+height: auto;
+}
+
+
+#markup_day_hour input.form-text,#markup_day_hschedules input.form-text{
+padding: 2px;
+border: 1px solid #999;
+background: #E0E0D8;
+color: #333;
+width: 114px;
+vertical-align: text-top;
+font-size: 13px;
+}
+   #markup_day_hour table , #markup_day_hschedules table{
+	 border:none;
+	 height: 200px;
+	 margin-left: 30px;
+	} 
+
+
+	#markup_day_hour .form-item-markup, #markup_day_hschedules .form-item-markup{
+	margin-left: 0px;
+	padding-top: 0px;
+	}
+	#markup_day_hour table td, #markup_day_hschedules table td{
+	 vertical-align: top;
+	 padding: 1px 4px;
+	 font-size: 13px;
+	}
+	#markup_day_hour table td input, #markup_day_hschedules table td input{
+	  padding:0;
+	  margin:0;
+	}
+#markup_day_hschedules{
+margin-top: 670px;
+} 
+
+#field-days-and-hours-add-more-wrapper{
+margin-top: 220px;
+display:none !important;
+}
+#field-days-and-meals-schedules-add-more-wrapper,#field-node-reference-add-more-wrapper{
+display:none !important;
+}
+
+.markup_footer{
+float: left;
+position: absolute;
+height: 100px;
+}
+
+#dining-node-form  .markup_footer{
+margin-top: 3200px;
+}
+
+#shopping-node-form  .markup_footer{
+margin-top: 2200px;
+}
+#culture-node-form  .markup_footer{
+margin-top: 1900px;
+}
+
+#img2{
+padding-left: 120px;
+}
+#img3{
+padding-left: 100px;
+}
+
+#console{
+position: absolute;
+margin-top: -211px !important; 
+}
+ #console ul li{
+float:left;
+position:relative;
+margin-left: 31px;
+}
+#console div.error{
+height:40px;
+}
+ 
+/*Servcies*/
+#services-node-form  .markup_footer{
+margin-top: 300px;
+}
+#services-node-form .form-item label {
+width: 200px;
+}
+#services-node-form .form-item{
+margin-left: 36px;
+padding-top: 18px;
+}
+#services-node-form .text-full,#edit-field-category-services-und{
+float: left;
+}
+
+#services-node-form .form-item-title label, #services-node-form .form-item-field-address-services-und-0-value label, 
+#services-node-form .form-item-field-phone-services-und-0-value label, #services-node-form .form-item-field-website-services-und-0-value label,
+#services-node-form .form-item-field-category-services-und-0-value label,#edit-field-category-services label,
+#edit-field-please-type-new-haven label,#edit-field-new-category label
+{
+float: left;
+color: black;
+font-size: 1em;
+font-family: Arial;
+}
+#edit-field-new-category{
+display:none;
+}
+
+#services-node-form .form-actions{
+margin-top: 4em !important;
+}
+#services-node-form .form-item-field-address-services-und-0-value{
+padding-top:0;
+}
+#services-node-form  #field-address-services-add-more-wrapper{
+margin-top: -5px;
+}
+#services-node-form  .markup_footer{
+margin-top: 400px;
+}
+
+/********************/
+/*nightlife*/
+#nightlife-node-form  .markup_footer{
+margin-top: 300px;
+}
+#nightlife-node-form .form-item label {
+width: 200px;
+}
+#nightlife-node-form .form-item{
+margin-left: 36px;
+padding-top: 18px;
+}
+#nightlife-node-form .text-full{
+float: left;
+}
+
+#nightlife-node-form .form-item-title label, #nightlife-node-form .form-item-field-address-nightlife-und-0-value label, 
+#nightlife-node-form .form-item-field-phone-nightlife-und-0-value label, #nightlife-node-form  .form-item-field-website-nightlife-und-0-value label,
+#nightlife-node-form .form-item-field-facebook-nightlife-und-0-value label,#nightlife-node-form .form-item-field-twitter-nightlife-und-0-value label
+{
+float: left;
+color: black;
+font-size: 1em;
+font-family: Arial;
+}
+#nightlife-node-form .form-actions,#shopping-node-form .form-actions,#culture-node-form .form-actions{
+margin-top: 4em !important;
+}
+#nightlife-node-form .form-item-field-address-nightlife-und-0-value{
+padding-top:0;
+}
+#nightlife-node-form  #field-address-nightlife-add-more-wrapper{
+margin-top: -5px;
+}
+#nightlife-node-form  .markup_footer{
+margin-top: 400px;
+}
+
+
+
+/********************/
+/*hotels*/
+#hotels-node-form  .markup_footer{
+margin-top: 300px;
+}
+#hotels-node-form .form-item label {
+width: 200px;
+}
+#hotels-node-form .form-item{
+margin-left: 36px;
+padding-top: 18px;
+}
+#hotels-node-form .text-full{
+float: left;
+}
+
+#hotels-node-form .form-item-title label, #hotels-node-form .form-item-field-address-nightlife-und-0-value label, 
+#hotels-node-form .form-item-field-phone-nightlife-und-0-value label, #hotels-node-form  .form-item-field-website-nightlife-und-0-value label,
+#hotels-node-form .form-item-field-facebook-nightlife-und-0-value label,#hotels-node-form .form-item-field-twitter-nightlife-und-0-value label
+{
+float: left;
+color: black;
+font-size: 1em;
+font-family: Arial;
+}
+#hotels-node-form .form-actions{
+margin-top: 4em !important;
+}
+#hotels-node-form .form-item-field-address-nightlife-und-0-value{
+padding-top:0;
+}
+#hotels-node-form  #field-address-nightlife-add-more-wrapper{
+margin-top: -5px;
+}
+#hotels-node-form  .markup_footer{
+margin-top: 400px;
+}
+
+#edit-field-shops-at-yale-icon-{
+display:none;
+}

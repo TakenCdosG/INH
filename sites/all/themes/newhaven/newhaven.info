@@ -1,0 +1,28 @@
+name = New Haven
+description = This is the default theme used on the New Haven website
+package = Core
+version = VERSION
+core = 7.x
+
+stylesheets[all][] = css/editor.css
+stylesheets[all][] = css/styles.css
+stylesheets[all][] = css/slideshow.css
+stylesheets[print][] = print.css
+
+scripts[] = js/jquery-1.8.1.min.js
+scripts[] = js/functions.js
+scripts[] = js/slides.min.jquery.js
+scripts[] = js/gcse.js
+
+regions[top_header] = Top Header
+regions[header] = Header
+regions[main_content] = Main content
+regions[sidebar_left] = Sidebar Left
+regions[sidebar_right] = Sidebar Right
+regions[footer] = Footer
+
+; Information added by drupal.org packaging script on 2012-08-01
+version = "1.0"
+project = "newhaven"
+datestamp = "1343839327"
+

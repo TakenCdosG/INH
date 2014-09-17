@@ -1,0 +1,123 @@
+#top-header{
+display:none;
+}
+#header-wrapper #header {
+height: 40px;
+}
+#header-wrapper #header div.second-line{
+display:none;
+}
+#header-wrapper #header div.first-line .parking, #header-wrapper #header div.first-line .facebook,
+#header-wrapper #header div.first-line .twitter, #header-wrapper #header div.first-line #google-searchbox{
+display:none;
+}
+#header-wrapper #header div.first-line #logo{
+padding: 0 0 0 22px;
+background:red;
+}
+
+#breadcrumb, #breadcrumb a {
+font: 12px "Helvetica";
+color: #514A3E;
+margin: 0;
+}
+#breadcrumb{
+margin-left: 50px;
+}
+
+
+.top_image{
+display:none;
+}
+
+div.messages{
+display:none;
+}
+
+.tabs{
+display:none;
+}
+
+.view-filters{
+display:none;
+}
+
+.search h3,.search h5{
+display:none;
+}
+.search h3.floatLeft{
+display: block;
+}
+
+.search .view-content{
+margin-top: 0;
+padding-top: 0;
+font: 12px "Helvetica";
+color: #373737;
+}
+.search div.first_column{
+font-family: "Helvetica";
+font-size: 10px;
+color: #373737;
+}
+.view-content .cuisine, .view-content .category {
+font-family: "Helvetica";
+color: #4C782A;
+margin-bottom: 16px;
+}
+
+div.item-list ul.pager, .details_link{
+display:none;
+}
+
+.field-items p {
+font-family: "Helvetica";
+word-spacing: 0 !important;
+}
+
+div.days_and_hours .item-list span{
+font: 10px "Helvetica";
+color: ##373737;
+}
+p.floatRight{
+font-family: "Helvetica";
+font-size: 14px;
+color: ##2F2F2F;
+}
+
+
+/*HOME*/
+
+.bg-img, .home_widgets, #sidebar-left .sidebar-icon,  #sidebar-right .sidebar-icon{
+display:none;
+}
+#page-wrapper.homepage #main-wrapper #content{
+float:left;
+}
+
+#footer .menu{
+display:none;
+}
+#home-tabs{
+height: 250px;
+}
+#home .prev, #home .next{
+display:none;
+}
+
+
+#footer .market {
+float:left;
+margin-left: -290px;
+}
+
+#footer .town_green{
+float:left;
+padding-left: 191px;
+margin-left: 24px;
+}
+
+#footer .copyright {
+text-align:left;
+font-size: 8px;
+}
