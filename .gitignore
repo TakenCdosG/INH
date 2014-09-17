@@ -6,4 +6,4 @@ sites/*/files
 sites/*/private
 .htpasswd
 .htaccess
-.idea/
+.idea
