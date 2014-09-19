@@ -2224,10 +2224,10 @@ function render_links_basic_page($get_bar_right) {
 function import_calendar_event() {
 
     for ($x = 1; $x <= 9; $x++) {
-        import_first_calendar(2015, "0" . $x);
+        import_first_calendar(Date("Y"), "0" . $x);
     }
     for ($y = 10; $y <= 12; $y++) {
-        import_first_calendar(2015, $y);
+        import_first_calendar(Date("Y"), $y);
     }
 }
 
