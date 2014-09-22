@@ -2224,7 +2224,7 @@ function render_links_basic_page($get_bar_right) {
 
 function import_calendar_event() {
 
-    import_first_calendar(2015,'01');
+    import_first_calendar(2016,'01');
     /*$batch = array(
         'operations' => array(
             array('import_first_calendar', array(2015,'01')),
@@ -2277,7 +2277,7 @@ function batch_example_finished($success, $results, $operations) {
 
 function import_first_calendar($year, $m) {
     $file = 'http://portal.infonewhaven.com/infonewhavencalendar/calendar/?d=' . $year . '-' . $m . '-01&i=31&output=xml';
-    //print $file . "<br>";
+    print $file . "<br>";
 
     if (!$xml = simplexml_load_file($file))
         exit('Failed to open ' . $file);
