@@ -2224,21 +2224,21 @@ function render_links_basic_page($get_bar_right) {
 
 function import_calendar_event() {
 
-    import_first_calendar(2016,'01');
-    /*$batch = array(
+    //import_first_calendar(2016,'10');
+    $batch = array(
         'operations' => array(
-            array('import_first_calendar', array(2015,'01')),
-            array('import_first_calendar', array(2015,'02')),
-            array('import_first_calendar', array(2015,'03')),
-            array('import_first_calendar', array(2015,'04')),
-            array('import_first_calendar', array(2015,'05')),
-            array('import_first_calendar', array(2015,'06')),
-            array('import_first_calendar', array(2015,'07')),
-            array('import_first_calendar', array(2015,'08')),
-            array('import_first_calendar', array(2015,'09')),
-            array('import_first_calendar', array(2015,'10')),
-            array('import_first_calendar', array(2015,'11')),
-            array('import_first_calendar', array(2015,'12'))
+            array('import_first_calendar', array(2016,'01')),
+            array('import_first_calendar', array(2016,'02')),
+            array('import_first_calendar', array(2016,'03')),
+            array('import_first_calendar', array(2016,'04')),
+            array('import_first_calendar', array(2016,'05')),
+            array('import_first_calendar', array(2016,'06')),
+            array('import_first_calendar', array(2016,'07')),
+            array('import_first_calendar', array(2016,'08')),
+            array('import_first_calendar', array(2016,'09')),
+            array('import_first_calendar', array(2016,'10')),
+            array('import_first_calendar', array(2016,'11')),
+            array('import_first_calendar', array(2016,'12'))
         ),
         'finished' => 'batch_example_finished',
         'title' => t('Processing Example Batch'),
@@ -2255,7 +2255,6 @@ function import_calendar_event() {
     // IMPORTANT:
     // If you set a blank parameter, the batch_process() will cause an infinite loop
     batch_process('node/1');
-    */
 }
 
 
@@ -2277,7 +2276,7 @@ function batch_example_finished($success, $results, $operations) {
 
 function import_first_calendar($year, $m) {
     $file = 'http://portal.infonewhaven.com/infonewhavencalendar/calendar/?d=' . $year . '-' . $m . '-01&i=31&output=xml';
-    print $file . "<br>";
+    //print $file . "<br>";
 
     if (!$xml = simplexml_load_file($file))
         exit('Failed to open ' . $file);
