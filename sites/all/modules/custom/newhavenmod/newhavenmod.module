@@ -2224,8 +2224,8 @@ function render_links_basic_page($get_bar_right) {
 
 function import_calendar_event() {
 
-    //import_first_calendar(2016,'10');
-    $batch = array(
+    import_first_calendar(2015,'01');
+    /*$batch = array(
         'operations' => array(
             array('import_first_calendar', array(2015,'01')),
             array('import_first_calendar', array(2015,'02')),
@@ -2255,6 +2255,7 @@ function import_calendar_event() {
     // IMPORTANT:
     // If you set a blank parameter, the batch_process() will cause an infinite loop
     batch_process('node/1');
+    */
 }
 
 
