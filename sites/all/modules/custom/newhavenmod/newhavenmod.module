@@ -2227,18 +2227,18 @@ function import_calendar_event() {
     //import_first_calendar(2016,'10');
     $batch = array(
         'operations' => array(
-            array('import_first_calendar', array(2015,'01')),
-            array('import_first_calendar', array(2015,'02')),
-            array('import_first_calendar', array(2015,'03')),
-            array('import_first_calendar', array(2015,'04')),
-            array('import_first_calendar', array(2015,'05')),
-            array('import_first_calendar', array(2015,'06')),
-            array('import_first_calendar', array(2015,'07')),
-            array('import_first_calendar', array(2015,'08')),
-            array('import_first_calendar', array(2015,'09')),
-            array('import_first_calendar', array(2015,'10')),
-            array('import_first_calendar', array(2015,'11')),
-            array('import_first_calendar', array(2015,'12'))
+            array('import_first_calendar', array(2014,'01')),
+            array('import_first_calendar', array(2014,'02')),
+            array('import_first_calendar', array(2014,'03')),
+            array('import_first_calendar', array(2014,'04')),
+            array('import_first_calendar', array(2014,'05')),
+            array('import_first_calendar', array(2014,'06')),
+            array('import_first_calendar', array(2014,'07')),
+            array('import_first_calendar', array(2014,'08')),
+            array('import_first_calendar', array(2014,'09')),
+            array('import_first_calendar', array(2014,'10')),
+            array('import_first_calendar', array(2014,'11')),
+            array('import_first_calendar', array(2014,'12'))
         ),
         'finished' => 'batch_example_finished',
         'title' => t('Processing Example Batch'),
