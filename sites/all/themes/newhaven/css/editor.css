@@ -1,1 +1,13 @@
-.subtext {color:#578533; font:18px/22px "Helvetica neue light"; word-spacing:-4px;}
+.subtext{
+    color:#578533;
+    font:18px/22px "Helvetica neue light";
+    word-spacing:-4px;
+}
+
+.orange_text{
+    color:#F47D43;
+}
+
+.blue_text{
+    color:#106CB7;
+}
