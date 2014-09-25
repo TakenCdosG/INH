@@ -153,7 +153,17 @@ select {font:11px/16px Verdana, Geneva, sans-serif; color:#3d3d3d;}
 /* -Other stuff- */
 * {font-weight:normal; text-decoration:none; border:none;}
 a {color:#025e7c; cursor:pointer;}
-a, a:active, a:hover, a:visited {color:#578533;}
+
+a, a:active, a:hover, a:visited
+{
+    color:#578533;
+}
+.page-node-57025 a,.page-node-57025 a:active,.page-node-57025 a:hover, a:visited
+{
+    color:#106CB7;
+}
+
+
 i {font-style:italic!important;}
 b, strong {font-weight:bold!important;font-family: "Helvetica neue bold"; word-spacing:0 !important;}
 article ul {list-style-type:disc; padding-left:20px; list-style-position:outside;}
