@@ -120,40 +120,6 @@ function newhavenmod_form_alter(&$form, &$form_state, $form_id) {
                 $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_hotels["und"];
             }
 
-            $form['div_header'] = array(
-                '#type' => 'markup',
-                '#prefix' => '<div id="markup_div"><div id="header">   
-									 <h1 class="site-name title"><a href="/">InfoNewHaven.com - Get Listed</a></h1>
-									</div>
-									<div class="navlinks"><ul class="links" id="navlist"><li class="menu-262 active-trail first active"><a href="/node/add/dining" title="" class="active">Dining</a></li>
-									<li ><a href="/node/add/shopping" title="">Shopping</a></li>
-									<li "><a href="/node/add/services" title="">Services</a></li>
-									<li ><a href="/node/add/culture" title="">Culture</a></li>
-									<li ><a href="/node/add/nightlife" title="">Nightlife</a></li>
-									<li class="last"><a href="/node/add/hotels" title="">Hotels</a></li>
-									</ul> </div></div>',
-                '#value' => t(""),
-                '#weight' => -500,
-                '#suffix' => "</div>",
-            );
-
-            $img1 = base_path() . path_to_theme() . "/img/parking_icon.png";
-
-            $form['markup_footer'] = array(
-                '#type' => 'markup',
-                '#prefix' => '
-					
-					<div class="markup_footer"> 
-					<img src="http://www.infonewhaven.com/sites/all/themes/newhaven/img/img1.png" id="img1"  alt="Parking" title="Parking" />
-					<img src="http://www.infonewhaven.com/sites/all/themes/newhaven/img/img2.png" id="img2"  alt="Parking" title="Parking" />
-					<img src="http://www.infonewhaven.com/sites/all/themes/newhaven/img/img3.png" id="img3" alt="Parking" title="Parking" />
-					
-					',
-                '#value' => t(""),
-                '#weight' => -500,
-                '#suffix' => "</div>",
-            );
-
             if ($form_id != 'nightlife_node_form' && $form_id != 'services_node_form' && $form_id != 'hotels_node_form') {
                 $form['markup_day_hour'] = array(
                     '#type' => 'markup',
