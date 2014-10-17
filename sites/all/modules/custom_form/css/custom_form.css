@@ -6,6 +6,9 @@ font-size: .9em !important;
 
 /*font: normal 81.3%/1.538em "Lucida Grande", "Lucida Sans Unicode", sans-serif;*/
 }
+input, textarea{
+    border: 1px solid #000000;
+}
 #block-user-login{ 
 display:none;
 }
