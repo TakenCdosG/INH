@@ -20,7 +20,7 @@ tr td:last-child {
 .node-form a, .node-form a:link, .node-form a:active,.node-form a:visited{
 font-weight: bold;
 text-decoration: none;
-color: #656;
+color: #578533;
 }
 
 .node-form h1{
@@ -388,4 +388,8 @@ height:40px;
 .node-type-list dt a{
     font-size: 20px;
     list-style: disc;
+}
+
+.node-type-list a, .node-type-list a:link, .node-type-list a:active,.node-type-list a:visited{
+    color: #578533;
 }

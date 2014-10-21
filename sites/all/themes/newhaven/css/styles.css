@@ -320,7 +320,6 @@ div#calendar-tab-wrapper, div#news-wrapper {width:642px; position:relative; over
 .search input[type=text] {height:29px; background:url("../img/inputs-bg.png") repeat-x bottom; border:1px solid #d4d5d5; padding:0 4px 0 4px; font:16px "Helvetica neue roman";}
 .search #edit-title {width:240px;}
 .search select, #edit-status {height:31px; border:1px solid #d4d5d5; font:94% "Helvetica neue roman";}
-#edit-submit-administer-dining{ height: 31px; margin-top: 16px;}
 .view-content .views-field-delete-node, .view-content .views-field-edit-node{width: 70px;}
 .view-content .views-field-title{ min-width: 300px;}
 .search input[type=button], .search input[type=submit] {height:31px; width:102px; background:url("../img/buttons-bg.png") no-repeat; font:18px "Din bold"; color:#fff; text-transform:uppercase; padding:0 0 5px 0;}
@@ -1188,3 +1187,33 @@ ul.tab li a{
 }
 
 
+/* views administer pages */
+
+.view-administer-dining{
+    padding: 30px;
+}
+
+.view-administer-dining table{
+    width: 100%;
+}
+
+.view-administer-dining td, .view-administer-dining th{
+    padding: 5px;
+    min-width: inherit;
+}
+
+.view-administer-dining td a{
+    text-decoration: none;
+}
+.view-administer-dining ul.pager{
+    margin: 20px 0px;
+}
+
+#edit-submit-administer-dining{
+    height: 31px;
+    margin-top: 26px;
+}
+
+#edit-status-wrapper label{
+    margin-bottom: 10px;
+}
