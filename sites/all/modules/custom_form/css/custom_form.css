@@ -49,12 +49,20 @@ font-size: 1.3em !important;
 .fieldset-legend a:link{
     color: #578533;
 }
+.node-form .fieldset-wrapper .form-item{
+    display: block;
+}
 .node-form .fieldset-wrapper div.description{
     padding-left: 156px;
+}
+.node-form .fieldset-wrapper .form-select{
+    margin-top: 0px;
+
 }
 .fieldset-wrapper{
     margin-top: 10px;
     background-color: #eee;
+    padding: 15px;
 }
 
 #markup_div #header h1  a{
