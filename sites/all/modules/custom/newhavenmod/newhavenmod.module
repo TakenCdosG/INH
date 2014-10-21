@@ -86,8 +86,15 @@ function newhavenmod_form_alter(&$form, &$form_state, $form_id) {
         }
     }
 
+if($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_id == 'culture_node_form' || $form_id == 'nightlife_node_form' || $form_id == 'services_node_form' || $form_id == 'hotels_node_form' ){
 
-    if (($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_id == 'culture_node_form' || $form_id == 'nightlife_node_form' || $form_id == 'services_node_form' || $form_id == 'hotels_node_form' ) && $user->uid == 0) {
+    /* Title Custom Description */
+    $form['title']['#description'] = "This is how your business' name will appear on the website";
+
+    $form['actions']['submit']['#value']= "Submit";
+dsm($form);
+
+    if ($user->uid == 0) {
         if ($form["#action"] == '/node/add/dining' || $form["#action"] == '/node/add/culture' || $form["#action"] == '/node/add/shopping' || $form["#action"] == '/node/add/nightlife' || $form["#action"] == '/node/add/services' || $form["#action"] == '/node/add/hotels') {
             //custom_form_function(&$form, &$form_state, $form_id);
             $global_node = node_load("286");
@@ -316,6 +323,7 @@ function newhavenmod_form_alter(&$form, &$form_state, $form_id) {
         }
     }
 }
+}
 
 function newhavenmod_submit($form, &$form_state) {
     custom_drupal_mail($_SESSION['field_email_notification_form'], $form['type']['#value']);
@@ -329,15 +337,15 @@ function custom_drupal_mail($field_email_notification_form, $type_form) {
     foreach ($field_email_notification_form as $v) {
         $my_mail_token = microtime();
 
-        $from = 'NEW HAVEN SITE <newhaven@admin.com>';
+        $from = 'INH Get Listed Form Submission';
 
-        $message = 'An anonymous user has sent information on ' . ucwords($type_form) . " Form click  " .
-            '<a href="http://' . $_SERVER["SERVER_NAME"] . '/node/' . $nid . '">HERE </a>';
+        $message = 'An anonymous user has submitted a  ' . ucwords($type_form) . "form. Click below to see the submission. " .
+            '<a href="http://' . $_SERVER["SERVER_NAME"] . '/node/' . $nid . '">http://' . $_SERVER["SERVER_NAME"] . '/node/' . $nid . ' </a>';
 
         $message = array(
             'id' => $my_module . '_' . $my_mail_token,
             'to' => $v["value"],
-            'subject' => 'New information forms - NewHaven ',
+            'subject' => 'New Get Listed Form',
             'body' => array($message),
             'headers' => array(
                 'From' => $from,
