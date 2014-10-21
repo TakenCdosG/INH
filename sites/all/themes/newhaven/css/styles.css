@@ -302,7 +302,13 @@ div#calendar-tab-wrapper, div#news-wrapper {width:642px; position:relative; over
 #news-tab .column, #town-tab .column {margin-top:10px; float:left; font-size:14px; width:290px; display:block; padding:0 10px;}
 
 /* Internal pages */
-.internal {margin:0 0 24px 48px; min-width:616px; max-width:900px;}
+/* Internal pages */
+.internal {
+    margin:0 0 24px 48px;
+    min-width:616px;
+    max-width:900px;
+}
+
 .internal h2 {color:#578533; font:60px "Helvetica neue light"; word-spacing:-10px; margin-bottom:26px;}
 .internal .content {font:14px/20px "Helvetica neue roman"; word-spacing:-3px; color:#514a3e;}
 
@@ -1180,3 +1186,5 @@ ul.tab li a{
     vertical-align: baseline;
     font: 14px "Helvetica neue light";
 }
+
+
