@@ -25,7 +25,7 @@
 	    $render_menu_terms=render_vocabulary_services();
 		print "<p>".$description."</p>";
 		if($_GET['s']!=""){
-		  print views_embed_view("report_services", "page",$_GET['s']); 
+		  print views_embed_view("report_services", "page",$_GET['s']);
 		}
 		?>
   
@@ -48,7 +48,7 @@
 
 
 	<!--<div id="content-shopping-right"  style="width: 265px;margin-top:20px;">
-		  
+
 		<div class="region region-sidebar-right">
 			<div class="widget" style="height: 77px;">
 
@@ -69,6 +69,6 @@
 
 		</div>
 	   </div>
-		  
+
 	</div>-->
 </div>

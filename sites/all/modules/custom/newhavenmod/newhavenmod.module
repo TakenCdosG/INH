@@ -2182,7 +2182,7 @@ function get_bar_right($right, $get_bar_right) {
 function render_links_basic_page($get_bar_right) {
     $cont = 0;
     foreach ($get_bar_right as $key => $value) {
-        $output .= "<li><p><a href='" . $get_bar_right[$key]["url"] . "?s=$cont'  id='" . $cont . "' >" . $get_bar_right[$key]["title"] . "</a></p></li>";
+        $output .= "<li><p><a href='" . $get_bar_right[$key]["url"] . "'  id='" . $cont . "' >" . $get_bar_right[$key]["title"] . "</a></p></li>";
         $cont = $cont + 1;
     }
     return $output;

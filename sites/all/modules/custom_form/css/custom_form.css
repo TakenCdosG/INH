@@ -393,3 +393,7 @@ height:40px;
 .node-type-list a, .node-type-list a:link, .node-type-list a:active,.node-type-list a:visited{
     color: #578533;
 }
+
+.field-name-field-shops-at-yale-icon-, .location-wrapper{
+    display: none;
+}

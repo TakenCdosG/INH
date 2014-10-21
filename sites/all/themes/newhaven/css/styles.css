@@ -874,7 +874,7 @@ div.view-id-report_services .view-content .views-row , div.view-id-report_hotels
     width: 100%;
     position: absolute;
     height: 27px;
-    margin-left: 0px;
+    margin-left: -2px;
 }
 .img-bottom{
     background:url("../img/top-category-service-bottom.png") no-repeat;
