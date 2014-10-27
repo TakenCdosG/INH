@@ -90,7 +90,7 @@ font-size: 1.3em !important;
     font: 94% "Helvetica neue roman";
     display: inline-block;
 }
-.node-form input[type=submit]{
+.node-form input[type=submit], .node-form .form-item .clearfix .image-widget-data input[type=submit]{
     height: 31px;
     width: 102px;
     background: url("../img/buttons-bg.png") no-repeat;
@@ -293,57 +293,6 @@ float:left;
 width: 148px !important;
 }
 
-#markup_day_hour, #markup_day_hschedules{
-    margin-top: 25px;
-    padding-left: 37px;
-}
-
-
-#markup_day_hour input.form-text,#markup_day_hschedules input.form-text{
-padding: 2px;
-border: 1px solid #999;
-background: #E0E0D8;
-color: #333;
-width: 114px;
-vertical-align: text-top;
-font-size: 13px;
-}
-   #markup_day_hour table , #markup_day_hschedules table{
-	 border:none;
-	 height: 200px;
-	 margin-left: 30px;
-	} 
-
-
-	#markup_day_hour .form-item-markup, #markup_day_hschedules .form-item-markup{
-	margin-left: 0px;
-	padding-top: 0px;
-	}
-	#markup_day_hour table td, #markup_day_hschedules table td{
-	 vertical-align: top;
-	 padding: 1px 4px;
-	 font-size: 13px;
-	}
-	#markup_day_hour table td input, #markup_day_hschedules table td input{
-	  padding:0;
-	  margin:0;
-	}
-
-
-#field-days-and-hours-add-more-wrapper{
-margin-top: 220px;
-display:none !important;
-}
-#field-days-and-meals-schedules-add-more-wrapper,#field-node-reference-add-more-wrapper{
-display:none !important;
-}
-
-.markup_footer{
-float: left;
-position: absolute;
-height: 100px;
-}
-
 
 #img2{
 padding-left: 120px;
@@ -396,4 +345,37 @@ height:40px;
 
 .field-name-field-shops-at-yale-icon-, .location-wrapper{
     display: none;
+}
+
+#field-days-and-hours-add-more-wrapper .form-item{
+    width: 80%;
+}
+
+#edit-field-days-and-hours-und-0-field-hours-of-operation-und-0-value{
+    width: 99px;
+}
+
+.node-form .field-name-field-days-and-hours input[type=submit], .node-form .field-name-field-days-and-meals-schedules input[type=submit]{
+    background-image: none;
+    background-color:#578533 ;
+    margin-left: 0px;
+}
+
+.node-form .form-item .clearfix input[type=submit]{
+    width: 200px;
+}
+
+
+
+.field-name-field-days-and-hours td, .field-name-field-days-and-meals-schedules td{
+    padding: 20px;
+}
+
+#field-days-and-hours-values{
+    width: 100%;
+}
+
+
+.field-multiple-table .form-item {
+    margin-left: 0px;
 }
