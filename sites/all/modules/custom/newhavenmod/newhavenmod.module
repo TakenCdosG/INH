@@ -90,7 +90,7 @@ if($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_i
 
     /* Title Custom Description */
     $form['title']['#description'] = "This is how your business' name will appear on the website";
-
+dsm($form);
     $form['actions']['submit']['#value']= "Submit";
 
     if ($user->uid == 0) {
@@ -192,6 +192,7 @@ function newhavenmod_node_validate($node, $form, &$form_state) {
                     validate_phone($node->field_phone["und"][0]["value"], "field_phone");
                 }
 
+        validate_email_field($node->field_email['und'][0]['value'],"field_email");
         validate_capcha($node->field_please_type_new_haven["und"][0]["value"]);
 
         validate_www($node);
@@ -247,6 +248,12 @@ function validate_www_field($field, $name_field) {
     }
 }
 
+function validate_email_field($email_address,$field_name){
+
+    if(!filter_var($email_address, FILTER_VALIDATE_EMAIL)){
+        form_set_error($field_name, t("Please enter an valid Email"));
+    }
+}
 /* * *********************************************************************************************************************************************** */
 
 function get_clear_link_social($link, $link_type) {
