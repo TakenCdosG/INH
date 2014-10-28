@@ -90,7 +90,7 @@ if($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_i
 
     /* Title Custom Description */
     $form['title']['#description'] = "This is how your business' name will appear on the website";
-dsm($form);
+//dsm($form);
     $form['actions']['submit']['#value']= "Submit";
 
     if ($user->uid == 0) {
@@ -788,7 +788,7 @@ function culture_csv() {
                     print "NID" . $node_object->nid . " SID " . $node_object->field_sid["und"][0]["value"] . " Count_aray:" . count($array_item) . "<br />\n";
                     /// $node_object->field_days_and_hours["und"]="";
                     //node_save($node_object);
-                    dsm($array_item);
+                   // dsm($array_item);
                     $cont_pos = 0;
                     $node_object->field_days_and_hours["und"] = array();
 
@@ -1031,7 +1031,7 @@ function dining_csv() {
         fclose($gestor);
     }
     print "x<br />\n";
-    dsm($arra_asoc);
+    //dsm($arra_asoc);
 
     if (count($arra_asoc) > 0 && is_array($arra_asoc)) {
         //echo "ccc";
@@ -1056,7 +1056,7 @@ function dining_csv() {
                     print "NID" . $node_object->nid . " SID " . $node_object->field_sid["und"][0]["value"] . " Count_aray:" . count($array_item) . "<br />\n";
                     /// $node_object->field_days_and_hours["und"]="";
                     //node_save($node_object);
-                    dsm($array_item);
+                    //dsm($array_item);
                     $cont_pos = 0;
                     $node_object->field_days_and_meals_schedules["und"] = array();
                     if (in_array("X", $array_item[18])) {  // Sunday
@@ -1560,7 +1560,7 @@ function shopping_csv() {
     }
 
     print "x<br />\n";
-    dsm($arra_asoc);
+    //dsm($arra_asoc);
 
     if (count($arra_asoc) > 0 && is_array($arra_asoc)) {
         //echo "ccc";
@@ -1917,7 +1917,7 @@ function consultar_colletion() {
 
     foreach ($field as $itemid) {
         $item = field_collection_field_get_entity($itemid);
-        dsm($item);
+        //dsm($item);
         //  print $item->field_reference_title['und'][0]['safe_value'];
         // print $item->field_reference_location['und'][0]['safe_value'];
     }
