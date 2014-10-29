@@ -348,7 +348,7 @@ height:40px;
     display: none;
 }
 
-#field-days-and-hours-add-more-wrapper .form-item{
+#field-days-and-hours-add-more-wrapper .form-item, #field-days-and-meals-schedules-add-more-wrapper .form-item{
     width: 80%;
 }
 
@@ -372,7 +372,7 @@ height:40px;
     padding: 20px;
 }
 
-#field-days-and-hours-values{
+#field-days-and-hours-values, #field-days-and-meals-schedules-values{
     width: 100%;
 }
 
