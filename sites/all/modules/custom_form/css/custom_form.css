@@ -379,3 +379,7 @@ height:40px;
 .field-multiple-table .form-item {
     margin-left: 0px;
 }
+
+.tabledrag-toggle-weight-wrapper{
+    display: none;
+}
