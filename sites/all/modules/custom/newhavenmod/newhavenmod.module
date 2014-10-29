@@ -144,7 +144,7 @@ function custom_drupal_mail($field_email_notification_form, $type_form) {
     foreach ($field_email_notification_form as $v) {
         $my_mail_token = microtime();
 
-        $from = "'INH Get Listed Form Submission' (inh_test@infonewhaven.com)";
+        $from = "'INH__Get__Listed__Form__Submission' (new@infonewhaven.com)";
 
         $message = 'An anonymous user has submitted a  ' . ucwords($type_form) . " form. Click below to see the submission. " .
             '<a href="http://' . $_SERVER["SERVER_NAME"] . '/node/' . $nid . '">http://' . $_SERVER["SERVER_NAME"] . '/node/' . $nid . ' </a>';
