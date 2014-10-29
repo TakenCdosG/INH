@@ -85,10 +85,11 @@ font-size: 1.3em !important;
 }
 .node-form input[type=text], .form-select
 {
-    height: 25px;
+    height: 28px;
     border: 1px solid #d4d5d5;
-    font: 94% "Helvetica neue roman";
+    font: 90% "Helvetica neue roman";
     display: inline-block;
+    padding-left: 10px;
 }
 .node-form input[type=submit], .node-form .form-item .clearfix .image-widget-data input[type=submit]{
     height: 31px;
