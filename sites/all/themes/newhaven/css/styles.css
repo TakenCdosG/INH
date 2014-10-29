@@ -309,7 +309,13 @@ div#calendar-tab-wrapper, div#news-wrapper {width:642px; position:relative; over
     max-width:900px;
 }
 
-.internal h2 {color:#578533; font:60px "Helvetica neue light"; word-spacing:-10px; margin-bottom:26px;}
+.internal h2 {
+    color:#578533;
+    font:60px "Helvetica neue light";
+    word-spacing:-10px;
+    margin-bottom:26px;
+}
+
 .internal .content {font:14px/20px "Helvetica neue roman"; word-spacing:-3px; color:#514a3e;}
 
 /* Search pages */

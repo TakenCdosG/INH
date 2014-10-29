@@ -90,7 +90,7 @@ if($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_i
 
     /* Title Custom Description */
     $form['title']['#description'] = "This is how your business' name will appear on the website";
-//dsm($form);
+
     $form['actions']['submit']['#value']= "Submit";
 
     if ($user->uid == 0) {
@@ -101,29 +101,52 @@ if($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_i
             if ($form_id == 'dining_node_form') {
                 drupal_set_title(t("Dining"));
                 $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_dining['und'];
+                $form['title form']=array(
+                    '#markup' => '<h2 class="form-item">Get Listed :: Dining</h2>',
+                    '#weight' => '-1'
+                );
             }
             if ($form_id == 'shopping_node_form') {
                 drupal_set_title(t("Shopping"));
                 $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_shoppin['und'];
+                $form['title form']=array(
+                    '#markup' => '<h2 class="form-item">Get Listed :: Shopping</h2>',
+                    '#weight' => '-1'
+                );
             }
 
             if ($form_id == 'culture_node_form') {
                 drupal_set_title(t("Culture"));
                 $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_culture['und'];
+                $form['title form']=array(
+                    '#markup' => '<h2 class="form-item">Get Listed :: Culture</h2>',
+                    '#weight' => '-1'
+                );
             }
             if ($form_id == 'nightlife_node_form') {
                 drupal_set_title(t("Nightlife"));
                 $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_nightli['und'];
+                $form['title form']=array(
+                    '#markup' => '<h2 class="form-item">Get Listed :: Nightlife</h2>',
+                    '#weight' => '-1'
+                );
             }
             if ($form_id == 'services_node_form') {
                 drupal_set_title(t("Services"));
                 $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_service['und'];
+                    $form['title form']=array(
+                        '#markup' => '<h2 class="form-item">Get Listed :: Services</h2>',
+                        '#weight' => '-1'
+                    );
             }
-
 
             if ($form_id == 'hotels_node_form') {
                 drupal_set_title(t("Hotels"));
                 $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_hotels["und"];
+                $form['title form']=array(
+                    '#markup' => '<h2 class="form-item">Get Listed :: Hotels</h2>',
+                    '#weight' => '-1'
+                );
             }
 
             $form['actions']['submit']['#submit'][] = 'newhavenmod_submit';

@@ -388,3 +388,11 @@ height:40px;
 .field-name-field-days-and-hours{
     margin-top: 20px ;
 }
+
+.node-form h2 {
+    color:#578533;
+    font:60px "Helvetica neue light";
+    word-spacing:-10px;
+    margin-bottom:26px;
+    margin-top: 0px;
+}
