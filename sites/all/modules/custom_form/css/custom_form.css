@@ -109,6 +109,7 @@ font-size: 1.3em !important;
 }
 .node-form .field-widget-image-image div.description{
     padding-left: 20px;
+    display: inline-block;
 }
 
 .node-form  .form-actions {
