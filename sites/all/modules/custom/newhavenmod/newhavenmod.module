@@ -177,6 +177,9 @@ function get_node($type_form) {
 /* * ********************************************************************************VALIDATE**************************************************** */
 
 function newhavenmod_node_validate($node, $form, &$form_state) {
+    if ($node->type == "dining" || $node->type == "culture" || $node->type == "shopping") {
+        validate_email_field($node->field_email['und'][0]['value'],"field_email");
+    }
     if ($node->type == "dining" || $node->type == "culture" || $node->type == "shopping" || $node->type == "nightlife" || $node->type == "services" || $node->type == "hotels") {
         $url = explode('/', $_GET['q']);
 
@@ -192,7 +195,7 @@ function newhavenmod_node_validate($node, $form, &$form_state) {
                     validate_phone($node->field_phone["und"][0]["value"], "field_phone");
                 }
 
-        validate_email_field($node->field_email['und'][0]['value'],"field_email");
+
         validate_capcha($node->field_please_type_new_haven["und"][0]["value"]);
 
         validate_www($node);
