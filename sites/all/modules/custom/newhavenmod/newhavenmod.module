@@ -144,9 +144,9 @@ function custom_drupal_mail($field_email_notification_form, $type_form) {
     foreach ($field_email_notification_form as $v) {
         $my_mail_token = microtime();
 
-        $from = 'INH Get Listed Form Submission';
+        $from = "INH Get Listed Form Submission (inh_test@infonewhaven.com)";
 
-        $message = 'An anonymous user has submitted a  ' . ucwords($type_form) . "form. Click below to see the submission. " .
+        $message = 'An anonymous user has submitted a  ' . ucwords($type_form) . " form. Click below to see the submission. " .
             '<a href="http://' . $_SERVER["SERVER_NAME"] . '/node/' . $nid . '">http://' . $_SERVER["SERVER_NAME"] . '/node/' . $nid . ' </a>';
 
         $message = array(
@@ -178,6 +178,7 @@ function get_node($type_form) {
 
 function newhavenmod_node_validate($node, $form, &$form_state) {
     if ($node->type == "dining" || $node->type == "culture" || $node->type == "shopping") {
+        validate_email_field($node->field_email['und'][0]['value'],"field_email");
         validate_email_field($node->field_email['und'][0]['value'],"field_email");
     }
     if ($node->type == "dining" || $node->type == "culture" || $node->type == "shopping" || $node->type == "nightlife" || $node->type == "services" || $node->type == "hotels") {
