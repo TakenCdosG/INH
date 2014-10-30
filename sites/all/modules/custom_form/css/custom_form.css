@@ -218,13 +218,13 @@ font-size: 1.3em !important;
 	#edit-field-cuisine-term .form-checkboxes, #edit-field-shopping-category .form-checkboxes  , #edit-field-category .form-checkboxes{
 	overflow: hidden;
 	height: auto !important;
-	width: 400px !important;
+	width: 520px !important;
 	}
 	
 	#edit-field-cuisine-term .form-item label.option,  #edit-field-shopping-category .form-item label.option ,  #edit-field-category .form-item label.option {
 		display: block;
 		font-weight: normal;
-		line-height: 16px;
+		line-height: 17px;
 		font-family: Arial !important;
 		font-size: 13px;
 	}
