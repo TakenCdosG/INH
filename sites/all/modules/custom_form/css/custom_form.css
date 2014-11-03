@@ -168,7 +168,13 @@ font-size: 1.3em !important;
 
 
 .node-form .form-item label{
+    width: 156px;
+}
+
+.node-form .form-item th label{
     width: 200px;
+    padding-bottom: 20px;
+
 }
 
 .node-form label
@@ -348,11 +354,16 @@ height:40px;
     display: none;
 }
 
+#field-days-and-hours-values .form-wrapper{
+    display: inline-block;
+    padding-left: 20px;
+}
+
 #field-days-and-hours-add-more-wrapper .form-item, #field-days-and-meals-schedules-add-more-wrapper .form-item{
     width: 80%;
 }
 
-#edit-field-days-and-hours-und-0-field-hours-of-operation-und-0-value{
+#field-days-and-hours-values .form-wrapper .text-full.form-text{
     width: 99px;
 }
 
@@ -369,7 +380,7 @@ height:40px;
 
 
 .field-name-field-days-and-hours td, .field-name-field-days-and-meals-schedules td{
-    padding: 20px;
+    padding: 0px 0px 0px 20px;
 }
 
 #field-days-and-hours-values, #field-days-and-meals-schedules-values{
