@@ -83,6 +83,15 @@ font-size: 1.3em !important;
 .form-select{
     margin-top: 20px;
 }
+
+#field-days-and-hours-values .form-select{
+     margin-top: 0px;
+}
+
+#field-days-and-hours-values .field-type-list-text > div > label{
+   margin: 0px;
+}
+
 .node-form input[type=text], .form-select
 {
     height: 28px;
