@@ -74,7 +74,7 @@ font-size: 1.3em !important;
 }
 
 #markup_day_hour > label,#markup_day_hschedules > label, .field-type-list-text > div > label,
-.field-type-taxonomy-term-reference > div > label, .form-type-textarea > label
+.field-type-taxonomy-term-reference > div > label, .form-type-textarea > label, .field-type-text > div > label
 {
     margin-bottom: 20px;
     margin-top: 20px;
@@ -105,7 +105,7 @@ font-size: 1.3em !important;
 
 .node-form div.description
 {
-    padding-left: 205px;
+    padding-left: 0px;
     font-size: 10px;
 }
 .node-form .field-widget-image-image div.description{
