@@ -389,7 +389,7 @@ height:40px;
 
 
 .field-name-field-days-and-hours td, .field-name-field-days-and-meals-schedules td{
-    padding: 0px 0px 0px 20px;
+    padding: 20px 0px 20px 20px;
 }
 
 #field-days-and-hours-values, #field-days-and-meals-schedules-values{
