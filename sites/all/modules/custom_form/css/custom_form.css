@@ -184,6 +184,10 @@ font-size: 1.3em !important;
     width: 156px;
 }
 
+.node-form .form-item.form-type-textarea label{
+    width: 100%;
+}
+
 .node-form .form-item th label{
     width: 200px;
     padding-bottom: 20px;

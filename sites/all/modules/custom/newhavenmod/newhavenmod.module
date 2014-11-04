@@ -92,7 +92,7 @@ if($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_i
     $form['title']['#description'] = "This is how your business name will appear on the website";
 
     $form['actions']['submit']['#value']= "Submit";
-dsm($form);
+//dsm($form);
     if ($user->uid == 0) {
         if ($form["#action"] == '/node/add/dining' || $form["#action"] == '/node/add/culture' || $form["#action"] == '/node/add/shopping' || $form["#action"] == '/node/add/nightlife' || $form["#action"] == '/node/add/services' || $form["#action"] == '/node/add/hotels') {
             //custom_form_function(&$form, &$form_state, $form_id);
@@ -264,6 +264,8 @@ function validate_www($node,$form) {
         validate_www_field($node->field_twitter_nightlife["und"][0]["value"], 'field_twitter_nightlife',$form);
     }
     if ($node->type == "services") {
+        $field_website = $node->field_website_services["und"][0]["value"];
+        validate_www_field($field_website, 'field_website_services','Please insert the complete URL: ex: www.site.com.');
         validate_www_field($node->field_website_services["und"][0]["value"], 'field_website_services',$form);
     }
 }
