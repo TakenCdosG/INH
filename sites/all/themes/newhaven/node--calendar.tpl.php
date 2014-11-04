@@ -86,19 +86,19 @@ $node_slideshow = node_load($nid);
             print "<div class='slide'>";
             $field_id = $node_slideshow->field_slideshow['und'][$c]['value'];
             $collection = entity_load('field_collection_item', array($field_id));
-           // dsm($collection);
+           dsm($collection);
             $target = ( $c != 1 ? "target='_blank'" : "");
             if (array_key_exists("field_slide_image", $collection[$field_id])) {
-                if (array_key_exists('field_text_link', $collection[$field_id])) {
+                if (array_key_exists('field_text_link', $collection[$field_id])  and !empty($collection[$field_id]->field_text_link['und'][0]['value'])) {
                     print "<a href='" . $collection[$field_id]->field_text_link['und'][0]['value'] . "' $target>";
                 }
                 print "<img src='" . file_create_url($collection[$field_id]->field_slide_image['und'][0]['uri']) . "' />";
 
-                if (array_key_exists('field_text_link', $collection[$field_id])) {
+                if (array_key_exists('field_text_link', $collection[$field_id])  and !empty($collection[$field_id]->field_text_link['und'][0]['value'])) {
                     print "</a>";
                 }
             }
-            if (array_key_exists('field_slide_text', $collection[$field_id])) {
+            if (array_key_exists('field_slide_text', $collection[$field_id]) and !empty($collection[$field_id]->field_text_link['und'][0]['value'])) {
                 print "<div class='caption'>";
 
                 if (array_key_exists('field_text_link', $collection[$field_id])) {
