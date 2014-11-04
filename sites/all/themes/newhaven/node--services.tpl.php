@@ -10,7 +10,14 @@ global $user;
 		<div class="internal">
 		  <h2 style='margin-bottom:19px;line-height: 52px;' <?php print $title_attributes; ?>><?php print $title; ?></h2>
 		  
-		    <div>   <p class="cuisine"><?php  print $term->name; ?></p>  </div>
+		    <div><p class="cuisine"><?php
+                    if(!empty($node->field_new_category['und'][0]['value'])){
+                        print $node->field_new_category['und'][0]['value'];
+                    }else{
+                        print $term->name;
+                    }
+                    ?>
+            </p></div>
 		  
 		
 		  <div class="content"<?php print $content_attributes; ?>>

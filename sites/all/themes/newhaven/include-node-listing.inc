@@ -33,12 +33,7 @@
 		   <?php } ?>
 		   
 		  <?php  $category=str_replace("-"," ",$category); ?>
-		  <div>   <p class="cuisine"><?php
-                  if(!empty($node->field_new_category['und'][0]['value'])){
-                      print $node->field_new_category['und'][0]['value'];
-                  }else{print ucwords(strtolower($category));}
-
-                  ?></p>  </div>
+		  <div>   <p class="cuisine"><?php print ucwords(strtolower($category));?></p>  </div>
 		 
 		  
 		  <div class="content"<?php print $content_attributes; ?>>
