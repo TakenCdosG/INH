@@ -86,7 +86,7 @@ $node_slideshow = node_load($nid);
             print "<div class='slide'>";
             $field_id = $node_slideshow->field_slideshow['und'][$c]['value'];
             $collection = entity_load('field_collection_item', array($field_id));
-           dsm($collection);
+           //dsm($collection);
             $target = ( $c != 1 ? "target='_blank'" : "");
             if (array_key_exists("field_slide_image", $collection[$field_id])) {
                 if (array_key_exists('field_text_link', $collection[$field_id])  and !empty($collection[$field_id]->field_text_link['und'][0]['value'])) {
@@ -119,7 +119,7 @@ $node_slideshow = node_load($nid);
 
     if(count($node_slideshow->field_slideshow['und']) > 1){
     ?>
-    
+
     <a href="#" class="prev"><img src="<?php print base_path() . path_to_theme(); ?>/img/calendar/arrow_prev.png" width="39" height="39" alt="Arrow Prev"></a>
     <a href="#" class="next"><img src="<?php print base_path() . path_to_theme(); ?>/img/calendar/arrow_next.png" width="39" height="39" alt="Arrow Next"></a>
     <?php
