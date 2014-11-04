@@ -364,7 +364,7 @@ height:40px;
 }
 
 #field-days-and-hours-values .form-wrapper{
-    display: inline-block;
+    float: left;
     padding-left: 20px;
 }
 
