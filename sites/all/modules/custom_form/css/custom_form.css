@@ -380,6 +380,10 @@ height:40px;
     width: 160px;
 }
 
+#field-days-and-hours-values .form-wrapper.field-name-field-day-of-operation label,#field-days-and-hours-values .field-multiple-drag{
+    display: none;
+}
+
 .node-form .field-name-field-days-and-hours input[type=submit], .node-form .field-name-field-days-and-meals-schedules input[type=submit]{
     background-image: none;
     background-color:#578533 ;
