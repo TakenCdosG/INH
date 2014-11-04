@@ -114,8 +114,12 @@ font-size: 1.3em !important;
 
 .node-form div.description
 {
-    padding-left: 0px;
+    padding-left: 160px;
     font-size: 10px;
+}
+.node-form #field-days-and-hours-add-more-wrapper div.description
+{
+    padding-left: 0px;
 }
 .node-form .field-widget-image-image div.description{
     padding-left: 20px;
