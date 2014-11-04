@@ -1078,6 +1078,7 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
     width: 932px !important;
     text-align: left;
     opacity: 1 !important;
+    left: 0px !important;
 }
 
 .node-type-calendar .internal {
