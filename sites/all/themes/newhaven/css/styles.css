@@ -1051,10 +1051,11 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
 }
 
 .node-type-calendar #slideshow .slides_container div.slide, .page-calendar-day #slideshow .slides_container div.slide {
+    max-width: 972px!important;
     width: 100%!important;
     height: 283px!important;
-    display: block!important;
     overflow: hidden;
+    text-align: center;
 }
 
 .node-type-calendar #slideshow .next, .node-type-calendar  #slideshow .prev, .page-calendar-day #slideshow .next, .page-calendar-day #slideshow .prev {
@@ -1069,6 +1070,14 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
 
 .node-type-calendar #slideshow .next, .page-calendar-day #slideshow .next{
     left: 920px!important;
+}
+
+.node-type-calendar #slideshow .caption{
+    background-color: #CDDFEF !important;
+    bottom: 0px !important;
+    width: 971px !important;
+    text-align: left;
+    opacity: 1 !important;
 }
 
 .node-type-calendar .internal {
@@ -1222,4 +1231,13 @@ ul.tab li a{
 
 #edit-status-wrapper label{
     margin-bottom: 10px;
+}
+
+#slideshow_calendar .slide{
+    text-align: center;
+    width: 972px;
+}
+
+#slideshow_calendar .slides_control{
+    height: 305px !important;
 }

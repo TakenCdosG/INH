@@ -78,15 +78,39 @@
  */
 $nid = 46276;
 $node_slideshow = node_load($nid);
-?> 
+?>
 <div id="slideshow">
     <div class="slides_container">
         <?php
-
-        foreach($node_slideshow->field_slideshow_calendars['und'] as $key => $value){
-
+        for ($c = 0; $c < count($node_slideshow->field_slideshow['und']); $c++) {
             print "<div class='slide'>";
-            print "<img src='" . file_create_url($node_slideshow->field_slideshow_calendars['und'][$key]['uri']) . "' />";
+            $field_id = $node_slideshow->field_slideshow['und'][$c]['value'];
+            $collection = entity_load('field_collection_item', array($field_id));
+           // dsm($collection);
+            $target = ( $c != 1 ? "target='_blank'" : "");
+            if (array_key_exists("field_slide_image", $collection[$field_id])) {
+                if (array_key_exists('field_text_link', $collection[$field_id])) {
+                    print "<a href='" . $collection[$field_id]->field_text_link['und'][0]['value'] . "' $target>";
+                }
+                print "<img src='" . file_create_url($collection[$field_id]->field_slide_image['und'][0]['uri']) . "' />";
+
+                if (array_key_exists('field_text_link', $collection[$field_id])) {
+                    print "</a>";
+                }
+            }
+            if (array_key_exists('field_slide_text', $collection[$field_id])) {
+                print "<div class='caption'>";
+
+                if (array_key_exists('field_text_link', $collection[$field_id])) {
+                    print "<a href='" . $collection[$field_id]->field_text_link['und'][0]['value'] . "' $target>";
+                }
+                print $collection[$field_id]->field_slide_text['und'][0]['value'];
+
+                if (array_key_exists('field_text_link', $collection[$field_id])) {
+                    print "</a>";
+                }
+                print "</div>";
+            }
             print "</div>";
         }
         ?>

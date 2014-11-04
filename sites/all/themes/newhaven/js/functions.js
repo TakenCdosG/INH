@@ -543,7 +543,7 @@ function search_boxes () {
 
 
 function slideshow_calendar() {
-    if ($('#slideshow_calendar .slide').size() > 1) {
+    if ($('.node-type-calendar #slideshow .slide').size() > 1) {
         console.log("-> Init");
         $('#slideshow_calendar').slides({
             play: 5000,
@@ -573,15 +573,15 @@ function slideshow_calendar() {
         });
     }
     else {
-        if ($("#slideshow_calendar .caption").size()) {
-            $("#slideshow_calendar .caption").animate({
-                bottom:15,
-                width:625,
+        if ($(".node-type-calendar #slideshow .caption").size()) {
+            $(".node-type-calendar #slideshow .caption").animate({
+                bottom:0,
+                width:972,
                 left:5
             },200);
         }
-        $("#slideshow_calendar .prev").hide();
-        $("#slideshow_calendar .next").hide();
+        $(".node-type-calendar #slideshow .prev").hide();
+        $(".node-type-calendar #slideshow .next").hide();
     }
 }
 
@@ -883,51 +883,51 @@ function initCustomMap(){
 					
     google.maps.event.addListener(marker, "click", function(){
         // alert('click');
-			
+
         /*var html= "<div class='div_class_style_tooltip' target='_blank'>"+
 										"<h2><a href='http://maps.google.com/maps?saddr=New+Haven+CT'>New Haven, Connecticut</a></h2>"+
 										"<div class='gmap-tooltip-general'>"+
 											"<p>EEUU</p>"+
 										"</div>"+
 									"</div>";
-							
+
 			                            marker.openInfoWindowHtml(html);
-										
+
 							});
-							
-								
-							
+
+
+
 							   GEvent.addListener(mymap.map, "infowindowopen", function(marker, overlay) {
-							   
+
 							   $('#hidePanel').trigger('click');
 								var nid= $(".gmap-tooltip-more").attr('myid');
 								$(".gmap-extra-info").hide();
-							   
+
 								   if(form_input_is_int(nid)){
 									gmap_customer_tooltip(nid,'');
 									$("#travel_div_8").css("display","none");
 								   }
-									
+
 								});
 								*/
-								
+
         /*GEvent.addListener(mymap.map, "click", function(marker, overlay) {
 									 if(overlay){
-							
+
 									 }else{
 									   if ($(".gmap-extra-info").is (':visible')){
-                                      
+
 									   }else{
-									    
+
 										  offsetCenter(mymap.map.getCenter(),0,-100,mymap.map)
-										
+
 									   }
 									 }
-									
+
 								});*/
-        }); 
-			
-//}); 
+        });
+
+//});
                         
 }
 
