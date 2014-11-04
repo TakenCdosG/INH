@@ -115,8 +115,16 @@ $node_slideshow = node_load($nid);
         }
         ?>
     </div>
+    <?php
+
+    if(count($node_slideshow->field_slideshow['und']) > 1){
+    ?>
+    
     <a href="#" class="prev"><img src="<?php print base_path() . path_to_theme(); ?>/img/calendar/arrow_prev.png" width="39" height="39" alt="Arrow Prev"></a>
     <a href="#" class="next"><img src="<?php print base_path() . path_to_theme(); ?>/img/calendar/arrow_next.png" width="39" height="39" alt="Arrow Next"></a>
+    <?php
+    }
+    ?>
 </div>
 <div class="internal">
     <div id="breadcrumb_calendar" class="calendar_show"><ul><li><a href="/">Home</a></li><li>&gt;</li><li><a href="/<?php print $breadcrumb; ?>" class="active">Calendar</a></li></ul></div>
