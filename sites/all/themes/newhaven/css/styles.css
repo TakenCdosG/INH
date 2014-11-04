@@ -1081,6 +1081,10 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
     left: 0px !important;
 }
 
+.node-type-calendar #page-wrapper{
+    padding-top: 0px;
+    margin-top: -1px;
+}
 .node-type-calendar .internal {
     margin: 24px 24px 24px 24px;
     min-width: 616px;
