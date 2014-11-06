@@ -11,7 +11,7 @@
     <p>INFONewHaven.com is a collaborative effort by Market New Haven</p>
     <p>and Town Green Special Services.</p>
     <p>INFO New Haven Visitor Center: 203-773-9494</p>
-    <p><a href="http://getlisted.infonewhaven.com/" target="_blank">List your New Haven business here!</a></p>
+    <p><a href="http://infonewhaven.com/content/get-listed" target="_blank">List your New Haven business here!</a></p>
 	<p><a href="http://portal.infonewhaven.com/infonewhavencalendar/calendar/" target="_blank">Click here to list your New Haven event!</a></p>
   </div>
 </div>
