@@ -13,6 +13,9 @@
   <a href="<?php print isset($twitter_link) ? url($twitter_link) : "#"; ?>" class="twitter" target="_blank">
     
   </a>
+  <a href="<?php print isset($twitter_link) ? url($twitter_link) : "#"; ?>" class="instagram" target="_blank">
+
+  </a>
   <div id="search-form">
     <form action="/content/search" method="get">
       <input id="google-searchbox" type="text" name="search" placeholder="What are you looking for?" />

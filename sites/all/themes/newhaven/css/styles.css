@@ -191,6 +191,8 @@ html, body {min-height:100%; height:100%; background-color:#e6eee5;}
 #header .facebook:hover {background-position:-22px;}
 #header .twitter {display:block; width:28px; height:26px; float:left; margin:20px 0 0 14px; background:url("../img/twitter_icon.png") no-repeat;}
 #header .twitter:hover {background-position:-28px;}
+#header .instagram {display:block; width:24px; height:23px; float:left; margin:20px 0 0 14px; background:url("../img/instagram.icon.png") no-repeat;}
+#header .instagram:hover {background-position:-24px;}
 #header .pinterest {display:block; width:24px; height:26px; float:left; margin:20px 0 0 16px; background:url("../img/pinterest_icon.png") no-repeat;}
 #header .pinterest:hover {background-position:-24px;}
 #header .youtube {display:block; width:24px; height:26px; float:left; margin:20px 0 0 15px; background:url("../img/youtube_icon.png") no-repeat;}

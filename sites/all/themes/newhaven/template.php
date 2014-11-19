@@ -342,6 +342,9 @@ function load_socials($n, &$vars) {
     if (count($n->field_twitter_link)) {
         $vars['twitter_link'] = $n->field_twitter_link['und'][0]['value'];
     }
+    if (count($n->field_twitter_link)) {
+      $vars['instagram_link'] = $n->field_twitter_link['und'][0]['value'];
+    }
     if (count($n->field_pinterest_link)) {
         $vars['pinterest_link'] = $n->field_pinterest_link['und'][0]['value'];
     }
