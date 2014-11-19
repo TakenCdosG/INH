@@ -13,7 +13,7 @@
   <a href="<?php print isset($twitter_link) ? url($twitter_link) : "#"; ?>" class="twitter" target="_blank">
     
   </a>
-  <a href="<?php print isset($twitter_link) ? url($twitter_link) : "#"; ?>" class="instagram" target="_blank">
+  <a href="<?php print isset($instagram_link) ? url($instagram_link) : "#"; ?>" class="instagram" target="_blank">
 
   </a>
   <div id="search-form">
