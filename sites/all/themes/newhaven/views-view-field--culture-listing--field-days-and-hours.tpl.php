@@ -27,7 +27,7 @@
 $first_day = "";
 			  $last_day = "";
 			  $last_hour = "";
-			  print '<div class="days_and_hours"><div class="item-list"><ul>';
+			  print '<div class="days_and_hours culture_listing"><div class="item-list"><ul>';
 			  foreach ($row->field_field_days_and_hours as $key => $item) {
 			   
 				$data = $item['rendered']['entity']['field_collection_item'][$item['raw']['value']];

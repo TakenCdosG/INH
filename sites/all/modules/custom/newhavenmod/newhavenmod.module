@@ -119,7 +119,7 @@ if($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_i
                 drupal_set_title(t("Culture"));
                 $_SESSION['field_email_notification_form'] = $global_node->field_email_notification_culture['und'];
                 $form['title form']=array(
-                    '#markup' => '<h2 class="form-item">Get Listed :: Culture</h2>',
+                    '#markup' => '<h2 class="form-item">Get Listed :: Arts</h2>',
                     '#weight' => '-1'
                 );
             }
@@ -150,6 +150,7 @@ if($form_id == 'dining_node_form' || $form_id == 'shopping_node_form' || $form_i
             }
 
             $form['actions']['submit']['#submit'][] = 'newhavenmod_submit';
+
         }
     }
 }
@@ -272,12 +273,13 @@ function validate_www($node,$form) {
 
 function validate_www_field($field, $name_field,$form) {
    // dsm($form);
-    if (strlen($field) > 0) {
+    // The client asked to remove the "www." validation because they had some urls that didn't have the trailing www.
+    /*if (strlen($field) > 0) {
         $curt_string = substr($field, 0, 4);
         if (!($curt_string == "www." || $curt_string == "WWW.")) {
             form_set_error($name_field, t($form[$name_field]['und']['#description']));
         }
-    }
+    }*/
 }
 
 function validate_email_field($email_address,$field_name){
@@ -536,6 +538,11 @@ function newhavenmod_page_alter(&$page) {
             $page["sidebar_right"] = array();
         }
         $page["sidebar_right"] += render_widgets($node);
+    }elseif(drupal_is_front_page()){
+        if (!array_key_exists("sidebar_left", $page)) {
+            $page["sidebar_left"] = array();
+        }
+        $page["sidebar_left"] += render_widgets($node);
     }
 }
 
@@ -2006,29 +2013,26 @@ function get_bar_right($right, $get_bar_right) {
 
     if (is_array($get_bar_right) && count($get_bar_right)) {
 
-        $render_menu_terms = "<div id='content-shopping-right' class='hidden-xs hidden-sm'>" . render($right) . "</div>";
+        $render_menu_terms = "<div id='sidebar-icon-content' class='hidden-xs hidden-sm'>" . render($right) . "</div>";
 
         $links = render_links_basic_page($get_bar_right);
 
         $html = "
-	<div id='content-menu-right-internal'>
+
 		<div id='div_nav_report_service_container' class='hidden-xs hidden-sm'>
-		    <div class='img-top hidden-xs hidden-sm' ></div>
+		    <div class='img-top' ></div>
 			     <div class='div_nav_report_service'>
 				    <input type='hidden' name='report-services-nav' id='report-services-nav' value='' />
                      <ul>
                     " . $links . "
                      </ul>
 			    </div>
-		     <div class='img-bottom hidden-xs hidden-sm'></div>
+		     <div class='img-bottom'></div>
 		</div>
 
-	  " . $render_menu_terms . "
-		
+	  " . $render_menu_terms
 
-	</div>
-
-	";
+	;
         return $html;
     }
 }

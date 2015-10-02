@@ -1,20 +1,40 @@
-#slideshow {
-	position:relative;
-	z-index:100;
+#slideshow{
+    padding:8px 0px 15px 0px;
+    background-color:#fff;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    width:100%;
+    margin-bottom:20px;
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow:0px 0px 5px rgba(0, 0, 0, 0.7);
+    box-shadow:0px 0px 5px rgba(0, 0, 0, 0.7);
+
+    position:relative;
+    z-index:100;
 }
 
+
+#slideshow h2 {
+    font:27px "Helvetica neue medium";
+    color:#446e23;
+    margin-bottom:10px;
+    text-align: center;
+}
+#slideshow .pagination {display:none;}
+
 #slideshow .next,#slideshow .prev {
-	position:absolute;
-	top:145px;
-	left:-17px;
-	width:24px;
-	height:43px;
-	display:block;
-	z-index:50;
+    position:absolute;
+    top:145px;
+    left:-17px;
+    width:24px;
+    height:43px;
+    display:none;
+    z-index:50;
 }
 
 #slideshow .next {
-	left:676px;
+    left:676px;
 }
 
 #home #slideshow .next{
@@ -26,57 +46,62 @@
 }
 
 #slideshow .slides_container {
-    width:640px;
+    width:100%;
     height:270px;
     overflow:hidden;
 }
 
 #slideshow .slides_container div.slide {
-	width:640px;
-    height:270px;
-    display:block;
-    overflow:hidden;
+    width: 44%;
+    height: 136px;
+    float: left;
+    position: relative;
+    margin: 0px 3%;
+}
+
+#slideshow .slides_container div.slide img{
+    width:100%;
 }
 
 #slideshow .slides_container div.caption {
-	z-index:500;
-	position:absolute;
-	bottom:-35px;
-	left:0;
-	height:30px;
-	padding:5px 20px 0 20px;
-	background:#000;
-	background:rgba(255,255,255,.8);
-	width:640px;
-	font-size:1.3em;
-	line-height:1.33;
-	color:#524a3f;
-	text-shadow:none;
-	font:18px "Helvetica neue medium";
+    z-index:500;
+    position:absolute;
+    left:0;
+    height:30px;
+    padding:5px 20px 0 20px;
+    background:#000;
+    background:rgba(255,255,255,.8);
+    width:100%;
+    font-size:1.3em;
+    line-height:1.33;
+    color:#524a3f;
+    text-shadow:none;
+    font:18px "Helvetica neue medium";
+    margin-top: -33px;
 }
 
 #slideshow .slides_container div.caption a {
-	color:#524a3f;
+    color:#524a3f;
 }
 
 /* Restaurant week top slideshow */
 #top-slideshow {
-	position:relative;
-	z-index:100;
+    position:relative;
+    z-index:100;
 }
 
 #top-slideshow .next,#top-slideshow .prev {
-	position:absolute;
-	top:106px;
-	left:-17px;
-	width:24px;
-	height:43px;
-	display:block;
-	z-index:50;
+    position:absolute;
+    top:106px;
+    left:-17px;
+    width:24px;
+    height:43px;
+    display:block;
+    z-index:50;
 }
 
 #top-slideshow .next {
-	left:973px;
+    left:973px;
 }
 
 #top-slideshow .slides_container {
@@ -86,8 +111,55 @@
 }
 
 #top-slideshow .slides_container div.slide {
-	width:972px;
+    width:972px;
     height:277px;
     display:block;
     overflow:hidden;
+}
+
+.node-type-calendar #slideshow, .page-calendar-day #slideshow{
+    padding: 0px 0px 0px 0px!important;
+    background-color: #fff!important;
+    -webkit-border-radius: 0px!important;
+    -moz-border-radius: 0px!important;
+    border-radius: 0px!important;
+    width: 100%!important;
+    margin-bottom: 20px!important;
+    -webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+}
+
+.node-type-calendar #slideshow .slides_container , .page-calendar-day #slideshow .slides_container  {
+    max-width: 972px!important;
+    width: 100%!important;
+    overflow: hidden;
+    height: inherit;
+}
+
+.node-type-calendar #slideshow .slides_container div.slide, .page-calendar-day #slideshow .slides_container div.slide {
+    width: 100%!important;
+    display: block!important;
+    overflow: hidden;
+    margin: 0px auto;
+    height: inherit;
+}
+
+.node-type-calendar #slideshow .next, .node-type-calendar  #slideshow .prev, .page-calendar-day #slideshow .next, .page-calendar-day #slideshow .prev {
+    position: absolute;
+    top: 129px!important;
+    left: 12px!important;
+    width: 39px!important;
+    height: 39px!important;
+    display: block!important;
+    z-index: 50!important;
+}
+
+.node-type-calendar #slideshow .next, .page-calendar-day #slideshow .next{
+    left: 920px!important;
+}
+
+
+.node-type-calendar #slideshow .next, .page-calendar-day #slideshow .next{
+    left: 920px!important;
 }

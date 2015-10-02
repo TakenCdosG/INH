@@ -1,22 +1,22 @@
 /* Helvetica neue light */
 @font-face {
     font-family: 'Helvetica neue light';
-    src: url('helvetnl.eot');
+    src: url('../fonts/helvetnl.eot');
     src: url('../fonts/helvetnl.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/helvetnl.woff') format('woff'),
-        url('../fonts/HELVETNL.TTF') format('truetype'),
-        url('../fonts/helvetnl.svg#helvetica_neuelight') format('svg');
+    url('../fonts/helvetnl.woff') format('woff'),
+    url('../fonts/HELVETNL.TTF') format('truetype'),
+    url('../fonts/helvetnl.svg#helvetica_neuelight') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 /* Helvetica neue medium*/
-@font-face { 
+@font-face {
     font-family: 'Helvetica neue medium';
     src: url('../fonts/helvetnm.eot');
     src: url('../fonts/helvetnm.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/helvetnm.woff') format('woff'),
-        url('../fonts/HELVETNM.TTF') format('truetype'),
-        url('../fonts/helvetnm.svg#helvetica_neuemedium') format('svg');
+    url('../fonts/helvetnm.woff') format('woff'),
+    url('../fonts/HELVETNM.TTF') format('truetype'),
+    url('../fonts/helvetnm.svg#helvetica_neuemedium') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -25,9 +25,9 @@
     font-family: 'Helvetica neue bold';
     src: url('../fonts/helvetn1.eot');
     src: url('../fonts/helvetn1.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/helvetn1.woff') format('woff'),
-        url('../fonts/HELVETN1.TTF') format('truetype'),
-        url('../fonts/helvetn1.svg#helvetica_neuebold') format('svg');
+    url('../fonts/helvetn1.woff') format('woff'),
+    url('../fonts/HELVETN1.TTF') format('truetype'),
+    url('../fonts/helvetn1.svg#helvetica_neuebold') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -36,9 +36,9 @@
     font-family: 'Helvetica neue roman';
     src: url('../fonts/helvetnr.eot');
     src: url('../fonts/helvetnr.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/helvetnr.woff') format('woff'),
-        url('../fonts/HELVETNR.TTF') format('truetype'),
-        url('../fonts/helvetnr.svg#helvetica_neueroman') format('svg');
+    url('../fonts/helvetnr.woff') format('woff'),
+    url('../fonts/HELVETNR.TTF') format('truetype'),
+    url('../fonts/helvetnr.svg#helvetica_neueroman') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -47,9 +47,9 @@
     font-family: 'Helvetica neue italic';
     src: url('../fonts/helvetni.eot');
     src: url('../fonts/helvetni.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/helvetni.woff') format('woff'),
-        url('../fonts/HELVETNI.TTF') format('truetype'),
-        url('../fonts/helvetni.svg#helvetica_neueitalic') format('svg');
+    url('../fonts/helvetni.woff') format('woff'),
+    url('../fonts/HELVETNI.TTF') format('truetype'),
+    url('../fonts/helvetni.svg#helvetica_neueitalic') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -58,12 +58,17 @@
     font-family: 'Din bold';
     src: url('../fonts/din-bold.eot');
     src: url('../fonts/din-bold.eot?#iefix') format('embedded-opentype'),
-        url('../fonts/din-bold.woff') format('woff'),
-        url('../fonts/din-bold.ttf') format('truetype'),
-        url('../fonts/din-bold.svg#dinbold') format('svg');
+    url('../fonts/din-bold.woff') format('woff'),
+    url('../fonts/din-bold.ttf') format('truetype'),
+    url('../fonts/din-bold.svg#dinbold') format('svg');
     font-weight: normal;
     font-style: normal;
 }
+
+a:hover, a:focus{
+    text-decoration: none !important;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -77,7 +82,15 @@ html, body, div, span, applet, object, iframe,h1, h2, h3, h4, h5, h6, p, blockqu
     vertical-align: baseline;
 }
 
-* {box-sizing:content-box;}
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -104,20 +117,17 @@ table {
     border-spacing: 0;
 }
 
-div#wrapper{
-    /* Set rules to fill background */
-    min-height: 100%;
-    /*min-width: 1024px;*/
+div.messages{
+    padding: 10px 10px 28px 50px;
+    float: left;
+    width: 100%;
+}
 
-    /* Set up proportionate scaling */
-    /*width: 100%;*/
-    height: auto;
-
-    /* Set up positioning */
-    /*position: fixed;*/
-    top: 0;
-    left: 0;
-    /*z-index:-3;*/
+#wrapper{min-height:100%;
+    height:auto !important;
+    position:relative;
+    z-index:2;
+    overflow:hidden;
 }
 
 @media screen and (max-width: 1024px) { /* Specific to this particular image */
@@ -152,20 +162,27 @@ select {font:11px/16px Verdana, Geneva, sans-serif; color:#3d3d3d;}
 
 /* -Other stuff- */
 * {font-weight:normal; text-decoration:none; border:none;}
-a {color:#025e7c; cursor:pointer;}
+a {
+    color:#025e7c;
+    cursor:pointer;
+}
 
-a, a:active, a:hover, a:visited
-{
+a, a:link, a:active, a:hover, a:visited, a:focus {
     color:#578533;
 }
-.page-node-57025 a,.page-node-57025 a:active,.page-node-57025 a:hover, a:visited
+
+.page-node-57025 a,.page-node-57025 a:active,.page-node-57025 a:hover,.page-node-57025 a:visited
 {
     color:#106CB7;
 }
 
-
 i {font-style:italic!important;}
-b, strong {font-weight:bold!important;font-family: "Helvetica neue bold"; word-spacing:0 !important;}
+b, strong {
+    font-weight:bold!important;
+    font-family: "Helvetica neue bold";
+    word-spacing:0 !important;
+    color: #578533;
+}
 article ul {list-style-type:disc; padding-left:20px; list-style-position:outside;}
 /* -Clear Focus- */
 :focus {outline:0;}
@@ -173,102 +190,531 @@ article ul {list-style-type:disc; padding-left:20px; list-style-position:outside
 /* Website */
 html, body {min-height:100%; height:100%; background-color:#e6eee5;}
 .bg-img {position:absolute; top:0; left:0; height:100%; z-index:-1;}
-#wrapper {min-height:100%; height:auto !important; position:relative; /*padding-bottom:265px;*/ z-index:2; overflow:hidden;}
-#top-header {width:100%; height:25px; padding:5px 0 3px 0; position:absolute; background:url("../img/top-bg.png") repeat-x; font:11px "Helvetica neue bold"; text-transform:uppercase;}
-#top-header .menu {margin:0 auto; text-align:center;}
-#top-header .menu li {display:inline-block; margin-right:3px;}
-#top-header .menu li a {color:#fff;}
-#page-wrapper {width:972px; margin:0 auto; padding-top:30px; background-color:#fff; border-left:1px solid #aeaaa6; border-bottom:1px solid #44413e; border-right:1px solid #b3afab;}
-#page-wrapper.homepage {border:none;}
-#header-wrapper {background-color:transparent; padding-top:27px; margin:0; width:100%;}
-#header-wrapper.homepage {background-color:rgba(255, 255, 255, .4);}
-#header {background-color:#fff; width:972px; margin:0 auto; border-left:1px solid #aeaaa6; border-right:1px solid #b3afab;}
-#header .first-line {height:65px;}
-#header .second-line {height:62px; background:url("../img/menu-bg.png") repeat-x;}
-#logo {display:block; padding:16px 0 0 25px; float:left; width:377px;}
-#header .parking {display:block; width:48px; height:54px; float:left; margin:7px 0 0 54px;}
-#header .facebook {display:block; width:22px; height:26px; float:left; margin:20px 0 0 46px; background:url("../img/facebook_icon.png") no-repeat;}
-#header .facebook:hover {background-position:-22px;}
-#header .twitter {display:block; width:28px; height:26px; float:left; margin:20px 0 0 14px; background:url("../img/twitter_icon.png") no-repeat;}
-#header .twitter:hover {background-position:-28px;}
-#header .instagram {display:block; width:24px; height:23px; float:left; margin:20px 0 0 14px; background:url("../img/instagram.icon.png") no-repeat;}
-#header .instagram:hover {background-position:-24px;}
-#header .pinterest {display:block; width:24px; height:26px; float:left; margin:20px 0 0 16px; background:url("../img/pinterest_icon.png") no-repeat;}
-#header .pinterest:hover {background-position:-24px;}
-#header .youtube {display:block; width:24px; height:26px; float:left; margin:20px 0 0 15px; background:url("../img/youtube_icon.png") no-repeat;}
-#header .youtube:hover {background-position:-24px;}
-#header .second-line .menu li {display:inline-block; width:322px; font:30px "Helvetica neue roman"; word-spacing:-4px; text-transform:capitalize; margin:0 0 0 -3px; padding:0 0 0 2px; text-align:center; background:url("../img/menu-separator.png") no-repeat top left; position:relative;}
-#header .second-line .menu li.first {background:none;}
-#header .second-line div.content > .menu > li > a {display:block; height:46px; color:#fff; padding:13px 0 0 0;}
-#header .second-line div.content > .menu > li > a.active, #header .second-line div.content > .menu > li:hover > a {background:url("../img/menu-active-bg.jpg") repeat-x;}
-#header .second-line .menu .dropdown-wrapper {display:none; position:absolute; background:#7AA955; width:322px; padding-bottom:15px; z-index:150; top:57px;}
-#header .second-line .menu .drop-arrow {width:15px; height:13px;  position:absolute; top:30px; left:150px;}
-#header .second-line .menu .menu {background:#7AA955; width:282px; margin:30px 20px 20px 20px;display:none;}
-#header .second-line .menu .menu li {border-left:none; padding-left:9px; font-size:26px; display:block; width:inherit; text-align:left; background:none;}
-#header .second-line .menu .menu li a {height:auto; padding:3px 0; font-size:20px; color:#fff;}
-#header .second-line .menu .menu li a:hover, #header .second-line .menu .menu li > a.active {background:none;}
-#header #search-form {margin:20px 0 0 41px; float:left;} /*120px*/
-#header #search-form #google-searchbox {border:1px solid #cecece; vertical-align:top; width:179px; height:20px; padding-left:4px; font:13px "Helvetica neue roman"; word-spacing:-4px;}
-#header #search-form #google-submit {background:url("../img/search_icon.png") no-repeat center center; width:30px; height:26px; box-sizing:border-box;}
-#breadcrumb {margin:35px 0 12px 52px;}
-#breadcrumb, #breadcrumb a {font:12px "Helvetica neue roman"; color:#514a3e;}
-#breadcrumb:after {display:block; content:""; clear:both;}
-#breadcrumb li {float:left; margin:0 6px 0 0;}
-#sidebar-left {width:270px; float:left; }
-#sidebar-right {width:270px; margin-left:20px; height:100%; float:right; margin-right:29px;}
-.sidebar-icon {background:url("../img/widget_bg.png") no-repeat; width:267px; height:97px; margin-bottom:22px;}
-.sidebar-icon a {display:block; color:#FFF; padding:25px 0 0 25px; height:72px; font:36px/40px "Helvetica neue light";}
-.sidebar-icon .icon {min-width:48px; max-width:48px; margin-right:8px; vertical-align:middle; float:left;}
 
-.sidebar-icon:hover {background:url("../img/widget_bg_hover.png") no-repeat; width:267px; height:97px; margin-bottom:22px;}
-
-
-#sidebar-right #content-menu-right-internal  #div_nav_report_service_container #content-shopping-right div.widget{
-    height: 60px;
+#top-header{
+    height:30px;
+    padding:0px;
+    background: #4C782A;
+    font:11px "Helvetica neue bold";
+    text-transform:uppercase;
+    position: relative;
+    z-index: 10;
+}
+#top-header .menu{
+    margin:0 auto;
+    text-align:center;
+    padding-bottom: 8px;
 }
 
-#footer {min-height:170px; height: 100%; background:#4c782a url("../img/footer-bg.png") repeat-x top left; padding:15px 0 15px 0; width:100%; /*position:absolute;*/ margin-top: 41px;}
-#footer .content {width:972px; margin:0 auto;}
-#footer .content:after {display:block; content:''; clear:both;}
-#footer > .content > .menu > li {float:left;}
-#footer > .content > .menu > li.last {padding-right:0;}
+#top-header .menu li a{
+    color:#fff;
+}
+#top-header .menu li a:hover{
+    background: none;
+}
+.navbar-toggle{
+    background: url('../img/toggle_icon.png') no-repeat;
+    width: 20px;
+    height: 16px;
+    margin:0px 6px 0px 0px;
+}
+.navbar{
+    border: 0px;
+    background-color:#4C782A ;
+    min-height: 30px;
+    border-radius: 0px;
+    margin-bottom: 0px;
+}
+
+.navbar-collapse{
+    margin: 0px 50px;
+    border-top: 0px solid transparent;
+    -webkit-box-shadow: inset 0 0px 0 rgba(255,255,255,.1);
+    box-shadow: inset 0 0px 0 rgba(255,255,255,.1);
+}
+
+.navbar-header{
+    margin-top: 4px;
+}
+
+#page-wrapper .cont_page_wrapper .cc_pw{
+    width: 100%;
+    margin: 0px auto;
+    max-width: 974px;
+}
+
+#page-wrapper .cont_page_wrapper .c_pw{
+    background-color:#fff;
+    width: 100%;
+    float: left;
+}
+
+
+#header-wrapper.homepage{
+    background-color:rgba(255, 255, 255, .4);
+}
+
+#header .first-line{
+    background-color:#fff;
+    float: left;
+    width: 100%;
+}
+
+#logo {
+    display:block;
+    padding:16px 15px 16px 15px;
+}
+#logo img{
+    margin:0px auto;
+}
+#header .parking{
+    display:inline-block;
+    width:36px;
+    height:47px;
+    margin:7px 0 0 0px;
+}
+#header .facebook  {
+    display:inline-block;
+    width:22px;
+    height:26px;
+    margin:20px 0 0 0px;
+    background:url("../img/facebook_icon.png") no-repeat;
+}
+#header .facebook:hover {
+    background-position:-22px;
+}
+#header .twitter {
+    display:inline-block;
+    width:28px;
+    height:26px;
+    margin:20px 0 0 14px;
+    background:url("../img/twitter_icon.png") no-repeat;
+}
+#header .twitter:hover {
+    background-position:-28px;
+}
+#top-header .facebook{
+    margin-right: 10px;
+    float: right;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    background:url("../img/facebook_blank.png") no-repeat;
+    width: 19px;
+    height: 18px;
+    margin-right: 10px;
+}
+#top-header .twitter{
+   margin-right: 10px;
+    float: right;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    background:url("../img/twitter_blank.png") no-repeat;
+    width: 23px;
+    height: 19px
+}
+
+#top-header .instagram{
+   margin-right: 50px;
+    float: right;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    background:url("../img/INH_instagram.png") no-repeat;
+    width: 23px;
+    height: 19px
+}
+
+#top-header .parking{
+    margin-right: 10px;
+    float: right;
+    margin-top: 0px;
+    margin-bottom: 2px;
+    background:url("../img/parking_blank.png") no-repeat;
+    width: 20px;
+    height: 20px
+}
+#header .pinterest {
+    display:block;
+    width:24px;
+    height:26px;
+    float:left;
+    margin:20px 0 0 16px;
+    background:url("../img/pinterest_icon.png") no-repeat;
+}
+#header .pinterest:hover {
+    background-position:-24px;
+}
+#header .youtube {
+    display:block;
+    width:24px;
+    height:26px;
+    float:left;
+    margin:20px 0 0 15px;
+    background:url("../img/youtube_icon.png") no-repeat;
+}
+#header .youtube:hover {
+    background-position:-24px;
+}
+#header .social_icons{
+    float: left;
+}
+#header #search-form{
+    margin:20px 0 0 10%;
+    display: inline-block;
+    width: 56%;
+}
+#header #search-form #google-searchbox{
+    border:1px solid #cecece;
+    vertical-align:top;
+    width:75%;
+    height:20px;
+    padding-left:4px;
+    font:12px "Helvetica neue roman";
+    word-spacing:-4px;
+}
+#header #search-form #google-submit {
+    background:url("../img/search_icon.png") no-repeat center center;
+    width:24px;
+    height:26px;
+    box-sizing:border-box;
+}
+#header .second-line{
+    float: left;
+    width: 100%;
+    box-shadow: 0 1px 2px 0px #333;
+    margin-bottom: 2px;
+}
+
+.front  #header .second-line{
+    margin-bottom: 0px;
+}
+
+#header .second-line > ul> li{
+    border-bottom:  #669045 1px solid;
+}
+#header .second-line ul li {
+    font:30px "Helvetica neue roman";
+    word-spacing:-4px;
+    text-transform:capitalize;
+    margin:0px;
+    padding:0px;
+    text-align:center;
+    background-color: #578533;
+    position:relative;
+    list-style: none;
+
+}
+#header .second-line ul li.last {
+    padding-bottom: 2px;
+    border-bottom: none;
+}
+#header .second-line > ul > li:hover{
+    background-color: #7AA955;
+}
+#header .second-line ul li ul{
+    display: none;
+    position:absolute;
+    background:#7AA955;
+    width:100%;
+    padding:30px 20px 20px 20px;
+    z-index:150;
+    border-radius: 0px;
+    background:#7AA955;
+    -webkit-box-shadow: 0 0px 0px rgba(0,0,0,0);
+    box-shadow: 0 0px 0px rgba(0,0,0,0);
+    margin-top: 0px;
+    border: none;
+}
+
+#header .second-line ul li ul li {
+    border-left:none;
+    padding-left:9px;
+    font-size:26px;
+    display:block;
+    width:inherit;
+    text-align:left;
+    background:none;
+}
+#header .second-line ul li ul li a {
+    height:auto;
+    padding:3px 0;
+    font-size:20px;
+    color:#fff;
+}
+#header .second-line > ul> li > a {
+    display: block;
+    color: #fff;
+    padding: 6px 0 6px 0;
+    border-radius: 0px;
+    font-size: 20px;
+}
+
+#header .second-line > ul > li:hover ul{
+    display: block;
+}
+
+#breadcrumb ul {
+    margin: 25px 0 30px 20px;
+}
+#breadcrumb, #breadcrumb a {
+    font:12px "Helvetica neue roman";
+    color:#514a3e;
+}
+#breadcrumb:after {
+    display:block;
+    content:"";
+    clear:both;
+}
+#breadcrumb li {
+    margin:0 4px 0 0;
+    display: inline-block
+}
+
+#sidebar-left {
+    max-width:270px;
+    margin: 0px auto;
+}
+
+#sidebar-right {
+   max-width: 295px;
+}
+
+.sidebar-icon {
+    width: 100%;
+    height: 85px;
+    margin-bottom: 9px;
+    border: 3px #fff solid;
+    border-radius: 5%;
+    background-color: #7FB059;
+    box-shadow: 0px 0px 12px #333;
+}
+.sidebar-icon:last-child {
+    margin-bottom: 25px;
+}
+.sidebar-icon a {
+    display:block;
+    color:#FFF;
+    padding:18px 0 0 18px;
+    font:32px/40px "Helvetica neue light";
+}
+.sidebar-icon .icon {
+    min-width:40px;
+    max-width:48px;
+    margin-right:8px;
+    vertical-align:middle;
+    float:left;
+}
+
+.sidebar-icon:hover {
+    background-color:#578533;
+}
+
+
+
+#cfooter{
+
+    min-height:170px;
+    height: 100%;
+    background:#4c782a url("../img/footer-bg.png") repeat-x top left;
+    padding:15px 0 54px 0;
+}
+
+#footer {
+    width: 100%;
+    margin: 0px auto;
+    max-width: 974px;
+}
+
+#footer .menu_footer:after {display:block; content:''; clear:both;}
+#footer > .menu_footer > .menu > li {float:left;}
+#footer > .menu_footer > .menu > li.last {padding-right:0;}
 #footer .menu li {list-style-type:none; list-style-image:none; text-transform:uppercase; margin:0;}
-#footer .menu li a {font:12px "Helvetica neue medium"; color:#fff;}
-#footer .content > .menu > li{padding:0;}
-#footer .content > .menu > li.last{margin-left:21px;}
-#footer .content > .menu > li > a {font:14px "Din bold"; color:#b8df99;}
-#footer .copyright, #footer .copyright a{text-align:right; font:11px/22px "Helvetica neue medium"; color:#fff;}
+#footer .menu li a {font:8px "Helvetica neue medium"; color:#fff;}
+#footer .menu_footer > .menu > li{padding:0;margin-left:10px;}
+#footer .menu_footer > .menu > li.first{margin-left:0px;}
+#footer .menu_footer > .menu > li > a {font:12px "Din bold"; color:#b8df99;}
+#footer .copyright, #footer .copyright a{text-align:right; font:10px/22px "Helvetica neue medium"; color:#fff;}
 #footer .town_green {margin-right:10px; padding-top:4px;}
-#footer .market {margin-right:136px; padding:4px 0 20px 0;}
+#footer .market {margin-right:90px; padding:4px 0 0px 0;}
 #footer .market:after {display:block; content:''; clear:right;}
 
 /* Homepage */
-#page-wrapper.homepage {background-color:transparent;}
-#page-wrapper.homepage #main-wrapper #content {width:675px; padding-left:15px; float:right;}
+
+#fotorama_home h2 {
+    font: 29px "Helvetica neue medium";
+    color: #446e23;
+    margin-bottom: 10px;
+}
+#fotorama_home{
+    padding: 8px 15px 15px 15px;
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    width: 100%;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+
+}
+#fotorama_home .caption{
+    z-index: 500;
+    height: 30px;
+    padding: 5px 20px 0 20px;
+    background-color: #CDDFEF !important;
+    opacity: 0.8 !important;
+    width: 100%;
+    font-size: 1.3em;
+    line-height: 1.33;
+    color: #524a3f;
+    text-shadow: none;
+    font: 18px "Helvetica neue medium";
+    margin-top: -32px;
+}
+
+#fotorama_home .caption a{
+    color: #524a3f;
+}
+#fotorama_home_init{
+    height: 264px;
+    overflow: hidden;
+}
+#fotorama_home .next{
+    position: absolute;
+    top: 153px;
+    right: -36px;
+}
+
+#fotorama_home .prev{
+    position: absolute;
+    top: 153px;
+    left: -16px;
+}
+
+#fotorama_home .slide{
+    width: 46%;
+    display: inline-block;
+    margin: 0px 2%;
+    min-height: 50%;
+}
+#fotorama_home .slide img{
+    width: 100%;
+}
+
+#fotorama_home .arrow{
+    display: none;
+}
+
+#page-wrapper.homepage{
+    margin-top: 30px;
+}
+
 #page-wrapper.homepage:after {content:''; display:block; clear:both;}
-#home_wrapper {width:675px;}
-#slideshow {padding:8px 15px 15px 15px; background-color:#fff; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; width:646px; margin-bottom:20px; -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7); -moz-box-shadow:0px 0px 5px rgba(0, 0, 0, 0.7); box-shadow:0px 0px 5px rgba(0, 0, 0, 0.7);}
-#slideshow h2 {font:34px "Helvetica neue medium"; color:#446e23; margin-bottom:10px;}
-#slideshow .pagination {display:none;}
-#home-tabs {padding:4px 12px 12px 12px; background-color:#fff; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; width:652px; margin-bottom:20px; -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7); -moz-box-shadow:0px 0px 5px rgba(0, 0, 0, 0.7); box-shadow:0px 0px 5px rgba(0, 0, 0, 0.7);}
+
+
+
+#page-wrapper.homepage .cont_page_wrapper .cc_pw{
+    max-width: 976px;
+}
+
+#page-wrapper.homepage .cont_page_wrapper .c_pw{
+    border: none;
+    background-color:transparent;
+}
+
+
+#page-wrapper.homepage #main-wrapper #content{
+   margin:25px auto 0px auto;
+    max-width: 270px;
+}
+
+#home-tabs {
+    padding:4px 12px 12px 12px;
+    background-color:#fff;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    margin-bottom:30px;
+    -webkit-box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow:0px 0px 5px rgba(0, 0, 0, 0.7);
+    box-shadow:0px 0px 5px rgba(0, 0, 0, 0.7);
+    width: 100%;
+}
+
+#tabs-headers{
+    height: 150px;
+}
+
 #home-tabs:after {display:block; content:''; clear:both;}
-#home-tabs h3 {font:20px/24px "Helvetica neue roman"; color:#c3c3c3; word-spacing:-3px; border-bottom:1px solid #ebede9; border-left:1px solid #ebede9; text-align:center; float:left; width:215px;}
-#home-tabs h3 a {color:#c3c3c3; display:block; width:inherit;}
-#home-tabs h3.active {border-bottom-color:#c8c8c8; background:#ebede9 url("../img/active-tab-bg.png") repeat-x bottom left;}
-#home-tabs h3.active, #home-tabs h3.active a {color:#578533;}
-#home-tabs div h3:first-child {border-left:none;}
-#home-tabs h3 strong {font-size:30px; font-weight:normal; text-transform:uppercase;}
+
+#home-tabs h3 {
+    font:17px/17px "Helvetica neue roman";
+    color:#c3c3c3; word-spacing:-3px;
+    border-bottom:1px solid #ebede9;
+
+    text-align:center;
+}
+
+#home-tabs h3 a {
+    color:#c3c3c3;
+    width:inherit;
+}
+
+#home-tabs h3.active {
+    border-left: 1px #ebede9 solid;
+    border-bottom: 1px #ebede9 solid;
+    border-right: 1px #ebede9 solid;
+    background:#ebede9 url("../img/active-tab-bg.png") repeat-x bottom left;
+}
+
+#home-tabs h3.active, #home-tabs h3.active a {
+    color:#578533
+;}
+
+
+#home-tabs h3 strong {
+    font-size:20px;
+    font-weight:normal;
+    text-transform:uppercase;
+}
 #home-tabs #town-tab h4, #home-tabs #news-tab h4 {font:14px "Helvetica neue bold"; color:#578533; text-transform:uppercase;}
 #home-tabs #town-tab {
     padding-top: 10px;
 }
+#video-tab{
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+#video-tab-header.col-xs-12{
+    padding:8px 0px 9px 0px !important;
+}
 
+#video-tab{
+    padding-top:20px;
+    padding-bottom:8px;
+}
 
+#tabs-content #video-tab div.field-item iframe{
+    width: 206px !important;
+}
+
+#tabs-content #video-tab div.field-item{
+    display: inline-block;
+    margin: 3px;
+}
+
+#tabs-content #video-tab div.field-items{
+    text-align: center;
+}
+
+.home_widgets{}
 #home-tabs #town-tab div.date, #home-tabs #news-tab div.date, #news-tab .date-display-single {font:14px "Helvetica neue bold"; color:#524a3f;}
 #home-tabs #town-tab p{font:14px "Helvetica neue roman"; color:#524a3f; margin-bottom:12px;}
 #home-tabs #news-tab p, #home-tabs #news-tab .field-content {font:14px "Helvetica neue roman"; color:#524a3f; margin-bottom:0px;padding-right: 10px;}
 #home-tabs #town-tab a, #home-tabs #news-tab a {color:#578533; font:14px 'Helvetica neue bold'; text-decoration: none;}
-#news-tab .col-1 { width: 345px; }
+
+
+
 .page-node-1070 .view-content .views-row, .page-node-29171 .view-content .views-row { border:none; padding: 0px; }
 .page-node-1070 .view-content .views-row:after, .page-node-29171 .view-content .views-row:after{ clear: none;  }
 .page-node-1070 .views-field-field-publication, .page-node-29171 .views-field-field-publication, #news-tab .views-field-field-publication { margin-top: 20px;  }
@@ -284,36 +730,62 @@ html, body {min-height:100%; height:100%; background-color:#e6eee5;}
 }
 
 #home-tabs #town-tab a.underline{text-decoration:underline;}
-#tabs-content {margin-top:55px; padding:5px;}
-#tabs-content > div {display:none; position:relative; overflow:hidden;}
-#tabs-content div:first-child {display:block;}
+#tabs-content {
+    padding:5px;
+}
+
+#tabs-content > div {
+    display:none;
+    position:relative;
+}
+
+#tabs-content div:first-child {
+    display:block;
+
+}
 #tabs-content p {font-family:"Helvetica neue roman"; color:#c3c3c3; word-spacing:-4px;}
 #home .home_widgets.one {width:675px; overflow:hidden;}
 #home .home_widgets p {background-color:#fff; font:14px/18px "Helvetica neue roman"; word-spacing:-4px; padding:3px;}
 #home .home_widgets.two .field-items div {float:left; width:320px; margin-left:34px; overflow:hidden;}
 #home .home_widgets.two .field-items div:first-child {margin-left:0;}
-div#calendar-tab-wrapper, div#news-wrapper {width:642px; position:relative; overflow:hidden;}
-#tabs-content div.calendar-tab-item{display:block; float:left; margin-left:20px; position:relative; overflow:hidden;}
+
+#tabs-content div.calendar-tab-item{
+    display:block;
+    position:relative;
+    overflow:hidden;
+}
 #tabs-content div.first-item{margin-left:0px;}
-#tabs-content div.calendar-tab-item-title{display:block; padding-top:13px; margin-bottom:13px; clear:both; font-family:"Helvetica neue bold"; font-size:14px; color:#524a3f;}
-#tabs-content div.calendar-tab-item-img{display:block; width:90px; float:left; margin-right:13px;}
-#tabs-content div.calendar-tab-item-text{display:block; width:187px; font-family:"Helvetica neue medium"; font-size:12px; color:#858483;}
-#tabs-content div#calendar-tab-link, #tabs-content div#news-tab-link{display:block; width:642px; margin-top:20px;}
+#tabs-content div.calendar-tab-item-title a { display:block; padding-top:13px; margin-bottom:13px; clear:both; font-family:"Helvetica neue bold"; font-size:14px; color:#524a3f; text-decoration: none; }
+#tabs-content div.calendar-tab-item-img{
+    display:block;
+    margin-right:13px;
+}
+
+#tabs-content div.calendar-tab-item-text, #tabs-content div.calendar-tab-item-text a{
+     display:block;
+     font-family:"Helvetica neue medium";
+     font-size:12px;
+     color:#858483;
+     word-spacing: 1px;
+ }
+
+#tabs-content div#calendar-tab-link, #tabs-content div#news-tab-link{
+    display:inline-block;
+    margin-top:20px;
+}
 #tabs-content div#news-tab-link {margin-left:10px;}
 #tabs-content div#calendar-tab-link a, #tabs-content div#news-tab-link a {font-family:"Helvetica neue bold"; font-size:14px; color:#578533; text-decoration:none; text-transform:uppercase;}
 #news-tab .column, #town-tab .column {margin-top:10px; float:left; font-size:14px; width:290px; display:block; padding:0 10px;}
-
-/* Internal pages */
-/* Internal pages */
-.internal {
-    margin:0 0 24px 48px;
-    min-width:616px;
-    max-width:900px;
+#twitter-widget-0{
+    box-shadow: 0px 0px 12px #333;
+    border-radius: 5px;
 }
+/* Internal pages */
+.internal {padding: 0px 20px 20px 0px;}
 
 .internal h2 {
     color:#578533;
-    font:60px "Helvetica neue light";
+    font:45px/45px "Helvetica neue light";
     word-spacing:-10px;
     margin-bottom:26px;
 }
@@ -321,7 +793,36 @@ div#calendar-tab-wrapper, div#news-wrapper {width:642px; position:relative; over
 .internal .content {font:14px/20px "Helvetica neue roman"; word-spacing:-3px; color:#514a3e;}
 
 /* Search pages */
-.search {width:620px; min-height: 300px; /*300px*/ margin-left:32px; padding:22px 0 0 0; background:url("../img/search-bg.png") repeat-x top left;}
+.search {
+    min-height: 300px;
+    padding: 22px 0 0 0;
+    background:url("../img/search-bg.png") repeat-x top left;
+}
+.view-dining-listing .logo,.view-shopping-listing .logo,.view-culture-listing .logo{
+    display: none;
+}
+.view-dining-listing span,.view-shopping-listing span,.view-culture-listing span{
+    margin-right: 5px;
+}
+.views-exposed-form .views-exposed-widget{
+    float: inherit;
+}
+#edit-submit-culture-listing, #edit-submit-dining-listing{
+
+}
+.views-exposed-form  .views-reset-button{
+    margin-left: 120px;
+    margin-top: -57px;
+}
+
+.node-type-dining-listing #main-wrapper .col-md-8,.node-type-culture-listing #main-wrapper .col-md-8,.node-type-shopping-listing #main-wrapper .col-md-8{
+    padding: 0px;
+}
+
+.internal.dining,.internal.culture, .internal.shopping {
+   padding: 0px 20px 20px 20px
+}
+
 .search h3 {color:#578533; font:22px "Helvetica neue medium"; margin:0 0 0 15px;}
 .search h5 {color:black; font:12px "Helvetica neue medium"; margin:0 0 22px 15px;padding-top: 4px;}
 .search p {font:14px "Helvetica neue roman"; color:#2f2f2f; word-spacing:-2px;}
@@ -332,12 +833,19 @@ div#calendar-tab-wrapper, div#news-wrapper {width:642px; position:relative; over
 .view-content .views-field-title{ min-width: 300px;}
 .search input[type=button], .search input[type=submit] {height:31px; width:102px; background:url("../img/buttons-bg.png") no-repeat; font:18px "Din bold"; color:#fff; text-transform:uppercase; padding:0 0 5px 0;}
 .views-exposed-form {width:625px;}
+
 .search .view-filters {margin-left:15px;}
 .search .view-empty {margin:30px 15px;}
-.search .view-content {margin-top:60px; background:url("../img/search-bg.png") repeat-x; padding-top:20px; font:12px "Helvetica neue roman"; color:#373737; }
+
+.search .view-content {
+    margin-top:60px;
+    background:url("../img/search-bg.png") repeat-x;
+    padding-top:-10px;
+    font:12px "Helvetica neue roman";
+}
 .search-header {margin:0 15px 20px 15px; border-bottom:1px solid #c4c4c4;}
-.search .search-header h3 {margin:0 0 10px 0;}
-.search .search-header p {margin:6px 20px 0 0;}
+.search .search-header h3 {margin:10px 0;}
+.search .search-header p {margin:16px 20px 0 0;}
 .search-header:after {display:block; content:''; clear:both;}
 .filter {color:#578533; text-decoration:underline;}
 .view-content .views-row {border-bottom:1px solid #c4c4c4; padding:20px 0;}
@@ -346,14 +854,37 @@ div#calendar-tab-wrapper, div#news-wrapper {width:642px; position:relative; over
 .view-content h4 {font:22px "Helvetica neue bold"; color:#626262;}
 .view-content a, .view-content .p_public {color:#578533; text-decoration:underline;}
 
-.view-content .cuisine, .view-content .category  {font:14px "Helvetica neue italic"; color:#4c782a; margin-bottom:16px;}
-.view-content .first_column {float:left; min-width:140px;}
-.view-content .days_and_hours .item-list {float:left; width:206px; /*180px*/}
-.view-content .days_and_hours .item-list .field-name-field-hours-of-operation {margin-left:0px;}
+
+#showResults .floatRight{
+    display: none;
+}
+
+.view-content .cuisine, .view-content .category, .cuisine  {font:14px "Helvetica neue italic"; color:#4c782a; margin-bottom:16px;}
+.view-content .first_column {
+    float:left;
+    min-width:140px;
+}
+.view-content .first_column div{
+    margin: 0px 0px 0.25em 0px;
+}
+.view-content .days_and_hours .item-list {
+    float:left;
+    width:206px;
+}
+
+.view-content .days_and_hours .item-list .field-name-field-hours-of-operation {
+    margin-left:0px;
+}
+
+
+
 .view-content .days_and_hours:after {display:block; content:''; clear:left;}
-.view-content .logo img {float:right; margin-right:60px;}
+.view-content .logo img {
+    float:right;
+    margin-right:30px;
+}
 .view-content .details_link {width:150px; margin-top:18px; margin-bottom:16px;}
-.view-content .details_link:after {clear:left; display:block; content:'';}
+.view-content .details_link:after {clear:both; display:block; content:'';}
 .view-content .details_link a {float:left; font-family:"Helvetica neue bold"; text-transform:uppercase; text-decoration:none;}
 .view-content span.details_arrow {display:inline-block; width:10px; height:10px; overflow:hidden; background:url("../img/details_arrows.png") 10px 0;}
 .view-content span.details_arrow.active {background-position:0 0;}
@@ -366,10 +897,14 @@ div#calendar-tab-wrapper, div#news-wrapper {width:642px; position:relative; over
 .view-content .details_socials {margin-bottom:18px; width: 240px;}
 .view-content .details_socials div {float:left; margin-right:10px; }
 .view-content .details_socials:after {clear:left; display:block; content:'';}
-.view-content .details_desc {margin-top:20px; width: 275px;} /*240px*/
+.view-content .details_desc {margin-top:20px; width: 250px;} /*240px*/
 .view-content .details_desc p {font:12px "Helvetica neue roman"; word-spacing:-3px;}
 ul.pager {margin-bottom:22px;}
-ul.pager li {font-family:"Helvetica neue roman"; font-size:14px; margin:0 0 0 6px; padding:0 !important;}
+ul.pager li {
+    font-family:"Helvetica neue roman";
+    font-size:14px;
+    margin:0 0 0 3px;
+    padding:0 !important;}
 ul.pager li.pager-current{font-family:"Helvetica neue bold"; text-decoration:underline;}
 ul.pager li.pager-last, ul.pager li.pager-first, ul.pager li.pager-ellipsis {display:none;}
 ul.pager li.pager-previous, ul.pager li.pager-next {text-transform:capitalize;}
@@ -378,21 +913,47 @@ ul.pager li.pager-next {margin-left:12px;}
 ul.pager li a{color:#2f2f2f;}
 
 
+.pager li>a, .pager li>span {
+    display: inline-block;
+    padding: 0px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0px;
+}
+
+.view-content .views-field-field-days-and-meals-schedules, .days_and_hours.shopping_listing,.days_and_hours.culture_listing {
+    float: left;
+    margin-top: 10px;
+    width: 100%;
+}
+.view-content .views-field-field-days-and-meals-schedules li, .days_and_hours.shopping_listing li, .days_and_hours.culture_listing li{
+    margin: 0px 0px 0.25em 0px;
+}
+#edit-field-cuisine-term-tid,#edit-field-shopping-category-value{
+    width: 195px;
+}
+
 /* #header .content .menu li .menu{display:none;} */
 
 /* Restaurant week */
 #page-wrapper.restaurant {padding-top:0;}
-#top-slideshow {padding:0; width:972px; height:277px;}
-#top-slideshow .pagination {display:none;}
+
 #widgets {width:474px; float:right;}
-#widgets .widget {width:197px; height:129px; background:url("../img/widget-bg.png") no-repeat; padding:12px 13px 15px 14px; float:left; margin-right:10px;}
+#widgets .widget {
+    width:224px;
+    height:156px;
+    background:url("../img/widget-bg.png") no-repeat;
+    padding:12px 13px 15px 14px;
+    float:left;
+    margin-right:10px;
+}
 #widgets h3, #widgets h3 a {color:#13608e; font:30px/36px "Helvetica neue roman"; word-spacing:-10px;}
 #widgets p, #widgets p a {color:#5e5e5e; font:14px/16px "Helvetica neue roman"; word-spacing:-4px;}
-#restaurants.search {width:930px; background:none; margin-left:18px;}
+#restaurants.search {background:none; margin-left:18px;}
 #restaurants.search .view-filters {padding:22px 0 0 22px; background:url("../img/rw-search-bg.png") repeat-x top left; width:432px; margin-left:0;}
 #restaurants.search input[type=text] {width:185px; font-size:14px;}
 #restaurants.search select {width:195px; font-size:14px;}
-#restaurants.search .views-exposed-form .views-exposed-widget.views-submit-button {float:right; margin-right:36px;}
+#restaurants.search .views-exposed-form .views-exposed-widget.views-submit-button { /*float:right;*/ margin-right:36px;}
 #restaurants.search #edit-field-cuisine-term-tid {
     width: 187px;
     font-size: 14px;
@@ -406,10 +967,11 @@ ul.pager li a{color:#2f2f2f;}
 #restaurants.search .view-content table tr.even {background-color:#b8d9ef;}
 #restaurants.search .view-content table a {color:#00649f;}
 #restaurants.search .view-content table tbody tr td:first-child a {font:16px "Helvetica neue medium"; word-spacing:0;}
-#restaurant-week-logos {width:972px; margin:0px auto; text-align:center; padding:0;}
+#restaurant-week-logos {max-width:972px; margin:0px auto; text-align:center; padding:0;}
 #restaurant-week-logos:after {display:block; content:''; clear:both;}
-#restaurant-week-logos img {display:inline-block; margin:25px 0 25px 17px;}
+#restaurant-week-logos img {display:inline-block; margin:25px 0 25px 17px; width: 100%;}
 #restaurant-week-logos img:first-child {margin-left:0;}
+#restaurants .restaurants-mobile { display: none; }
 
 /* Login page */
 #user-login {padding-left:10px; font:14px/16px "Helvetica neue medium"; color:#454545;}
@@ -431,22 +993,29 @@ ul.pager li a{color:#2f2f2f;}
 #google_search_wrapper .gsc-webResult.gsc-result {margin-bottom:24px;}
 #google_search_wrapper .gsc-webResult .gs-title {font:14px/18px "Helvetica neue bold"; color:#578533;}
 #google_search_wrapper .gsc-webResult .gs-title b {color:#578533;}
-#google_search_wrapper .gsc-webResult .gs-snippet {font:14px/18px "Helvetica neue roman"; word-spacing:-4px; color:#30302f; margin-left:35px;}
+#google_search_wrapper .gsc-webResult .gs-snippet {font:14px/18px "Helvetica neue roman"; word-spacing:-4px; color:#30302f;}
 #google_search_wrapper .gsc-webResult .gsc-url-bottom {display:none;}
 #google_search_wrapper .gsc-cursor-box {border-top:none; font:14px/18px "Helvetica neue roman"; word-spacing:-4px; color:#2e2e2e; text-align:center;}
 #google_search_wrapper .gsc-cursor-page {text-decoration:none;}
 #google_search_wrapper .gsc-cursor-page.gsc-cursor-current-page {color:#578533; text-decoration:underline; background:none; text-shadow:0 0 0;}
 
 /* iOS fixes */
-.ios #home-tabs h3 {font-size:18px;}
-.ios #home-tabs h3 strong {font-size:26px;}
+
 .ios #restaurants.search select {width:180px;}
-.ios #header .second-line .menu li:hover > a {background:#7aa955 none no-repeat;}
+
 .ios .search input[type=text] {background:#fff none no-repeat;}
 
 /* Widgets */
-.widget {background:url("../img/widget_bg.png") no-repeat; height:77px; float:right; width:247px; padding:10px; color:#578533;}
-.widget:hover {background:url("../img/widget_bg_hover.png") no-repeat; height:77px; float:right; width:247px; padding:10px; color:#578533;}
+.widget {
+    background:url("../img/widget_bg.png") no-repeat;
+    height:90px;
+    float:right;
+    width:266px;
+    padding:10px;
+    color:#578533;
+    margin-bottom: 10px;
+}
+.widget:hover {background:url("../img/widget_bg_hover.png") no-repeat; height:90px; float:right; width:266px; padding:10px; color:#578533;}
 .widget .bucket {display:block; color:#FFF; padding:15px 0 0 15px; height:72px; font:36px/40px "Helvetica neue light";}
 .widget .icon {min-width:48px; max-width:48px; margin-right:8px; vertical-align:middle; float:left;}
 .widget h1, .widget h2, .widget h3, .widget h4, .widget h5, .widget h6 {font-family:"Helvetica neue bold";}
@@ -461,10 +1030,7 @@ ul.pager li a{color:#2f2f2f;}
     margin: 0 auto;
 }
 #google_map_parking {
-    width: 882px;
-    height: 720px;
-    position: relative;
-    visibility: hidden;
+
 }
 
 #google_map_parking #gmap-auto1map-gmap0{
@@ -478,10 +1044,6 @@ ul.pager li a{color:#2f2f2f;}
     padding-top: 0px !important;
     background: none !important;
 }
-
-/*#google_map_parking  .contextual-links-region{
-margin-left: 6%;
-}*/
 
 #div_photo_parking{
     height:317px; 
@@ -515,14 +1077,14 @@ margin-left: 6%;
 .page-node-34689 #google_map_parking{
     margin:0 auto;
     margin-bottom:25px;
-    margin-left: 54px;
+    margin-left: 25px;
 }
 
 .page-node-34689 #breadcrumb{
     margin-top:-15px;
 }
 
-#breadcrumb_calendar {margin: 35px 0px 12px 4px;}
+#breadcrumb_calendar {margin: 20px 0px 12px 4px;}
 #breadcrumb_calendar, #breadcrumb_calendar a {font:12px "Helvetica neue roman"; color:#514a3e;}
 #breadcrumb_calendar:after {display:block; content:""; clear:both;}
 #breadcrumb_calendar li {float:left; margin:0 6px 0 0;}
@@ -617,14 +1179,6 @@ margin-left: 6%;
 #edit-field-culture-offer-value-wrapper,#edit-field-dining-offer-value-wrapper {
     display: none;
 }
-#edit-submit-culture-listing,#edit-submit-dining-listing{
-    margin-left: 226px;
-}
-
-
-
-
-
 
 
 /******************EXPONSED****************/
@@ -632,8 +1186,7 @@ margin-left: 6%;
 #advanced_search_exponsed{
     width:200px;
     height:35px;
-    position:absolute;
-    margin-top: 37px;
+    margin-top: 65px;
     margin-left: 0px;
     text-decoration: underline;
 }
@@ -651,16 +1204,12 @@ margin-left: 6%;
 }
 
 #div_advanced_search{
-    width: 645px;
     height: auto;
-    position: absolute;
-    margin-top: 118px;
     margin-left: -15px;
 }
 
 
 .advanced_search{
-    width: 650px;
     height: auto;
     background: url("../img/bg-search-advanced.png") repeat-x top left;
     display:none;
@@ -701,14 +1250,17 @@ margin-left: 6%;
     overflow: hidden;
     position: relative;
 }
-#edit-field-culture-offer-value-2  div {
-    display: block; float: left; width: 13em; padding-top: 1em;
+#edit-field-culture-offer-value-2 div {
+    display: block;
+    width: 13em;
+    padding-top: 1em;
+}
+.views-exposed-form input[type=text],.views-exposed-form .form-select{
+    max-width: 200px;
 }
 
-
 .advanced_search .advanced_search_footer{
-    width: 621px;
-    height: 69px;
+     height: 69px;
 }
 #advanced_search_boton {
     width: 200px;
@@ -716,9 +1268,6 @@ margin-left: 6%;
     position: absolute;
     margin-left: 24px;
     color: #282828;
-}
-#edit-title-wrapper{
-    width: 100%;
 }
 
 .view-restaurant-week #edit-title-wrapper {
@@ -729,13 +1278,9 @@ margin-left: 6%;
 {
     width: inherit;
 }
-#views-exposed-form-shopping-listing-page #edit-title-wrapper{
-    width: 44%;
-}
 
-#views-exposed-form-shopping-listing-page .views-exposed-form .views-exposed-widget .form-submit {
-    margin-right: 20em;
-    margin-top: 1.6em;
+.views-exposed-form .views-exposed-widget .form-submit {
+    margin-top: 1em;
 }
 
 
@@ -743,60 +1288,26 @@ margin-left: 6%;
 #edit-field-neighborhood-value-wrapper label, #edit-field-price-point-value-wrapper label{
     display:none;
 }
-#views-exposed-form-culture-listing-page .views-exposed-form .views-exposed-widget {
-    float: left;
-    padding: .5em 1px 0 0;
-}
-#views-exposed-form-dining-listing-page .views-exposed-form .views-exposed-widget {
-    float: left;
-    padding: .5em 1px 0 0;
-}
 
-#views-exposed-form-shopping-listing-page .views-exposed-form .views-exposed-widget {
-    float: left;
-    padding: .5em 0em 0 0; 
+.views-widget-filter-field_cuisine_term_tid span, .views-widget-filter-field_shopping_category_value span, .views-widget-filter-field_category_tid span{
+    display: none;
 }
 
 
 
 
 /*****************************************************SHOW NODE SHOPPING;CULTURE;DINNING*****************************************/
-#contenedor-show-shopping{
-    width: 100%;
-    height: auto;
-}
-#contenedor-show-shopping #content-shopping-left{
-    width: 660px; 
-    height: auto;
-    float:left;
-    position:relative;
-}
-
-#contenedor-show-shopping #content-shopping-right{
-    width: 270px; 
-    height: auto;
-    float:left;
-    position:relative;
-}
-#contenedor-show-shopping .social-show{
-    float:left;
-    padding-right: 10px;
-}
-#contenedor-show-shopping   .cuisine{
-    font: 14px "Helvetica neue italic";
-    color: #4C782A;
-    margin-bottom: 16px;
-}
-#contenedor-show-shopping  .item-list ul li{
-    margin:0;
-} 
 
 #alpha_links{
     padding-top: 10px;
+    display: none;
 }
 #alpha_links a{
     color: #578533;
     font: 14px/22px "Helvetica neue light";
+}
+#edit-field-neighborhood-value-wrapper, #edit-field-price-point-value-wrapper, #edit-title-wrapper{
+    display: none;
 }
 
 /*VIEW REPORT SERVICE*/
@@ -826,15 +1337,18 @@ div.newhaven-text span  a{
     cursor:text;
 }
 
-div.view-id-report_services .view-content .views-row , div.view-id-report_hotels .view-content .views-row,  div.view-id-report_nightlife .view-content .views-row{
+div.view-id-report_services .view-content .views-row , div.view-id-report_hotels .view-content .views-row {
     border-bottom: none;
     padding: 20px 0;
 }
 
-#report_wrapper {
-    width:610px; 
-    padding-left:40px;
-    float:left;
+div.view-id-report_nightlife .view-content .views-row {
+	border-bottom: none;
+	padding: 0;
+}
+
+div.view-id-report_nightlife .view-content .views-row.views-row-first {
+	padding-top: 20px;
 }
 
 #report_wrapper h2 {font:66px "Helvetica neue light"; color:#578533; margin-bottom:25px;}
@@ -843,14 +1357,11 @@ div.view-id-report_services .view-content .views-row , div.view-id-report_hotels
 
 
 #div_nav_report_service_container{
-    width: 261px;
+    width: 265px;
     height: auto;
     background:#e6eee5;
-    float:left;
-    margin-bottom: 30px;
     font-family: 'Helvetica neue medium';
-    border-left: 2.4px solid #dfdfdf; 
-    border-right: 2.4px solid #dfdfdf; 
+    margin-bottom: 20px;
 }
 
 #div_nav_report_service_container .div_nav_report_service p a{
@@ -860,15 +1371,21 @@ div.view-id-report_services .view-content .views-row , div.view-id-report_hotels
     padding-top: 3px;
     padding-bottom: 3px;
     width: 240px;
+    line-height: 16px;
+    font-size: 16px;
 }
 #div_nav_report_service_container .div_nav_report_service p a:hover {
     background: #fff;
 }
 
 #div_nav_report_service_container .div_nav_report_service{
-    margin-left: 20px;
+    padding-left: 20px;
     padding-top: 12px;
-
+    height: auto;
+    min-height: 130px;
+    overflow: overlay;
+    border-left: 2.4px solid #dfdfdf;
+    border-right: 2.4px solid #dfdfdf;
 }
 #div_nav_report_service_container .div_nav_report_service p{
     margin-top: 5px;
@@ -880,16 +1397,13 @@ div.view-id-report_services .view-content .views-row , div.view-id-report_hotels
 .img-top{
     background:url("../img/top-category-service.png") no-repeat;
     width: 100%;
-    position: absolute;
-    height: 27px;
-    margin-left: -2px;
+    height: 8px;
 }
 .img-bottom{
     background:url("../img/top-category-service-bottom.png") no-repeat;
     width: 100%;
-    position: absolute;
-    height: 27px;
-    margin-left: -3px;
+    height: 8px;
+    margin-left: -1px;
 }
 
 .edit_link a{
@@ -899,9 +1413,35 @@ div.view-id-report_services .view-content .views-row , div.view-id-report_hotels
 
 
 
+#calendar_header div:nth-child(4){
+    position: absolute;
+    top: 36px;
+    left: 0px;
+    margin-left: 60px !important;
+}
+
+#calendar_header div:nth-child(5){
+    position: absolute;
+    top: 36px;
+    left: 0px;
+    margin-left: 0px !important;
+}
+
+.tab-calendar{
+    width: 100%;
+    margin-bottom: 18px;
+    margin-top: 10px;
+}
+
+.tab-calendar li{
+    display: inline-block;
+    margin-right: 25px;
+}
+
 .view-id-list_events_calendar .view-content .item-list ul li{
     margin:0;
     padding:0;
+    text-align: center;
 }
 #tabs-content .view-id-list_events_calendar div.view-content .item-list .views-row-first div.calendar-tab-item{
     margin-left:0;
@@ -925,7 +1465,17 @@ div.view-id-report_services .view-content .views-row , div.view-id-report_hotels
     text-decoration: none;
 }
 
+.month img,.week img{
+    display: inline;
+}
 
+.month div,.week div{
+    display: inline;
+}
+
+.month a,.week a{
+    display: block;
+}
 
 #wrapper_calendar{
     background: #fff;
@@ -957,13 +1507,21 @@ div.view-id-report_services .view-content .views-row , div.view-id-report_hotels
 #wrapper_calendar tr.row_select a,tr.row_hover a{color:blue!important;outline:0;text-decoration:none}
 
 
-#wrapper_calendar  #calendar_title{
-    line-height: 30px;
+#wrapper_calendar #calendar_title{
+    line-height: 25px;
     color: #578533!important;
-    font-size: 30px;
+    font-size: 17px;
     font-weight: bold;
     word-spacing: -3px;
     vertical-align: baseline;
+    margin-left: 0px;
+    margin-bottom: 46px;
+}
+
+#calendar-tab-wrapper:after {
+    display:block;
+    clear:both;
+    content:'';
 }
 
 .dialog_host table.mixed th,.dialog_host table.mixed td, #tab_flyer_container p a, .dialog_host p, #tab_photo_container a, .dialog_host #tab_photo, 
@@ -974,8 +1532,17 @@ div.view-id-report_services .view-content .views-row , div.view-id-report_hotels
     vertical-align: top !important;
 }
 
+.dialog_host .content > table > tbody > tr > td {
+    display: table-row;
+    width: 100%;
+}
+.dialog_host a{
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+}
 
-#colleft{ width:0px; position:absolute; left:-3px; height: 700px; z-index: 2; background-color: white; padding-right: 2px; padding-left: 6px; padding-top: 30px; }
+#colleft{ width:0px; position:absolute; left:-3px; height: 120px; z-index: 2; background-color: white; padding-right: 2px; padding-left: 6px; padding-top: 30px; }
 
 #colleft #hidePanel {display:none;}
 
@@ -1027,70 +1594,9 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
     list-style-type: circle;   
 }
 
-.content .field-name-body p{
-    margin-bottom: 10px;
-
-}
-
-.node-type-calendar #slideshow, .page-calendar-day #slideshow{
-    padding: 0px 0px 0px 0px!important;
-    background-color: #fff!important;
-    -webkit-border-radius: 0px!important;
-    -moz-border-radius: 0px!important;
-    border-radius: 0px!important;
-    width: 100%!important;
-    margin-bottom: 20px!important;
-    -webkit-box-shadow: none!important;
-    -moz-box-shadow: none!important;
-    box-shadow: none!important;
-}
-
-.node-type-calendar #slideshow .slides_container , .page-calendar-day #slideshow .slides_container  {
-    max-width: 972px!important;
-    width: 100%!important;
-    height: 283px!important;
-    overflow: hidden;
-}
-
-.node-type-calendar #slideshow .slides_container div.slide, .page-calendar-day #slideshow .slides_container div.slide {
-    max-width: 972px!important;
-    width: 100%!important;
-    height: 283px!important;
-    overflow: hidden;
-    text-align: center;
-}
-
-.node-type-calendar #slideshow .next, .node-type-calendar  #slideshow .prev, .page-calendar-day #slideshow .next, .page-calendar-day #slideshow .prev {
-    position: absolute;
-    top: 129px!important;
-    left: 12px!important;
-    width: 39px!important;
-    height: 39px!important;
-    display: block!important;
-    z-index: 50!important;
-}
-
-.node-type-calendar #slideshow .next, .page-calendar-day #slideshow .next{
-    left: 920px!important;
-}
-
-.node-type-calendar #slideshow .caption{
-    background-color: #CDDFEF !important;
-    bottom: 0px !important;
-    width: 932px !important;
-    text-align: left;
-    opacity: 0.5 !important;
-    left: 0px !important;
-}
-
-.node-type-calendar #page-wrapper{
-    padding-top: 0px;
-    margin-top: -1px;
-}
 .node-type-calendar .internal {
-    margin: 24px 24px 24px 24px;
-    min-width: 616px;
-    max-width: 960px;
+    margin: 24px 0px;
+    padding: 0px 0px 20px 0px;
 }
 
 .node-type-calendar .view .date-nav-wrapper .date-prev, .view .date-nav-wrapper .date-next {
@@ -1100,22 +1606,27 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
 }
 
 .node-type-calendar .view .date-nav-wrapper .pager {
-    margin-top: -25px;
+    margin: -25px 0px 0px 0px;
+    padding: 0px;
 }
 
 .node-type-calendar .view .date-nav-wrapper .pager .date-prev{
     float: left!important;
-    margin-left: 120px;
+    margin-left: 0%;
+    margin-right: 0px;
 }
 
 .node-type-calendar .view .date-nav-wrapper .pager .date-next{
     float: right!important;
-    margin-right: 120px;
+    margin-right: 0%;
+    margin-left: 0px;
 }
 
 .node-type-calendar .view .date-nav-wrapper .date-heading h3{
     color: #578533!important;
-    font-size: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: 
 }
 
 .node-type-calendar .view .date-nav-wrapper .date-prev, .node-type-calendar .view .date-nav-wrapper .date-next{
@@ -1129,12 +1640,20 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
 }
 
 .node-type-calendar .view .date-nav-wrapper .date-prev a, .node-type-calendar .view .date-nav-wrapper .date-next a{
-    font-size: 16px!important;
+    font-size: 12px!important;
+    margin: 0px;
+    padding: 0px;
+}
+
+.calendar-calendar tbody{
+    border-bottom: 1px solid #ccc!important;
 }
 
 .node-type-calendar .calendar-calendar .mini {
-    border: 1px solid #ccc!important;
-    padding: 10px 10px 10px 10px;
+    border-top: 1px solid #ccc!important;
+    border-left: 1px solid #ccc!important;
+    border-right: 1px solid #ccc!important;
+    padding: 0px;
     height: 100px;
 }
 
@@ -1145,8 +1664,7 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
 .node-type-calendar .calendar-calendar td.has-events a{
     
     color: #669933!important;
-    width: 100%;    
-    display: block;
+    width: 100%;
     position: relative;
     margin-bottom: 20px;
 }
@@ -1156,6 +1674,23 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
     position: relative;
     width: 100%;
     height: 100%;
+    text-align: center;
+}
+
+.calendar-calendar .mini-day-on a{
+    display: none;
+}
+.node-type-calendar .calendar-calendar td.has-events a.mini-day-mobile{
+    display: block;
+    margin-bottom: 0px;
+
+    padding: 10px 0px;
+    text-decoration: none;
+    color: gray !important;
+}
+.node-type-calendar .calendar-calendar td.has-events a.mini-day-mobile:hover{
+    background-color: #578533;
+    color: #ffffff!important;
 }
 
 .node-type-calendar .calendar-calendar th.days {
@@ -1164,12 +1699,51 @@ div.view-id-report_nightlife div.field-content .details_socials ,div.view-id-rep
     font-weight: bold;
     border: 0px solid #ccc;
     padding: 10px 10px;
+    text-transform: uppercase;
 }
 
 .node-type-calendar .calendar-calendar table.mini{
     border:none!important
 }
 
+.node-type-calendar .fotorama img{
+    width: 100%;
+}
+
+.node-type-calendar .fotorama{
+    max-height: 263px;
+}
+.node-type-calendar .fotorama .caption{
+    z-index: 500;
+    height: 30px;
+    padding: 5px 20px 0 20px;
+    background-color: #CDDFEF !important;
+    opacity: 0.5 !important;
+    width: 100%;
+    font-size: 1.3em;
+    line-height: 1.33;
+    color: #524a3f;
+    text-shadow: none;
+    font: 18px "Helvetica neue medium";
+    margin-top: -38px;
+}
+
+
+.node-type-calendar .fotorama .fotorama__arr--next{
+     background: url(../img/calendar/arrow_next.png) no-repeat;
+     background-position: 0px 0;
+     right: 20px;
+     width: 39px;
+     height: 39px;
+ }
+.node-type-calendar .fotorama .fotorama__arr--prev{
+    background: url(../img/calendar/arrow_prev.png) no-repeat;
+    background-position: 0px 0;
+    right: 0px;
+    left: 20px;
+    width: 39px;
+    height: 39px;
+}
 ul.tab {
     float: right;
     margin-top: -50px;
@@ -1208,6 +1782,16 @@ ul.tab li a{
     font: 14px "Helvetica neue light";
 }
 
+.event_flyer{
+    display: none;
+}
+.calendar_list table.table>*>tr>td>div:first-child.event_details{
+    white-space: normal;
+    padding-right: 0px !important;
+}
+.calendar_list table tr td .event_summary,.calendar_list .event_location{
+    height: auto;
+}
 
 /* views administer pages */
 
@@ -1240,11 +1824,637 @@ ul.tab li a{
     margin-bottom: 10px;
 }
 
-#slideshow_calendar .slide{
-    text-align: center;
-    width: 972px;
+.dialog{
+    height: auto !important;
+    width: 100% !important;
+    max-width: 850px;
+    min-height: 572px;
 }
 
-#slideshow_calendar .slides_control{
-    height: 305px !important;
+.dialog div.header {
+	white-space: normal !important;
+}
+
+.dialog div.content{
+
+}
+
+.dialog .action button:nth-child(2){
+    display: none;
+}
+
+.webform-client-form em {
+	font-style: italic;
+}
+
+#node-64738 {
+	padding: 25px;
+}
+
+#node-64738 h2 {
+	color: #578533;
+	font: 60px "Helvetica neue light";
+	word-spacing: -10px;
+	margin-bottom: 24px;
+}
+
+#node-64738 p {
+	font-family: "Helvetica neue light";
+	margin-bottom: 18px;
+	word-spacing: -4px;
+}
+
+#node-64738 label {
+	display: inline-block;
+	font-family: Arial;
+	font-weight: bold;
+	color: #578533;
+	font-size: 0.9em;
+	min-width: 300px;
+}
+
+#node-64738 label.option {
+	display: inline;
+	font-weight: normal;
+	color: #578533;
+	line-height: 17px;
+	font-family: Arial;
+}
+
+#node-64738 .webform-component--contact-email {
+	margin-bottom: 2em;
+}
+
+#node-64738 div.webform-component--commitment label {
+	min-width: 0;
+	margin-right: 5px;
+}
+
+#node-64738 input[type=text], #node-64738 input[type=email]  {
+	height: 28px;
+	border: 1px solid #D4D5D5;
+	font: 85% "Helvetica neue roman";
+	display: inline-block;
+	padding-left: 10px;
+	color: #3D3D3D;
+}
+
+#node-64738 textarea {
+	border: 1px solid #D4D5D5;
+	font: 85% "Helvetica neue roman";
+	color: #3D3D3D;
+	padding-left: 10px;
+	max-width: 442px;
+}
+
+#node-64738 input[type=submit] {
+	height: 31px;
+	width: 102px;
+	background: url("../img/buttons-bg.png") no-repeat scroll 0% 0% transparent;
+	font: 18px "Din bold";
+	color: #FFF;
+	text-transform: uppercase;
+	padding: 0px 0px 5px;
+	border: medium none;
+	margin-left: 10px;
+}
+
+/********* Google custom search ***********/
+.gsc-table-cell-thumbnail {
+	display: none;
+}
+
+.gsc-control-cse, .gsc-thumbnail-inside, .gsc-url-top {
+	padding-left: 0 !important;
+}
+
+/********* Responsive ***********/
+
+.top_image{
+    height: 280px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+.nav>li>a{
+    display: inline;
+}
+#advanced_search_exponsed{
+    position:absolute;
+}
+
+.mobile-menu-item, .mobile-only {
+	display: none;
+}
+
+.desktop-and-tablet {
+	display: block;
+}
+
+#block-views-parking-view-block-1 {
+	font-family: "Helvetica neue roman";
+	padding-left: 8px;
+	font-size: 14px;
+}
+
+#block-views-parking-view-block-1 .view-content .views-row {
+	border-bottom: 0;
+}
+
+#top-slideshow .slide img {
+	width: 100%;
+}
+
+/**** Extra small devices and small devices  ****/
+
+@media (max-width: 460px) {
+	#google_search_wrapper {
+		width: 92%;
+		margin: 0 4%;
+		padding-left: 0;
+	}
+	
+	.mobile-menu-item, .mobile-only {
+		display: block;
+	}
+	
+	.desktop-and-tablet {
+		display: none;
+	}
+	
+	#google_map_parking {
+		display: none;
+	}
+    .dialog {
+            min-height: 420px;
+    }
+    .dialog div.content {
+            max-height: 320px;
+    }
+    .search.shopping h3, .search.culture h3, .search.dining h3 {
+            font-size: 14px;
+    }
+    
+    #node-64738 {
+    	padding: 0;
+    }
+    
+    #node-64738 input[type="text"], #node-64738 input[type="email"] {
+    	width: 100%;
+    }
+    
+    /* Restaurant week */
+    #top-slideshow {
+    	display: none;
+    }
+    
+    #widgets {
+    	width: 100%;
+    }
+    
+    #widgets .widget {
+    	float: none;
+    	margin: 0 auto;
+    }
+    
+    #restaurants .view-display-id-page {
+    	display: none;
+    }
+    
+    #restaurants .restaurants-mobile {
+    	display: block;
+    }
+}
+
+@media (max-width: 992px){
+    #page-wrapper .col-xs-12{
+        padding: 0px;
+    }
+    #header-wrapper .col-xs-12{
+        padding: 0px;
+    }
+    #header #search-form {
+        width: 53%;
+    }
+    
+    /* Restaurant week */
+    #widgets {
+    	float: none;
+    }
+    
+    #widgets:after {
+    	display: block;
+    	content: '';
+    	clear: both;
+    }
+}
+
+@media (max-width: 767px){
+
+    .node-type-calendar .calendar-calendar .mini{
+        display: inline-table;
+        width: 100%;
+        height: auto;
+    }
+
+    .calendar-calendar table.mini td.empty,.calendar-calendar table.mini thead{
+        display: none;
+    }
+}
+/*** small devices  ****/
+
+@media (min-width: 768px){
+    .dialog_host .content > table > tbody > tr > td {
+        display: table-cell;
+    }
+
+    .node-type-calendar #fotorama_container{
+        height: 215px;
+    }
+    #edit-field-culture-offer-value-2 div {
+        float: left;
+    }
+
+    #calendar_header div:nth-child(4){
+        position: inherit;
+        top: 0;
+        left: 0px;
+        margin-left: 15px !important;
+    }
+
+    #calendar_header div:nth-child(5){
+        position: inherit;
+        top: 0px;
+        left: 0px;
+        margin-left: 10px !important;
+    }
+
+    #page-wrapper.homepage{
+        margin-top: 0px;
+    }
+
+    #wrapper_calendar #calendar_title{
+        font-size: 30px;
+    }
+    
+    #wrapper_calendar tr.event td:first-child {
+    	/*display: none;*/
+    }
+
+    #page-wrapper.homepage #main-wrapper #content{
+        margin:0px auto 0px auto;
+        max-width: 100%;
+    }
+    #tabs-headers{
+        height: 37px;
+    }
+    #tabs-content #video-tab div.field-item iframe{
+        width: 278px !important;
+    }
+
+    #tabs-content div.calendar-tab-item-img{
+        width:90px;
+        float:left;
+    }
+    #tabs-content div.calendar-tab-item{
+
+        float:left;
+        /*margin-left:20px;*/
+    }
+    .view-id-list_events_calendar .view-content .item-list ul li{
+        text-align: left;
+    }
+     .node-type-calendar .calendar-calendar .mini{
+        border: 1px solid #ccc!important;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .node-type-calendar .view .date-nav-wrapper .date-prev a, .node-type-calendar .view .date-nav-wrapper .date-next a{
+        font-size: 16px!important;
+        margin: 0px;
+        padding: 0px;
+        text-transform: uppercase;
+    }
+    .node-type-calendar .view .date-nav-wrapper .pager .date-prev{
+        margin-left: 15%;
+    }
+
+    .node-type-calendar .view .date-nav-wrapper .pager .date-next{
+        margin-right: 15%;
+    }
+    .node-type-calendar .view .date-nav-wrapper .date-heading h3{
+        font-size: 30px;
+        font-weight: normal;
+        text-transform: uppercase;
+    }
+    .node-type-calendar .calendar-calendar td.has-events div.mini-day-on {
+        text-align: right;
+    }
+    .node-type-calendar .calendar-calendar td.has-events div.mini-day-on a{
+        display: block;
+    }
+    .node-type-calendar .calendar-calendar td.has-events div.mini-day-on a.mini-day-mobile{
+        display: none;
+    }
+    #logo img {
+        margin:0px 0px 0px auto;
+    }
+    .view-content .views-field-field-days-and-meals-schedules, .days_and_hours.shopping_listing, .days_and_hours.culture_listing{
+        width: 196px;
+        margin-left: 25px;
+        margin-top: 0px;
+    }
+    .advanced_search{
+        width: 599px;
+    }
+    #advanced_search_exponsed{
+        margin-top:65px;
+    }
+
+    #footer .menu_footer > .menu > li > a{
+        font-size: 12px;
+    }
+    #edit-field-cuisine-term-tid{
+        width: 254px;
+    }
+    #edit-field-shopping-category-value{
+        width: 225px;
+    }
+
+    #top-header .menu li{
+        display:inline-block;
+        margin-right:3px;
+        margin-top: 4px;
+    }
+    .navbar-nav>li>a {
+        padding: 0px !important;
+    }
+    .navbar-nav, .navbar-nav>li{
+        float: inherit !important;
+    }
+    #top-header .menu{
+        margin-top: 0px;
+        padding-bottom: 4px;
+    }
+    .navbar-collapse {
+        margin-top: 0px;
+    }
+    #header .second-line > ul> li{
+        border-bottom:  none;
+    }
+    #header .second-line > ul> li > a{
+        padding: 13px 0;
+        font-size: 24px;
+        background: url("../img/menu-separator.png") no-repeat top left;
+    }
+    #header .second-line > ul> li.first > a{
+        background: none;
+    }
+    #header .second-line ul li{
+        background:url("../img/menu-bg.png") repeat-x;
+    }
+    #header .second-line > ul > li:hover{
+        background: url("../img/menu-active-bg.jpg") repeat-x;
+    }
+    #header .second-line ul li.last{
+        padding-bottom: 0px;
+    }
+    #cfooter{
+        margin-top: 20px;
+    }
+    #page-wrapper .cont_page_wrapper .c_pw {
+        padding-top: 30px;
+        border-bottom: 2px solid #8f918f;
+        -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5);
+        -moz-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5);
+        box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.5);
+    }
+    .front #page-wrapper .cont_page_wrapper .c_pw {
+        -webkit-box-shadow: 0 0 0 0 rgba(50, 50, 50, 0.5);
+        -moz-box-shadow: 0 0 0 0 rgba(50, 50, 50, 0.5);
+        box-shadow: 0 0 0 0 rgba(50, 50, 50, 0.5);
+    }
+    #breadcrumb ul{
+        margin: 20px 0 20px 36px;
+    }
+    .internal {
+        padding: 0px 20px 20px 20px;
+    }
+    #footer .market{
+        margin-right: 136px;
+        padding: 4px 0 20px 0;
+    }
+
+    .view-dining-listing .logo, .view-culture-listing .logo, #edit-field-neighborhood-value-wrapper, #edit-field-price-point-value-wrapper, #edit-title-wrapper, #alpha_links, #showResults .floatRight,.view-shopping-listing .logo{
+        display: block;
+    }
+
+    .views-widget-filter-field_cuisine_term_tid span, .views-widget-filter-field_shopping_category_value span, .views-widget-filter-field_category_tid span{
+        display: inline-block;
+    }
+
+
+
+    #views-exposed-form-culture-listing-page .views-exposed-form .views-exposed-widget,#views-exposed-form-dining-listing-page .views-exposed-form .views-exposed-widget, #views-exposed-form-shopping-listing-page .views-exposed-form .views-exposed-widget {
+        float: left;
+        padding: .5em 1px 0 0;
+    }
+    .views-exposed-form {
+        width:625px;
+    }
+
+    .node-type-dining-listing #main-wrapper .col-md-8,.node-type-culture-listing #main-wrapper .col-md-8,.node-type-shopping-listing #main-wrapper .col-md-8{
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+    .internal.dining,.internal.culture, .internal.shopping{
+         padding: 0px 20px 20px 0px;
+    }
+    
+    .internal.shopping {
+    	padding-left: 40px;
+    }
+    
+    .search.shopping h3, .search.shopping h5, .view-shopping-listing .view-filters {
+    	margin-left: 40px;
+    }
+    
+    .node-type-shopping-listing .top-image {
+    	height: 260px;
+    }
+    #header #search-form {
+        margin: 23px 0 0 10%;
+    }
+    
+}
+
+@media (min-width: 769px){
+    #tabs-content div#calendar-tab-link, #tabs-content div#news-tab-link{
+        width:642px;
+        margin-top:20px;
+    }
+    .event_flyer{
+        display: block;
+    }
+}
+/*** Medium devices Desktops  ***/
+
+@media (min-width:992px){
+    .views-exposed-form {
+        width: 100%;
+    }
+    #fotorama_home .slide{
+        width: 100%;
+        display: block;
+        margin: 0;
+        min-height: 100%;
+    }
+    #fotorama_home .caption{
+        margin-top: -35px;
+    }
+    #fotorama_home h2 {
+        font: 34px "Helvetica neue medium";
+    }
+    #fotorama_home .arrow{
+        display: block;
+    }
+    #fotorama_home{
+        width: 670px;
+    }
+    .homepage .column, .homepage .col-sm-12{
+        padding: 0px;
+    }
+    .node-type-calendar #fotorama_container{
+        height: 263px;
+    }
+    #tabs-content #video-tab div.field-item iframe{
+        width: 302px !important;
+    }
+
+    #home-tabs {
+        width: 670px;
+    }
+    #home-tabs h3 {
+        font:20px/24px "Helvetica neue roman";
+        border-left:1px solid #ebede9;
+    }
+    #home-tabs div h3:first-child {
+        border-left:none;
+    }
+    #video-tab-header.col-xs-12{
+        padding:12px 0px !important;
+    }
+
+    #video-tab{
+        padding-top: 50px;
+        padding-bottom: 100px;
+    }
+    #tabs-content #video-tab div.field-item.even{
+        margin-right: 5px;
+    }
+
+    #tabs-content #video-tab div.field-item.odd{
+        margin-left: 5px;
+    }
+
+
+    .sidebar-icon a {
+        display:block;
+        color:#FFF;
+        padding:18px 0 0 25px;
+        font: 29px/42px "Helvetica neue light";
+    }
+
+    #tabs-content div.calendar-tab-item-text{
+        width:187px;
+    }
+
+    #home-tabs {
+       display: inline-block;
+    }
+    #home-tabs h3 strong{
+        font-size:30px;
+    }
+
+    #page-wrapper.homepage #main-wrapper #content{
+        margin-left: 30px;
+    }
+    #footer .menu_footer > .menu > li > a{
+        font-size: 14px;
+    }
+    #footer .menu li a {
+        font-size: 11px;
+    }
+    #page-wrapper .cont_page_wrapper .c_pw {
+        border-left: 1px solid #aeaaa6;
+        border-right: 1px solid #b3afab;
+    }
+    .internal h2 {
+        font: 60px/60px "Helvetica neue light";
+    }
+    #cfooter{
+        margin-top: 41px;
+    }
+    #header .first-line{
+        height:65px;
+    }
+    #header #search-form #google-searchbox{
+        width:179px;
+    }
+    #c_header{
+        max-width: 974px;
+        margin: 0px auto;
+    }
+    #header{
+        border-left:1px solid #aeaaa6;
+        border-right:1px solid #b3afab;
+        width: 100%;
+        float: left;
+    }
+    #header .second-line > ul> li > a{
+        font-size: 30px;
+    }
+    #header .second-line > ul> li > a {
+        padding: 12px 0;
+    }
+    #header .second-line ul li ul{
+        top: 50px;
+    }
+
+    #breadcrumb ul{
+        margin: 20px 0 20px 36px;
+    }
+    #footer .copyright, #footer .copyright a{
+        font-size: 11px;
+    }
+    .container_copyright{
+        padding-left: 70px;
+    }
+
+}
+
+#header .instagram {
+    display:inline-block;
+    width:24px;
+    height:23px;
+    margin:20px 0 0 10px;
+    background:url("../img/instagram.png") no-repeat;
+}
+#header .instagram:hover {
+    background-position:-24px;
+}
+
+
+#edit-field-submit-a-new-business-list fieldset legend{
+    display: none;
+}
+
+#edit-field-submit-a-new-business-list fieldset .fieldset-wrapper {
+    margin-top: 10px;
+    background-color: transparent;
+    padding: 15px 15px 15px 15px;
+    margin-left: 22px;
 }

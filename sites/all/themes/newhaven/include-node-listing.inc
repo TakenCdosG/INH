@@ -220,7 +220,7 @@
    <div id="content-shopping-right"  style="width: 312px;">
       
 					<div class="region region-sidebar-right">
-						<div class="widget">
+						<!--<div class="widget">
 
 					  <div class="content">
 						<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><div><a class="bucket" href="/culture-listing"> <span class="icon"> <img src="/sites/default/files/arts_0.png" alt="Culture" width="37" height="38"></span> Culture </a></div></div></div></div>  </div>
@@ -237,7 +237,7 @@
 					  <div class="content">
 						<div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><div><a class="bucket" href="/shopping-listing"> <span class="icon"> <img src="/sites/default/files/shopping_0.png" alt="Shopping" width="33" height="38"></span> Shopping </a></div></div></div></div>  </div>
 
-					</div>
+					</div>-->
 			  </div>
       
   </div>

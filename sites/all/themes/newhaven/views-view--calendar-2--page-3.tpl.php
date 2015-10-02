@@ -56,7 +56,7 @@ $field_slideshow_calendar = $node->field_slideshow_calendars["und"];
     <div id="breadcrumb_calendar" class="calendar_show"><ul><li><a href="/">Home</a></li><li>&gt;</li><li><a href="/<?php print $breadcrumb; ?>" class="active">Calendar</a></li></ul></div>
     <h2>Calendar</h2>    
     <div class="content"<?php print $content_attributes; ?>>
-        <ul class="tab">
+        <ul class="tab-calendar">
         <li class="week">
             <a href=" <?php echo url('calendar/week'); ?>"><img src="<?php print base_path() . path_to_theme(); ?>/img/calendar/week.png"/> WEEK</a>
         </li>

@@ -81,11 +81,28 @@
 <div class="internal">
   <h2<?php print $title_attributes; ?>><?php print $title; ?></h2>
   <div class="content"<?php print $content_attributes; ?>>
+
+      <?php if(!empty($node->field_menu_right) and !empty($node->field_menu_right['und'])){ ?>
+      <div id='div_nav_report_service_container' class="visible-xs visible-sm">
+          <div class='img-top' ></div>
+          <div class='div_nav_report_service'>
+              <input type='hidden' name='report-services-nav' id='report-services-nav' value='' />
+              <ul>
+                  <?php print  render_links_basic_page($node->field_menu_right['und']);  ?>
+              </ul>
+          </div>
+          <div class='img-bottom'></div>
+      </div>
+      <?php }?>
     <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['comments']);
       hide($content['links']);
+
       print render($content);
+
+
     ?>
+
   </div>
 </div>

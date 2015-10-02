@@ -1,6 +1,6 @@
 <?php
 /**
- * @file 
+ * @file
  * Template to display the date box in a calendar.
  *
  * - $view: The view.
@@ -15,7 +15,12 @@
  * - $items: An array of items for this day.
  */
 ?>
-<div class="<?php print $granularity ?> <?php print $class; ?>"> 
+<div class="<?php print $granularity ?> <?php print $class; ?>">
     <?php print !empty($selected) ? $link : $day; ?>
     <?php print !empty($selected) ? l('View Events', $url): ''; ?>
+    <?php
+    $date = strtotime($date);
+    $date = date("D, M j",$date);
+    print l($date, $url,array('attributes'=>array('class'=>'mini-day-mobile')));
+    ?>
 </div>

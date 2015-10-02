@@ -94,5 +94,8 @@
   </div>
   <div id="restaurants" class="search">
     <?php print views_embed_view("restaurant_week", "page"); ?>
+    <div class="restaurants-mobile">
+    	<?php print views_embed_view("restaurant_week", "mobile_page"); ?>
+    </div>
   </div>
 </div>

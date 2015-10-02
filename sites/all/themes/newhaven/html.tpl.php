@@ -43,7 +43,7 @@
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
   "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language; ?>" version="XHTML+RDFa 1.0" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?>>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head profile="<?php print $grddl_profile; ?>">
   <?php print $head; ?> 
   <title><?php print $head_title; ?></title>
@@ -52,9 +52,14 @@
   
   <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" src="/sites/all/themes/newhaven/js/swfobject.js"></script>
+
+
+<!-- Google Code for info new haven -->
+<!-- Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. For instructions on adding this tag and more information on the above requirements, read the setup guide: google.com/ads/remarketingsetup -->
 <script type="text/javascript">
 /* <![CDATA[ */
 var google_conversion_id = 974530798;
+var google_conversion_label = "2kUyCLPR31oQ7tHY0AM";
 var google_custom_params = window.google_tag_params;
 var google_remarketing_only = true;
 /* ]]> */
@@ -63,7 +68,7 @@ var google_remarketing_only = true;
 </script>
 <noscript>
 <div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/974530798/?value=0&amp;guid=ON&amp;script=0"/>
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/974530798/?value=1.00&amp;currency_code=USD&amp;label=2kUyCLPR31oQ7tHY0AM&amp;guid=ON&amp;script=0"/>
 </div>
 </noscript>
   <script type="text/javascript">
@@ -83,16 +88,16 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
-	<div id="wrapper">
-	  <?php if (isset($background)): ?>
-      <img src="<?php print $background; ?>" class="bg-img" />
-    <?php endif; ?>
-	  <div id="skip-link">
-		 <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
-	  </div>
-	  <?php print $page_top; ?>
-	  <?php print $page; ?>
-	  <?php print $page_bottom; ?>
-	</div>
+<div id="wrapper" class="container-fluid">
+  <?php if (isset($background)): ?>
+    <img src="<?php print $background; ?>" class="bg-img" />
+  <?php endif; ?>
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
+  </div>
+  <?php print $page_top; ?>
+  <?php print $page; ?>
+  <?php print $page_bottom; ?>
+</div>
 </body>
 </html>

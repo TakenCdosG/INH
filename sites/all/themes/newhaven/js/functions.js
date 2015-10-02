@@ -2,16 +2,11 @@ $(document).ready(function(){
     //background();
         
     search_boxes();
-    home_slideshow();
-    slideshow_calendar();
     restaurant_slideshow();
     parking_hover();
-    menu_dropdown();
     detect_useragent();
-    widgets();
     listing_details();
-    map_parking(); 
-    //show_details();
+    map_parking();
     view_field_checkbox();
     expand_link();
     advanced_search();
@@ -23,9 +18,39 @@ $(document).ready(function(){
     business_services_nav();
     toggle_details_pane();
     home_tabs();
+
+    aux_fotorama_home();
+    
+    mobile_website();
+    mobile_menu();
+
 });//end document ready 
 
+function aux_fotorama_home(){
+    if(jQuery(window).width()>984){
+        fotorama_home();
+    }
+}
 
+function fotorama_home(){
+
+    // 1. Initialize fotorama manually.
+    var $fotoramaDiv = $('#fotorama_home_init').fotorama();
+
+    // 2. Get the API object.
+    var fotorama = $fotoramaDiv.data('fotorama');
+    fotorama.startAutoplay(5000);
+    // 3. Inspect it in console.
+    console.log(fotorama);
+
+    jQuery("#fotorama_home .next").click(function(){
+        fotorama.show('>');
+    });
+    jQuery("#fotorama_home .prev").click(function(){
+        fotorama.show('<');
+    });
+
+}
 
 function business_services_nav(){
     if(jQuery("#report-services-nav").val()!=""){
@@ -395,7 +420,7 @@ function gmap_customer_tooltip(nid,position){
     /*$("#general_div_class_style_tooltip_"+nid+" div").each(function (index) {
 			 $(this).attr("id","travel_div_"+index);
 			});
-	
+
 			$("#input_travel_div_0_img").val($("#travel_div_0 img").css("top"));
 			$("#input_travel_div_1").val($("#travel_div_1").css("top"));
 			$("#input_travel_div_3").val($("#travel_div_3").css("height"));
@@ -406,24 +431,24 @@ function gmap_customer_tooltip(nid,position){
 			$("#input_travel_div_17_top").val($("#travel_div_17").css("top"));
 			$("#input_travel_div_17_height").val($("#travel_div_17").css("height"));
 			$("#input_travel_div_18_height").val($("#travel_div_18").css("height"));
-			 	
+
 			$("#travel_div_0 img").css("top",'98px');
-			 
+
 			$("#travel_div_1").css("top",'115px');
 			$("#travel_div_3").css("height",'130px !important');
-			
+
 			$("#travel_div_11").css("top",'98px');//corner left
 			$("#travel_div_12").css("top",'98px');//corner right top
 			$("#travel_div_13").css("top",'98px');//corner right top
-			
+
 			$("#travel_div_17").css("top",'98px'); //space
-			$("#travel_div_17").css("height",'18px'); 
-			
-			$("#travel_div_18").css("height",'193px'); //Height of Tooltip 
-                        $("#travel_div_18").css("top",'117px');			
-			$("#travel_div_0").css("height",'300px'); //Height of Tooltip 
-			$("#travel_div_9").css("display",'none'); //Height of Tooltip 
-        
+			$("#travel_div_17").css("height",'18px');
+
+			$("#travel_div_18").css("height",'193px'); //Height of Tooltip
+                        $("#travel_div_18").css("top",'117px');
+			$("#travel_div_0").css("height",'300px'); //Height of Tooltip
+			$("#travel_div_9").css("display",'none'); //Height of Tooltip
+
         */
 		
     }else{
@@ -542,90 +567,6 @@ function search_boxes () {
 }
 
 
-function slideshow_calendar() {
-    if ($('.node-type-calendar #slideshow .slide').size() > 1) {
-        console.log("-> Init");
-        $('#slideshow_calendar').slides({
-            play: 5000,
-            pause: 2500,
-            hoverPause: true,
-            animationStart: function(current){
-                if ($('.caption').size()) {
-                    $('.caption').animate({
-                        bottom:-35
-                    },100);
-                }
-            },
-            animationComplete: function(current){
-                if ($('.caption').size()) {
-                    $('.caption').animate({
-                        bottom:0
-                    },200);
-                }
-            },
-            slidesLoaded: function() {
-                if ($('.caption').size()) {
-                    $('.caption').animate({
-                        bottom:0
-                    },200);
-                }
-            }
-        });
-    }
-    else {
-        if ($(".node-type-calendar #slideshow .caption").size()) {
-            $(".node-type-calendar #slideshow .caption").animate({
-                bottom:0,
-                width:972,
-                left:5
-            },200);
-        }
-        $(".node-type-calendar #slideshow .prev").hide();
-        $(".node-type-calendar #slideshow .next").hide();
-    }
-}
-
-function home_slideshow() {
-    if ($('#slideshow .slide').size() > 1) {
-        $('#slideshow').slides({
-            play: 5000,
-            pause: 2500,
-            hoverPause: true,
-            animationStart: function(current){
-                if ($('.caption').size()) {
-                    $('.caption').animate({
-                        bottom:-35
-                    },100);
-                }
-            },
-            animationComplete: function(current){
-                if ($('.caption').size()) {
-                    $('.caption').animate({
-                        bottom:0
-                    },200);
-                }
-            },
-            slidesLoaded: function() {
-                if ($('.caption').size()) {
-                    $('.caption').animate({
-                        bottom:0
-                    },200);
-                }
-            }
-        });
-    }
-    else {
-        if ($("#slideshow .caption").size()) {
-            $("#slideshow .caption").animate({
-                bottom:15,
-                width:625,
-                left:5
-            },200);
-        }
-        $("#slideshow .prev").hide();
-        $("#slideshow .next").hide();
-    }
-}
 
 function home_tabs() {
     var tabs = "#tabs-headers";
@@ -645,23 +586,9 @@ function home_tabs() {
             });
         });
     }
-    //var tabs_content = new Array("#calendar-tab", "#town-tab", "#news-tab");
-    var tabs_content = new Array("#calendar-tab", "#town-tab");
-    var h = 0;
-    for (index in tabs_content){
-        if($(tabs_content[index]).height() > h){
-            h = $(tabs_content[index]).height();
-        }
-    }
+
   
-    for(index in tabs_content){
-        if (navigator.userAgent.indexOf('Mac OS X') != -1){
-            //$(tabs_content[index]).css("height", (h-66).toString() + "px");
-            $(tabs_content[index]).css("height", (h).toString() + "px");
-        }else{
-            $(tabs_content[index]).css("height", (h+17).toString() + "px");
-        }
-    }
+
 }
 
 function restaurant_slideshow() {
@@ -678,28 +605,6 @@ function restaurant_slideshow() {
     }
 }
 
-function menu_dropdown() {
-    if ($("#header .content > .menu .menu").size()) {
-        $("#header .content > .menu > li > a").on("click", function(e) {
-            e.preventDefault();
-        });
-        $("#header .content > .menu .menu").wrap("<div class='dropdown-wrapper'>");
-        $("#header .content > .menu .dropdown-wrapper").prepend('<div class="drop-arrow"></div>');
-        $("#header .content > .menu > li").on("mouseover", function() {
-            var dropdown = $(this).find(".dropdown-wrapper");
-            var dropdown_meni = $(this).find(".dropdown-wrapper > ul.menu");
-            dropdown.css('display','block');
-            dropdown_meni.css('display','block');
-        });
-        $("#header .content > .menu > li").on("mouseout", function() {
-            var dropdown = $(this).find(".dropdown-wrapper");
-            var dropdown_meni = $(this).find(".dropdown-wrapper ul.menu");
-            dropdown.css('display','none');
-            dropdown_meni.css('display','none');;
-        });
-    }
-  
-}
 
 function detect_useragent() {
     // * -- iOS Compatibility -- * //
@@ -724,11 +629,6 @@ function detect_useragent() {
     }
 }
 
-function widgets() {
-    if ($(".not-front #sidebar-right").size()) {
-        $("#main-wrapper #content").css("width", "660px");
-    }
-}
 
 function listing_details() {
     if ($(".details_more_link").size()) {
@@ -857,10 +757,10 @@ function initCustomMap(){
                                                 
                                                 
                                                 
-            var infoBubble = new google.maps.InfoWindow({               
+            /*var infoBubble = new google.maps.InfoWindow({               
                 content: '<div style="z-index:400;width:400px;height:200px;" class="phoneytext">'+$('.gmap-popup .div_class_style_tooltip').html()+'</div>',
                 maxWidth: 400
-            });
+            });*/
                                                 
             if(infoWin != null){
                 infoWin.close();
@@ -998,6 +898,7 @@ function view_field_checkbox(){
  
 function expand_link(){
     $("#advanced_search_exponsed_a").click(function(e){
+        $().css('display','none');
         e.preventDefault();
         if ($("#edit-field-culture-offer-value-2").is (':visible')){
             $(".advanced_search").hide();
@@ -1010,8 +911,24 @@ function expand_link(){
             }
 		     
             $(".advanced_search").fadeIn('fast');
-            $(".view-content").css("margin-top",$("#advanced_search_dynamic_top").val());
             			 
         } 
     });
+}
+
+function mobile_website() {
+	if (window.innerWidth < 460) {
+		$("body").addClass("mobile-website");
+	}
+}
+
+function mobile_menu() {
+	$(".mobile-website .top_level").on("click", function(e) {
+		e.preventDefault();
+		$(this).parent().siblings().find(".menu").hide();
+		$(this).next().toggle();
+	});
+	/*$(".mobile-website .second-line").on("focusout", function(e) {
+		$(".mobile-website .second-line > .menu > li > .menu").hide();
+	});*/
 }

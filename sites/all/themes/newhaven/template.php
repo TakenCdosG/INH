@@ -218,74 +218,30 @@ function newhaven_preprocess_page(&$vars) {
 
     $global_config = node_load(_GLOBAL_CONFIGURATIONS_NODE);
     $node = current_node();
-    if (drupal_is_front_page() || $node->type == "culture_listing" || $node->type == "dining_listing" || $node->type == "shopping_listing") {
+    if (drupal_is_front_page()) {
 
-        if (drupal_is_front_page()) {
-            $vars['content_class'] = "homepage";
-        }
-        $output = "";
+        $vars['content_class'] = "homepage";
+        $output = render($vars["page"]["sidebar_left"]);
 
-        if ($node->type != "dining_listing") {
-            $output .= "<div class='sidebar-icon'>";
-            if (count($global_config->field_dining_link)) {
-                $output .= "<a href='" . url($global_config->field_dining_link['und'][0]['value']) . "'>";
-            }
-            if (count($global_config->field_dining_icon)) {
-                $output .= "<span class='icon'><img src='" . file_create_url($global_config->field_dining_icon['und'][0]['uri']) . "' alt='Dining' /></span>";
-            }
-            $output .= "Dining";
-            if (count($global_config->field_dining_link)) {
-                $output .= "</a>";
-            }
-            $output .= "</div>";
-        }
-        if ($node->type != "culture_listing") {
-            $output .= "<div class='sidebar-icon'>";
-            if (count($global_config->field_culture_link)) {
-                $output .= "<a href='" . url($global_config->field_culture_link['und'][0]['value']) . "'>";
-            }
-            if (count($global_config->field_culture_icon)) {
-                $output .= "<span class='icon'><img src='" . file_create_url($global_config->field_culture_icon['und'][0]['uri']) . "' alt='Culture' /></span>";
-            }
-            $output .= "Culture";
-            if (count($global_config->field_culture_link)) {
-                $output .= "</a>";
-            }
-            $output .= "</div>";
-        }
-        if ($node->type != "shopping_listing") {
-            $output .= "<div class='sidebar-icon'>";
-            if (count($global_config->field_shopping_link)) {
-                $output .= "<a href='" . url($global_config->field_shopping_link['und'][0]['value']) . "'>";
-            }
-            if (count($global_config->field_shopping_icon)) {
-                $output .= "<span class='icon'><img src='" . file_create_url($global_config->field_shopping_icon['und'][0]['uri']) . "' alt='Shopping' /></span>";
-            }
-            $output .= "Shopping";
-            if (count($global_config->field_shopping_link)) {
-                $output .= "</a>";
-            }
-            $output .= "</div>";
-        }
-        // Twitter timeline
-        if (drupal_is_front_page()) {
-            $output .= '<a class="twitter-timeline" href="https://twitter.com/INFONewHaven" data-widget-id="252952851674955777">Tweets by @INFONewHaven</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+         $output .= '<a class="twitter-timeline" href="https://twitter.com/INFONewHaven" data-widget-id="252952851674955777">Tweets by @INFONewHaven</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 ';
 
-            /* if($_SERVER["HTTP_HOST"] == 'downtownnewhaven.com')
-              $output .= '<a class="twitter-timeline" �href="https://twitter.com/INFONewHaven" data-widget-id="249272827075756033">Tweets by @INFONewHaven</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
-              else
-              $output .= '<a class="twitter-timeline" href="https://twitter.com/INFONewHaven" data-widget-id="252952851674955777">Tweets by @INFONewHaven</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>';
-             */
-            $vars["page"]["sidebar_left"] = array("#markup" => $output);
-        } else {
-            // $vars["page"]["sidebar_right"] = array("#markup" => $output);
-        }
-    }
 
-    if ($node->type == "page" && (is_array($node->field_menu_right['und']) && count($node->field_menu_right['und']) > 0)) {
-        $output_menu = get_bar_right($vars["page"]["sidebar_right"], $node->field_menu_right['und']);
-        $vars["page"]["menu_links_right"] = array("#markup" => $output_menu);
+            $vars["page"]["sidebar_left"] = array("#markup" => $output);
+        }
+
+
+    if ($node->type == "page" && !empty($node->field_menu_right) && (is_array($node->field_menu_right['und']) && count($node->field_menu_right['und']) > 0)) {
+      $output_menu = get_bar_right($vars["page"]["sidebar_right"], $node->field_menu_right['und']);
+      $vars["page"]["menu_links_right"] = array("#markup" => $output_menu);
+    }elseif(!empty($vars["page"]["sidebar_right"])){
+      if ($node->nid == 34689) {
+        $output_menu = render($vars["page"]["sidebar_right"]);
+      }
+      else {
+        $output_menu = "<div  class='hidden-xs hidden-sm'>".render($vars["page"]["sidebar_right"])."</div>";
+      }
+      $vars["page"]["menu_links_right"] = array("#markup" => $output_menu);
     }
     /**
      * Social links on header
@@ -294,11 +250,11 @@ function newhaven_preprocess_page(&$vars) {
     /**
      * Top image on some pages
      */
-    if (property_exists($node, "field_top_image")) {
-        if (count($node->field_top_image)) {
-            $vars['top_image'] = "<img src='" . file_create_url($node->field_top_image['und'][0]['uri']) . "' />";
-        }
+  if (property_exists($node, "field_top_image")) {
+    if (count($node->field_top_image)) {
+      $vars['top_image'] = file_create_url($node->field_top_image['und'][0]['uri']);
     }
+  }
     if (property_exists($node, "field_top_flash")) {
         if (count($node->field_top_flash)) {
             $vars['top_flash'] = '<div id="flash"></div><script type="text/javascript">
@@ -330,6 +286,20 @@ function newhaven_preprocess_page(&$vars) {
     if (property_exists($node, "field_bottom_logos") && count($node->field_bottom_logos)) {
         $vars['restaurant_logos'] = create_logos($node);
     }
+
+  /***** RESPONSIVE ****/
+
+  $vars['menu_top'] = menu_tree(variable_get('menu_main_links_source', 'menu-top-menu')); // Create a structured array of the menu to be rendered by drupal_render()
+  $vars['menu_main_footer'] = menu_tree(variable_get('menu_main_links_source', 'main-menu'));// Create a structured array of the menu to be rendered by drupal_render()
+  $vars['menu_main_responsive'] = menu_tree_all_data(variable_get('menu_main_links_source', 'main-menu'));// We get an tree of menu links in an array, in the order they should be rendered
+  foreach($vars['menu_main_responsive'] as $item ){
+    $item['link']['menu_name']='menu_main_responsive';
+  }
+
+  $vars['menu_main_responsive'] = menu_tree_output($vars['menu_main_responsive']);
+  //dsm($vars['menu_main_responsive']);
+
+
 }
 
 function load_socials($n, &$vars) {
@@ -342,14 +312,14 @@ function load_socials($n, &$vars) {
     if (count($n->field_twitter_link)) {
         $vars['twitter_link'] = $n->field_twitter_link['und'][0]['value'];
     }
-    if (count($n->field_instagram_link)) {
-      $vars['instagram_link'] = $n->field_instagram_link['und'][0]['value'];
-    }
     if (count($n->field_pinterest_link)) {
         $vars['pinterest_link'] = $n->field_pinterest_link['und'][0]['value'];
     }
     if (count($n->field_youtube_link)) {
         $vars['youtube_link'] = $n->field_youtube_link['und'][0]['value'];
+    }
+    if (count($n->field_instagram_link)) {
+        $vars['instagram_link'] = $n->field_instagram_link['und'][0]['value'];
     }
 }
 
@@ -388,4 +358,40 @@ function create_logos($n) {
         }
     }
     return $output;
+}
+
+/******* RESPONSIVE *****************/
+
+
+/**
+ * Bootstrap theme wrapper function for the primary menu links.
+ */
+function newhaven_menu_tree__menu_top_menu(&$variables) {
+  return '<ul class="menu nav navbar-nav">' . $variables['tree'] . '</ul>';
+}
+function newhaven_menu_link__menu_main_responsive(array $variables) {
+  $element = $variables['element'];
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    // Prevent dropdown functions from being added to management menu so it
+    // does not affect the navbar module.
+    if (($element['#original_link']['menu_name'] == 'management') && (module_exists('navbar'))) {
+      $sub_menu = drupal_render($element['#below']);
+    }
+    elseif ((!empty($element['#original_link']['depth'])) && ($element['#original_link']['depth'] == 1)) {
+      // Add our own wrapper.
+      unset($element['#below']['#theme_wrappers']);
+      $sub_menu = '<ul class="menu">' . drupal_render($element['#below']) . '</ul>';
+      // Generate as standard dropdown.
+      $element['#attributes']['class'][] = 'col-xs-12 col-sm-4';
+    }
+  }
+  // On primary navigation menu, class 'active' is not set on active menu item.
+  // @see https://drupal.org/node/1896674
+  if (($element['#href'] == $_GET['q'] || ($element['#href'] == '<front>' && drupal_is_front_page())) && (empty($element['#localized_options']['language']))) {
+    $element['#attributes']['class'][] = 'active';
+  }
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }

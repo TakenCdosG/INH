@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -99,7 +98,7 @@ $_SESSION["array_parking"] = $array_parking;
 $form_advanced = drupal_render(drupal_get_form('newhavenmod_formadvancedsearch_culture'));
 ?>
 <div class="search culture">
-  <h3>Find Arts &amp; Culture in New Haven</h3>
+  <h3>Find Arts in New Haven</h3>
   <h5>CHOOSE ONE OF THE OPTIONS BELOW</h5>
   
 	 <?php 

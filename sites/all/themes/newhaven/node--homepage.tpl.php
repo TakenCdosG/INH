@@ -79,9 +79,13 @@
 ?>
 <div id="home_wrapper">
     <div id="home">
-        <div id="slideshow">
+        <div id="fotorama_home" class="hidden-xs ">
             <h2>What's Happening in New Haven</h2>
-            <div class="slides_container">
+            <div id="fotorama_home_init" class="hidden-xs"
+                 data-width="100%"
+                 data-height="263"
+                 data-nav="false"
+                 data-arrows="false">
                 <?php
                 for ($c = 0; $c < count($content['field_slideshow']['#items']); $c++) {
                     print "<div class='slide'>";
@@ -112,29 +116,82 @@
                 }
                 ?>
             </div>
-            <a href="#" class="prev"><img src="<?php print base_path() . path_to_theme(); ?>/img/arrow_prev.png" width="17" height="55" alt="Arrow Prev"></a>
-            <a href="#" class="next"><img src="<?php print base_path() . path_to_theme(); ?>/img/arrow_next.png" width="17" height="55" alt="Arrow Next"></a>
+            <a href="#" class="prev arrow"><img src="<?php print base_path() . path_to_theme(); ?>/img/arrow_prev.png" width="17" height="55" alt="Arrow Prev"></a>
+            <a href="#" class="next arrow"><img src="<?php print base_path() . path_to_theme(); ?>/img/arrow_next.png" width="17" height="55" alt="Arrow Next"></a>
         </div>
         <div id="home-tabs">
             <div id="tabs-headers">
-                <h3 class="active"><a href="#calendar-tab">Events<br /><strong>Calendar</strong></a></h3>      
-                <h3><a href="#town-tab">Around<br /><strong>Town</strong></a></h3>
-                <h3><a href="#news-tab">New Haven<br /><strong>in the news</strong></a></h3>
+                <h3 class="active col-sm-4 col-xs-12"><a href="#calendar-tab">Events<br /><strong>Calendar</strong></a></h3>
+                <h3 class=" col-sm-3 col-xs-12" id="video-tab-header"><a href="#video-tab"><strong>video</strong></a></h3>
+                <h3 class=" col-sm-5 col-xs-12"><a href="#news-tab">New Haven<br /><strong>in the news</strong></a></h3>
             </div>
             <div id="tabs-content">
                 <div id="calendar-tab">
                     <div id="calendar-tab-wrapper">
+                        <ul>
 
-                        <?php print views_embed_view("list_events_calendar", "page", ''); ?>
-
+	                        <?php
+	                        	/*print views_embed_view("list_events_calendar", "page", '');
+								 */
+								for ($c = 0; $c < count($content['field_events_calendar']['#items']); $c++) {
+									print "<li class='col-sm-4'><div class='calendar-tab-item'>";
+				                    $field_id = $content['field_events_calendar']['#items'][$c]['value'];
+				                    $collection = $content['field_events_calendar'][$c]['entity']['field_collection_item'][$field_id];
+									//calendar-tab-item-text
+									$url = "";
+									if (array_key_exists("field_calendar_url", $collection)) {
+										$url = $collection['field_calendar_url']['#items'][0]['value'];
+									}
+				                    if (array_key_exists("field_calendar_date", $collection)) {
+				                    	print "<div class='calendar-tab-item-title'>";
+										if ($url != "") {
+											print "<a href='" . $url . "' target='_blank'>";
+										}
+				                    	$start_date = $collection['field_calendar_date']['#items'][0]['value'];
+				                    	$ending_date = $collection['field_calendar_date']['#items'][0]['value2'];
+										print date("F j", strtotime($start_date));
+										if ($ending_date != $start_date) {
+											print " - " . date("F j", strtotime($ending_date));
+										}
+				                        if ($url != "") {
+											print "</a>";
+										}
+										print "</div>";
+									}
+				                    if (array_key_exists('field_calendar_image', $collection)) {
+				                        print "<div class='calendar-tab-item-img'>";
+										if ($url != "") {
+											print "<a href='" . $url . "' target='_blank'>";
+										}
+				                        print "<img src='" . file_create_url($collection['field_calendar_image']['#items'][0]['uri']) . "' />";
+										if ($url != "") {
+											print "</a>";
+										}
+				                        print "</div>";
+				                    }
+									if (array_key_exists('field_calendar_text', $collection)) {
+				                        print "<div class='calendar-tab-item-text'><p>";
+										if ($url != "") {
+											print "<a href='" . $url . "' target='_blank'>";
+										}
+				                        print $collection['field_calendar_text']['#items'][0]['value'];
+										if ($url != "") {
+											print "</a>";
+										}
+				                        print "</p></div>";
+				                    }
+				                    print "</div></li>";
+				                }
+	                        ?>
+                        </ul>
                     </div>
                     <div id="calendar-tab-link"><a href="/calendar/week" target="_blank">full calendar ></a></div>
                     <div id="calendar-tab-link"><a href="http://portal.infonewhaven.com/infonewhavencalendar/calendar/" target="_blank">CLICK HERE TO LIST YOUR NEW HAVEN EVENT ></a></div>
                 </div>
-                <div id="town-tab">
-                    <?php
-                    print around_town();
-                    ?>
+                <div id="video-tab">
+                  <div class="home_widgets <?php print $num_widgets; ?>">
+                    <?php print render($content['field_bottom_widgets']); ?>
+                  </div>
                 </div>
                 <div id="news-tab"> 
                     <?php
@@ -146,15 +203,6 @@
                 </div>   
             </div>
         </div>
-        <?php
-        if (count($content['field_bottom_widgets']['#items']) == 1) {
-            $num_widgets = "one";
-        } else {
-            $num_widgets = "two";
-        }
-        ?>
-        <div class="home_widgets <?php print $num_widgets; ?>">
-        <?php print render($content['field_bottom_widgets']); ?>
-        </div>
+
     </div>
 </div>

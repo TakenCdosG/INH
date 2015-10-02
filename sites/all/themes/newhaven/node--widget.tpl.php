@@ -81,17 +81,15 @@ if (count($content['field_widget_image']['#items'][0]['uri']) > 0) {
     $image_html = '<img src="' . $image . '" alt="Shopping" width="33" height="40" />';
 }
 ?>
-<div class="widget">
+<div class="sidebar-icon">
 
-    <div class="content">
         <?php
 // We hide the comments and links now so that we can render them later.
         hide($content['comments']);
         hide($content['links']);
         //print '<h1>' . var_dump($content['field_widget_link']) . '</h1>';
 // print render($content);
-        print '<div><a class="bucket" href="' . $content['field_widget_link']['#items'][0]['url'] . '"> <span class="icon"> ' . $image_html . ' </span> ' . $content['field_widget_link']['#items'][0]['title'] . ' </a></div>';
-        ?>
-    </div>
+        print '<a  href="' . $content['field_widget_link']['#items'][0]['url'] . '"> <span class="icon"> ' . $image_html . ' </span> ' . $content['field_widget_link']['#items'][0]['title'] . ' </a>';
 
+?>
 </div>

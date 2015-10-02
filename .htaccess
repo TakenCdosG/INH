@@ -1,3 +1,23 @@
+# Do the regex check against the URI here, if match, set the "require_auth" var
+SetEnvIf Request_URI ^/content/restaurant-week-sign-up require_auth=true
+SetEnvIf Request_URI ^/NHRWinfo1 require_auth=true
+
+# Auth stuff
+AuthUserFile /var/www/vhosts/infonewhaven.com/httpdocs/.htpasswd
+AuthName "Restaurant week"
+AuthType Basic
+
+# Setup a deny/allow
+Order Deny,Allow
+# Deny from everyone
+Deny from all
+# except if either of these are satisfied
+Satisfy any
+# 1. a valid authenticated user
+Require valid-user
+# or 2. the "require_auth" var is NOT set
+Allow from env=!require_auth
+
 #
 # Apache/PHP/Drupal settings:
 #
@@ -108,6 +128,11 @@ DirectoryIndex index.php index.html index.htm
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
   # RewriteBase /
+  
+  #Custom redirects
+  RewriteRule ^content/culture-listing$ http://www.infonewhaven.com/culture-listing [R=301,L]
+  RewriteRule ^content/dining-listing$ http://www.infonewhaven.com/dining-listing [R=301,L]
+  RewriteRule ^content/shopping-listing$ http://www.infonewhaven.com/shopping-listing [R=301,L]
 
   # Pass all requests not referring directly to files in the filesystem to
   # index.php. Clean URLs are handled in drupal_environment_initialize().
