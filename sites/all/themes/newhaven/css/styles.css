@@ -970,6 +970,7 @@ ul.pager li a{color:#2f2f2f;}
 #restaurants.search .view-content table a {color:#00649f;}
 #restaurants.search .view-content table tbody tr td:first-child a {font:16px "Helvetica neue medium"; word-spacing:0;}
 .single-restaurant { background: url("../img/restaurant-bg.png") no-repeat; background-size: 100% 100%; min-height: 271px; margin-bottom: 20px; padding: 10px; }
+.single-restaurant img { width: 100%; max-width: 198px; height: auto; }
 .single-restaurant .restaurant-info { padding-left: 8px; }
 .restaurant-info .restaurant-name { font-size: 20px; font-weight: 600; }
 .restaurant-info .restaurant-cuisine { font-size: 16px; }
