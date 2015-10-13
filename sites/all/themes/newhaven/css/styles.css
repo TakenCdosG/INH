@@ -938,19 +938,21 @@ ul.pager li a{color:#2f2f2f;}
 /* Restaurant week */
 #page-wrapper.restaurant {padding-top:0;}
 
-#widgets {width:474px; float:right;}
+/*#widgets {width:474px; float:right;}*/
+#widgets { margin-top: 130px; }
 #widgets .widget {
-    width:224px;
-    height:156px;
-    background:url("../img/widget-bg.png") no-repeat;
-    padding:12px 13px 15px 14px;
-    float:left;
-    margin-right:10px;
+    width:100%;
+    height:auto;
+    float:none;
+    padding:0;
+    margin:0;
+    background-image:none;
+   
 }
 #widgets h3, #widgets h3 a {color:#13608e; font:30px/36px "Helvetica neue roman"; word-spacing:-10px;}
 #widgets p, #widgets p a {color:#5e5e5e; font:14px/16px "Helvetica neue roman"; word-spacing:-4px;}
-#restaurants.search {background:none; margin-left:18px;}
-#restaurants.search .view-filters {padding:22px 0 0 22px; background:url("../img/rw-search-bg.png") repeat-x top left; width:432px; margin-left:0;}
+#restaurants.search {background:none; /*margin-left:18px;*/ }
+/*#restaurants.search .view-filters {padding:22px 0 0 22px; background:url("../img/rw-search-bg.png") repeat-x top left; width:432px; margin-left:0;}*/
 #restaurants.search input[type=text] {width:185px; font-size:14px;}
 #restaurants.search select {width:195px; font-size:14px;}
 #restaurants.search .views-exposed-form .views-exposed-widget.views-submit-button { /*float:right;*/ margin-right:36px;}
@@ -958,7 +960,7 @@ ul.pager li a{color:#2f2f2f;}
     width: 187px;
     font-size: 14px;
 }
-#restaurants.search .view-content {background:url("../img/rw-search-bg.png") repeat-x top left; padding-top:0;}
+/*#restaurants.search .view-content {background:url("../img/rw-search-bg.png") repeat-x top left; padding-top:0;}*/
 #restaurants.search input[type=button], #restaurants.search input[type=submit] {background:url("../img/search-button.png") no-repeat;}
 #restaurants.search .view-content table {margin-bottom:20px;}
 #restaurants.search .view-content th {width:185px; font:18px "Helvetica neue bold"; color:#282828; padding:16px 12px 18px 15px;}
@@ -967,6 +969,12 @@ ul.pager li a{color:#2f2f2f;}
 #restaurants.search .view-content table tr.even {background-color:#b8d9ef;}
 #restaurants.search .view-content table a {color:#00649f;}
 #restaurants.search .view-content table tbody tr td:first-child a {font:16px "Helvetica neue medium"; word-spacing:0;}
+.single-restaurant { background: url("../img/restaurant-bg.png") no-repeat; background-size: 100% 100%; min-height: 271px; margin-bottom: 20px; padding: 10px; }
+.single-restaurant img { width: 100%; max-width: 198px; height: auto; }
+.single-restaurant .restaurant-info { padding-left: 8px; }
+.restaurant-info .restaurant-name { font-size: 20px; font-weight: 600; }
+.restaurant-info .restaurant-cuisine { font-size: 16px; }
+.restaurant-info .restaurant-place, .restaurant-info .restaurant-open, .restaurant-info .restaurant-phone { font-size: 14px; }
 #restaurant-week-logos {max-width:972px; margin:0px auto; text-align:center; padding:0;}
 #restaurant-week-logos:after {display:block; content:''; clear:both;}
 #restaurant-week-logos img {display:inline-block; margin:25px 0 25px 17px; width: 100%;}
@@ -2027,6 +2035,12 @@ ul.tab li a{
     #restaurants .restaurants-mobile {
     	display: block;
     }
+    
+    #restaurants .restaurants-mobile .view-content .col-md-4.col-xs-6 { padding: 0 8px 0 8px; }
+    #restaurants.search #edit-field-cuisine-term-tid { display: block; margin: 0 auto; }
+    .views-exposed-form { width: 100%; }
+    #widgets { margin: 0 0 30px 0; }
+    #widgets .widget img { display: block; margin: 0 auto; }
 }
 
 @media (max-width: 992px){
@@ -2041,9 +2055,9 @@ ul.tab li a{
     }
     
     /* Restaurant week */
-    #widgets {
+    /*#widgets {
     	float: none;
-    }
+    }*/
     
     #widgets:after {
     	display: block;
