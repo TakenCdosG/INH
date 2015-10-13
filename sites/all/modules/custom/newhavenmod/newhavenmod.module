@@ -537,7 +537,7 @@ function newhavenmod_page_alter(&$page) {
         if (!array_key_exists("sidebar_right", $page)) {
             $page["sidebar_right"] = array();
         }
-        $page["sidebar_right"] += render_widgets($node);
+        //$page["sidebar_right"] += render_widgets($node);
     }elseif(drupal_is_front_page()){
         if (!array_key_exists("sidebar_left", $page)) {
             $page["sidebar_left"] = array();
@@ -558,7 +558,8 @@ function render_widgets($node) {
             $node = node_load($widget["nid"]);
             $windex = "widget-" . $node->nid;
 
-            $widgets[$windex] = array('#markup' => render(node_view($node)));
+            $node_view = node_view($node);
+            $widgets[$windex] = array('#markup' => render($node_view));
         }
     $rendered = true;
     return $widgets;
