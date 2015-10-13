@@ -88,7 +88,7 @@
   <div id="widgets" class="col-md-3 col-sm-4 col-xs-12">
       <?php
         if (array_key_exists("field_bottom_widgets", $content)) {
-          for ($c = 0; $c < 2; $c++) {
+          for ($c = 0; $c < 5; $c++) {
             if (array_key_exists($c, $content['field_bottom_widgets'])) {
               print "<div class='widget'>";
               print $content['field_bottom_widgets'][$c]['#markup'];
