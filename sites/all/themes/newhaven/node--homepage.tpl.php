@@ -189,7 +189,7 @@
                     <div id="calendar-tab-link"><a href="http://portal.infonewhaven.com/infonewhavencalendar/calendar/" target="_blank">CLICK HERE TO LIST YOUR NEW HAVEN EVENT ></a></div>
                 </div>
                 <div id="video-tab">
-                  <div class="home_widgets <?php print $num_widgets; ?>">
+                  <div class="home_widgets">
                     <?php print render($content['field_bottom_widgets']); ?>
                   </div>
                 </div>

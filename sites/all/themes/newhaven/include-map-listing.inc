@@ -15,8 +15,14 @@ Click here to hide parking</a></div>
   
   <div class="container_map" id="<?php print "container_map".$randon ?>">
 
-		<?php 
-		 $street = $row->field_field_street_address[0]["rendered"]["#markup"];
+		<?php
+
+		if(isset($row->field_field_street_address[0]["rendered"]["#markup"])){
+			$street = $row->field_field_street_address[0]["rendered"]["#markup"];
+		}else{
+			$street = "";
+		}
+
 		 $city = 'New Haven, CT';
 		 $node_zip=node_load($row->nid);
 		 $zip = $node_zip->field_zip_code['und'][0]['value'];
@@ -35,7 +41,7 @@ Click here to hide parking</a></div>
 		
 		    foreach ($array_parking as $valor =>$val) {
 					$node_parking = node_load($valor); ?>
-		    <div name="<?php print "node_reference_map_".$valor?>" class="items-div-places"  id="<?php print "node_reference_map_".$valor ?>" latitude="<?php print $node_parking->location["latitude"] ?>" longitude="<?php print $node_parking->location["longitude"] ?>"  name_parking="<?php print $node_parking->title  ?>" street_parking='<?php print $node_parking->field_parking_address["und"][0]["value"] ?>' field_parking_hours='<?php print $node_parking->field_parking_hours["und"][0]["value"] ?>' tel_parking='<?php print $node_parking->field_parking_tel["und"][0]["value"] ?>'  website_parking='<?php print $node_parking->field_parking_website["und"][0]["value"] ?>' >
+		    <div name="<?php print "node_reference_map_".$valor?>" class="items-div-places"  id="<?php print "node_reference_map_".$valor ?>" latitude="<?php if(isset($node_parking->location["latitude"])){print $node_parking->location["latitude"];} ?>" longitude="<?php if(isset($node_parking->location["longitude"])){ print $node_parking->location["longitude"];} ?>"  name_parking="<?php print $node_parking->title  ?>" street_parking='<?php if(isset($node_parking->field_parking_address["und"][0]["value"])){ print $node_parking->field_parking_address["und"][0]["value"]; }?>' field_parking_hours='<?php if(isset($node_parking->field_parking_hours["und"][0]["value"])){print $node_parking->field_parking_hours["und"][0]["value"];} ?>' tel_parking='<?php if(isset($node_parking->field_parking_tel["und"][0]["value"])){print $node_parking->field_parking_tel["und"][0]["value"];} ?>'  website_parking='<?php if(isset($node_parking->field_parking_website["und"][0]["value"])){print $node_parking->field_parking_website["und"][0]["value"];} ?>' >
 			</div>   
 		
 		<?php } ?>

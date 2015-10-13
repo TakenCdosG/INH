@@ -28,11 +28,33 @@
 <div class="details_socials">
 
 <?php 
-	
-  $url_new_facebook=get_clear_link_social($row->field_field_facebook[0]['rendered']['#markup'],'facebook');
-  $url_new_twitter=get_clear_link_social($row->field_field_twitter[0]['rendered']['#markup'],'twitter');
-  $url_new_pinterest=get_clear_link_social($row->field_field_pinterest[0]['rendered']['#markup'],'pinterest');
-  $url_new_youtube=get_clear_link_social($row->field_field_youtube[0]['rendered']['#markup'],'youtube');
+	if(isset($row->field_field_facebook[0]['rendered']['#markup'])){
+      $url_new_facebook = get_clear_link_social($row->field_field_facebook[0]['rendered']['#markup'],'facebook');
+    }else{
+      $url_new_facebook = "";
+    }
+
+    if(isset($row->field_field_twitter[0]['rendered']['#markup'])){
+      $url_new_twitter = get_clear_link_social($row->field_field_twitter[0]['rendered']['#markup'],'twitter');
+    }else{
+      $url_new_twitter = "";
+    }
+
+    if(isset($row->field_field_pinterest[0]['rendered']['#markup'])){
+      $url_new_pinterest = get_clear_link_social($row->field_field_pinterest[0]['rendered']['#markup'],'pinterest');
+    }else{
+      $url_new_pinterest = "";
+    }
+
+    if(isset($row->field_field_youtube[0]['rendered']['#markup'])){
+      $url_new_youtube = get_clear_link_social($row->field_field_youtube[0]['rendered']['#markup'],'youtube');
+    }else{
+      $url_new_youtube = "";
+    }
+
+
+
+
     
   if (count($row->field_field_facebook)) {
     print "<div><a href='" . $url_new_facebook . "' target='_blank'><img src='http://www.infonewhaven.com/sites/default/files/facebook.png' alt='Facebook' title='Facebook' /></a></div>";
@@ -46,7 +68,7 @@
   if (count($row->field_field_youtube)) {
     print "<div><a href='" .$url_new_youtube. "' target='_blank'><img src='http://www.infonewhaven.com/sites/default/files/youtube.png' alt='Youtube' title='Youtube' /></a></div>";
   }
-  if ($row->field_field_shops_at_yale_icon_["und"][0]["value"]=="1") {
+  if (isset($row->field_field_shops_at_yale_icon_["und"][0]["value"]) && $row->field_field_shops_at_yale_icon_["und"][0]["value"]=="1") {
     print "<div><a href='http://theshopsatyale.com/' target='_blank'><img src='http://www.infonewhaven.com/sites/default/files/yale_logo.png' alt='The Shops at yale' title='The Shops at yale' /></a></div>";
   }
   

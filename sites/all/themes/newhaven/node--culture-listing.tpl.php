@@ -95,7 +95,11 @@ $result = db_query("SELECT n.nid FROM {node} n WHERE n.type = 'parking'");
 $array_parking =$result->fetchAllKeyed();
 $_SESSION["array_parking"] = $array_parking;
 
-$form_advanced = drupal_render(drupal_get_form('newhavenmod_formadvancedsearch_culture'));
+$string_to_search = 'newhavenmod_formadvancedsearch_culture';
+
+$drupal_form = drupal_get_form($string_to_search);
+
+$form_advanced = drupal_render($drupal_form);
 ?>
 <div class="search culture">
   <h3>Find Arts in New Haven</h3>
