@@ -35,6 +35,12 @@
 
                       </div>
                     <?php endif; ?>
+                    
+                    <?php if (isset($top_mobile_image)): ?>
+                      <div class="top_image visible-xs" style="background-image: url(<?php print $top_mobile_image; ?>);">
+
+                      </div>
+                    <?php endif; ?>
 
                     <?php if (!isset($top_image) && isset($top_flash)): ?>
                       <div class="top_image hidden-xs col-sm-12">

@@ -273,6 +273,11 @@ function newhaven_preprocess_page(&$vars) {
             $vars['field_top_head_image'] = "<img src='" . file_create_url($node->field_top_head_image['und'][0]['uri']) . "' />";
         }
     }
+	if (property_exists($node, "field_top_mobile_image")) {
+	    if (count($node->field_top_mobile_image)) {
+	      $vars['top_mobile_image'] = file_create_url($node->field_top_mobile_image['und'][0]['uri']);
+	    }
+	  }
     /**
      * Slideshow on restaurant week
      */
