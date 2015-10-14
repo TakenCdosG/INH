@@ -37,7 +37,7 @@
                     <?php endif; ?>
                     
                     <?php if (isset($top_mobile_image)): ?>
-                      <div class="top_image visible-xs" style="background-image: url(<?php print $top_mobile_image; ?>);">
+                      <div class="top_mobile_image visible-xs" style="background-image: url(<?php print $top_mobile_image; ?>);">
 
                       </div>
                     <?php endif; ?>

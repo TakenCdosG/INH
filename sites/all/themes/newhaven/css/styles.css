@@ -1951,7 +1951,7 @@ ul.tab li a{
     background-position: 50% 50%;
 }
 
-.top_mobile_image img { width: 100%; height: auto; }
+.top_mobile_image { height: 210px; background-size: 100% auto; background-repeat: no-repeat; }
 .nav>li>a{
     display: inline;
 }
