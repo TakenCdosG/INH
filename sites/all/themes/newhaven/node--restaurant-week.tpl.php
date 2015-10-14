@@ -81,9 +81,12 @@
 <div id="restaurant-week">
   <div id="restaurants" class="search col-md-9 col-sm-8 col-xs-12">
     <?php print views_embed_view("restaurant_week", "page"); ?>
+    <?php /*
     <div class="restaurants-mobile">
     	<?php print views_embed_view("restaurant_week", "mobile_page"); ?>
     </div>
+	 */
+	?>
   </div>
   <div id="widgets" class="col-md-3 col-sm-4 col-xs-12">
       <?php

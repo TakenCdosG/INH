@@ -970,7 +970,7 @@ ul.pager li a{color:#2f2f2f;}
 #restaurants.search .view-content table tr.even {background-color:#b8d9ef;}
 #restaurants.search .view-content table a {color:#00649f;}
 #restaurants.search .view-content table tbody tr td:first-child a {font:16px "Helvetica neue medium"; word-spacing:0;}
-.single-restaurant { background: url("../img/restaurant-bg.png") no-repeat; background-size: 100% 100%; min-height: 271px; margin-bottom: 20px; padding: 10px; }
+.single-restaurant { background: url("../img/restaurant-bg.png") no-repeat; background-size: 100% 100%; min-height: 285px; margin-bottom: 20px; padding: 10px; }
 .single-restaurant img { width: 100%; max-width: 198px; height: auto; }
 .single-restaurant .restaurant-info { padding-left: 8px; }
 .restaurant-info > div { margin-bottom: 3px; }
@@ -2035,11 +2035,11 @@ ul.tab li a{
     	display: none;
     }
     
-    #restaurants .restaurants-mobile {
+    /*#restaurants .restaurants-mobile {
     	display: block;
-    }
+    }*/
     
-    #restaurants .restaurants-mobile .view-content .col-md-4.col-xs-6 { padding: 0 8px 0 8px; }
+    #restaurants .col-md-4.col-xs-6 { padding: 0 8px 0 8px; }
     #restaurants.search #edit-field-cuisine-term-tid { display: block; margin: 0 auto; }
     .views-exposed-form { width: 100%; }
     #widgets { margin: 0 0 30px 0; }
