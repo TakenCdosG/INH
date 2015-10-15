@@ -159,7 +159,7 @@ function dropdowns_disabled_view(){
 
     $(".form-item-field-category-tid").append("<span style='font-size:14px;color:#373737;font-weight:bold;font-family:Helvetica neue roman;'>Or</span>");
     $(".form-item-field-price-point-value").append("<span style='font-size:14px;color:#373737;font-weight:bold;font-family:Helvetica neue roman;'>Or</span>");
-    //$(".form-item-field-cuisine-term-tid").append("<span style='font-size:14px;color:#373737;font-weight:bold;font-family:Helvetica neue roman;'>Or</span>");
+    $(".form-item-field-cuisine-term-tid").append("<span style='font-size:14px;color:#373737;font-weight:bold;font-family:Helvetica neue roman;'>Or</span>");
     $(".form-item-field-shopping-category-value").append("<span style='font-size:14px;color:#373737;font-weight:bold;font-family:Helvetica neue roman;'>Or</span>");
     $("#views-exposed-form-dining-listing-page .form-item-title").append("<span style='font-size:14px;color:#373737;font-weight:bold;font-family:Helvetica neue roman;'>Or</span>");
     $("#views-exposed-form-culture-listing-page .form-item-title").append("<span style='font-size:14px;color:#373737;font-weight:bold;font-family:Helvetica neue roman;'>Or</span>");

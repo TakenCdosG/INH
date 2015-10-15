@@ -189,7 +189,7 @@ article ul {list-style-type:disc; padding-left:20px; list-style-position:outside
 
 /* Website */
 html, body {min-height:100%; height:100%; background-color:#e6eee5;}
-body.node-type-restaurant-week { background-color: #FFFFFF; min-height: auto; height: auto; }
+body.node-type-new-restaurant-week { background-color: #FFFFFF; min-height: auto; height: auto; }
 .bg-img {position:absolute; top:0; left:0; height:100%; z-index:-1;}
 
 #top-header{
@@ -939,9 +939,17 @@ ul.pager li a{color:#2f2f2f;}
 /* Restaurant week */
 #page-wrapper.restaurant {padding-top:0;}
 
-/*#widgets {width:474px; float:right;}*/
-#widgets { margin-top: 130px; }
+#widgets {width:474px; float:right;}
+#widgets.new-restaurant { margin-top: 130px; width: auto; float:none; }
 #widgets .widget {
+    width:100%;
+    height:auto;
+    background:url("../img/widget-bg.png") no-repeat;
+    padding:12px 13px 15px 14px;
+    float:left;
+    margin-right:10px;
+}
+#widgets.new-restaurant .widget {
     width:100%;
     height:auto;
     float:none;
@@ -952,8 +960,10 @@ ul.pager li a{color:#2f2f2f;}
 }
 #widgets h3, #widgets h3 a {color:#13608e; font:30px/36px "Helvetica neue roman"; word-spacing:-10px;}
 #widgets p, #widgets p a {color:#5e5e5e; font:14px/16px "Helvetica neue roman"; word-spacing:-4px;}
-#restaurants.search {background:none; /*margin-left:18px;*/ }
-/*#restaurants.search .view-filters {padding:22px 0 0 22px; background:url("../img/rw-search-bg.png") repeat-x top left; width:432px; margin-left:0;}*/
+#restaurants.search {background:none; margin-left:18px;}
+#restaurants.search .view-filters {padding:22px 0 0 22px; background:url("../img/rw-search-bg.png") repeat-x top left; width:432px; margin-left:0;}
+#restaurants.new-restaurant { margin-left:0; }
+#restaurants.new-restaurant .view-filters {padding:0; background-image:none; width: auto; margin-left:0; }
 #restaurants.search input[type=text] {width:185px; font-size:14px;}
 #restaurants.search select {width:195px; font-size:14px;}
 #restaurants.search .views-exposed-form .views-exposed-widget.views-submit-button { /*float:right;*/ margin-right:36px;}
@@ -961,7 +971,8 @@ ul.pager li a{color:#2f2f2f;}
     width: 187px;
     font-size: 14px;
 }
-/*#restaurants.search .view-content {background:url("../img/rw-search-bg.png") repeat-x top left; padding-top:0;}*/
+#restaurants.search .view-content {background:url("../img/rw-search-bg.png") repeat-x top left; padding-top:0;}
+#restaurants.new-restaurant .view-content {background-image:none; }
 #restaurants.search input[type=button], #restaurants.search input[type=submit] {background:url("../img/search-button.png") no-repeat;}
 #restaurants.search .view-content table {margin-bottom:20px;}
 #restaurants.search .view-content th {width:185px; font:18px "Helvetica neue bold"; color:#282828; padding:16px 12px 18px 15px;}
@@ -2033,19 +2044,23 @@ ul.tab li a{
     	margin: 0 auto;
     }
     
-    /*#restaurants .view-display-id-page {
+    #restaurants .view-display-id-page {
     	display: none;
     }
     
     #restaurants .restaurants-mobile {
     	display: block;
-    }*/
+    }
     
-    #restaurants .col-md-4.col-xs-6 { padding: 0 8px 0 8px; }
-    #restaurants.search #edit-field-cuisine-term-tid { display: block; margin: 0 auto; }
-    .views-exposed-form { width: 100%; }
-    #widgets { margin: 0 0 30px 0; }
-    #widgets .widget img { display: block; margin: 0 auto; }
+    #restaurants.new-restaurant .view-display-id-page {
+    	display: none;
+    }
+    
+    #restaurants.new-restaurant .col-md-4.col-xs-6 { padding: 0 8px 0 8px; }
+    #restaurants.new-restaurant #edit-field_restaurant_week_cuisine_tid { display: block; margin: 0 auto; }
+    #restaurants.new-restaurant .views-exposed-form { width: 100%; }
+    #widgets.new-restaurant { margin: 0 0 30px 0; }
+    #widgets.new-restaurant .widget img { display: block; margin: 0 auto; }
 }
 
 @media (max-width: 992px){
@@ -2060,9 +2075,13 @@ ul.tab li a{
     }
     
     /* Restaurant week */
-    /*#widgets {
+    #widgets {
     	float: none;
-    }*/
+    }
+    
+    #widgets.new-restaurant {
+    	float: inherit;
+    }
     
     #widgets:after {
     	display: block;

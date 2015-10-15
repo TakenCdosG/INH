@@ -79,10 +79,13 @@
  */
 ?>
 <div id="restaurant-week">
-  <div id="widgets">
+  <div id="restaurants" class="search new-restaurant col-md-9 col-sm-8 col-xs-12">
+    <?php print views_embed_view("new_restaurant_week", "page"); ?>
+  </div>
+  <div id="widgets" class="new-restaurant col-md-3 col-sm-4 col-xs-12">
       <?php
         if (array_key_exists("field_bottom_widgets", $content)) {
-          for ($c = 0; $c < 2; $c++) {
+          for ($c = 0; $c < 5; $c++) {
             if (array_key_exists($c, $content['field_bottom_widgets'])) {
               print "<div class='widget'>";
               print $content['field_bottom_widgets'][$c]['#markup'];
@@ -91,11 +94,5 @@
           }
         }
       ?>
-  </div>
-  <div id="restaurants" class="search">
-    <?php print views_embed_view("restaurant_week", "page"); ?>
-    <div class="restaurants-mobile">
-    	<?php print views_embed_view("restaurant_week", "mobile_page"); ?>
-    </div>
   </div>
 </div>
