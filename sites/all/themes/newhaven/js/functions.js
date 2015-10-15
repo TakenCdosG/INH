@@ -538,6 +538,7 @@ function search_boxes () {
             $("#" + first_field).attr("rel", "Search by Name");
             $("#" + first_field).val("Search by Name");
             $("#edit-field-cuisine-term-tid option:eq(0)").html("Search by Cuisine");
+            $("#edit-field-restaurant-week-cuisine-tid option:eq(0)").html("Search by Cuisine");
             $("#edit-field-meal-value option:eq(0)").html("Search by Meal");
             $("#edit-field-neighborhood-value option:eq(0)").html("Search by Neighborhood");
         }

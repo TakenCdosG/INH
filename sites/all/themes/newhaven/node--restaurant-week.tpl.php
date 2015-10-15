@@ -79,7 +79,7 @@
  */
 ?>
 <div id="restaurant-week">
-  <div id="widgets">
+  <div id="widgets" class="old-restaurant">
       <?php
         if (array_key_exists("field_bottom_widgets", $content)) {
           for ($c = 0; $c < 2; $c++) {

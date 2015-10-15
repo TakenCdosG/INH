@@ -939,10 +939,9 @@ ul.pager li a{color:#2f2f2f;}
 /* Restaurant week */
 #page-wrapper.restaurant {padding-top:0;}
 
-#widgets {width:474px; float:right;}
-#widgets.new-restaurant { margin-top: 130px; width: auto; float:none; }
+#widgets.old-restaurant {width:474px; float:right;}
 #widgets .widget {
-    width:100%;
+    width: 224px;
     height:auto;
     background:url("../img/widget-bg.png") no-repeat;
     padding:12px 13px 15px 14px;
@@ -963,7 +962,7 @@ ul.pager li a{color:#2f2f2f;}
 #restaurants.search {background:none; margin-left:18px;}
 #restaurants.search .view-filters {padding:22px 0 0 22px; background:url("../img/rw-search-bg.png") repeat-x top left; width:432px; margin-left:0;}
 #restaurants.new-restaurant { margin-left:0; }
-#restaurants.new-restaurant .view-filters {padding:0; background-image:none; width: auto; margin-left:0; }
+#restaurants.new-restaurant .view-filters { background-image:none; width: auto; margin-left:0; }
 #restaurants.search input[type=text] {width:185px; font-size:14px;}
 #restaurants.search select {width:195px; font-size:14px;}
 #restaurants.search .views-exposed-form .views-exposed-widget.views-submit-button { /*float:right;*/ margin-right:36px;}
