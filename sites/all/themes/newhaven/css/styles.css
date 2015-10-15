@@ -940,6 +940,7 @@ ul.pager li a{color:#2f2f2f;}
 #page-wrapper.restaurant {padding-top:0;}
 
 #widgets.old-restaurant {width:474px; float:right;}
+#widgets.new-restaurant { margin-top: 152px; }
 #widgets .widget {
     width: 224px;
     height:auto;
@@ -953,7 +954,7 @@ ul.pager li a{color:#2f2f2f;}
     height:auto;
     float:none;
     padding:0;
-    margin:0;
+    margin-bottom: 25px;
     background-image:none;
    
 }
