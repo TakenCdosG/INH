@@ -28,8 +28,8 @@ $(document).ready(function(){
 });//end document ready 
 
 function new_restaurant_week() {
-	//var exposed = $("#views-exposed-form-new-restaurant-week-page");
-	var exposed = $("#views-exposed-form-restaurant-week-page");
+	var exposed = $("#views-exposed-form-new-restaurant-week-page");
+	//var exposed = $("#views-exposed-form-restaurant-week-page");
 	if (exposed.length) {
 		exposed.attr("action", window.location.href);
 	}
