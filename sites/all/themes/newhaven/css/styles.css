@@ -2059,7 +2059,7 @@ ul.tab li a{
     #restaurants.new-restaurant .col-md-4.col-xs-6 { padding: 0 8px 0 8px; }
     #restaurants.new-restaurant #edit-field_restaurant_week_cuisine_tid { display: block; margin: 0 auto; }
     #restaurants.new-restaurant .views-exposed-form { width: 100%; }
-    #widgets.new-restaurant { margin: 0 0 30px 0; }
+    #widgets.new-restaurant { margin: 0 0 30px 0 !important; }
     #widgets.new-restaurant .widget img { display: block; margin: 0 auto; }
 }
 
