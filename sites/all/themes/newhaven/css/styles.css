@@ -267,8 +267,9 @@ body.node-type-new-restaurant-week { background-color: #FFFFFF; min-height: auto
 }
 #logo img{
     margin:0px auto;
+    max-width: 180px;
 }
-#header .parking{
+#heder .parking{
     display:inline-block;
     width:36px;
     height:47px;
@@ -1962,7 +1963,7 @@ ul.tab li a{
     background-position: 50% 50%;
 }
 
-.top_mobile_image { height: 210px; background-size: 100% auto; background-repeat: no-repeat; }
+.top_mobile_image { height: 232px; background-size: 100% auto; background-repeat: no-repeat; }
 .nav>li>a{
     display: inline;
 }
@@ -2199,7 +2200,7 @@ ul.tab li a{
         display: none;
     }
     #logo img {
-        margin:0px 0px 0px auto;
+        margin:0px 0px 0px 0px;
     }
     .view-content .views-field-field-days-and-meals-schedules, .days_and_hours.shopping_listing, .days_and_hours.culture_listing{
         width: 196px;
