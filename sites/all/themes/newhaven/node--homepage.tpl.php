@@ -185,8 +185,8 @@
 	                        ?>
                         </ul>
                     </div>
-                    <div id="calendar-tab-link"><a href="/summercalendar" target="_blank">full calendar ></a></div>
-                    <div id="calendar-tab-link"><a href="https://tockify.com/e/infonewhaven" target="_blank">CLICK HERE TO LIST YOUR NEW HAVEN EVENT ></a></div>
+                    <div id="calendar-tab-link"><a href="https://tockify.com/infonewhaven/pinboard" target="_blank">full calendar ></a></div>
+                    <div id="calendar-tab-link"><a href="/content/list-your-new-haven-event">CLICK HERE TO LIST YOUR NEW HAVEN EVENT ></a></div>
                 </div>
                 <div id="video-tab">
                   <div class="home_widgets">
